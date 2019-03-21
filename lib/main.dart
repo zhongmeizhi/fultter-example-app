@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/home/homepage.dart';
+import 'package:flutter_app/treasure/treasurepage.dart';
+import 'package:flutter_app/customer/customerpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,22 +13,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: MyHomePage(title: '金融理财'),
+      home: MainPage(title: '金融理财'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MainPage extends StatefulWidget {
 
   final String title;
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MainPage({Key key, this.title}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   @override
@@ -60,35 +63,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Widget _distributeHome () { // 分发Home页面路由
     switch(_selectedIndex) {
+      case 0:
+        return new HomePage();
+        break;
       case 1:
-        return Container(
-          child: Text(
-            '你的财富页',
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
-        );
+        return new TreasurePage();
       break;
       case 2:
-        return Container(
-          child: Text(
-            '这是你的页面',
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
-        );
+        return new CustomerPage();
       break;
       default:
-        return Container(
-          child: Text(
-            '首页',
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
-        );
+        return HomePage();
       break;
     }
   }
