@@ -2,15 +2,13 @@
 
 A new Flutter application.
 
-## Getting Started
+> 这是一个使用flutter编写的金融理财项目
 
-This project is a starting point for a Flutter application.
+外链:
+- [flutter官网](https://flutter.io/docs/get-started/codelab)
+- [API文档](https://flutter.io/docs/cookbook)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+##### TODO
+* 补图
+* 路由
+* node or java后台
