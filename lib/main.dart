@@ -6,14 +6,17 @@ import 'package:flutter_app/customer/customerpage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    // 初始化页面 width=750; height=1334;
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: MainPage(title: '金融理财'),
+      home: MainPage(title: 'Z.金融理财'),
     );
   }
 }
@@ -50,13 +53,13 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _selectedIndex,
         fixedColor: Colors.deepOrange,
         onTap: (index) {
-          _selectedIndex = index;
           setState(() {
-            print(_selectedIndex);
+            _selectedIndex = index;
+            // print(_selectedIndex);
           });
         },
       ),
-      body: new Center(
+      body: new Container(
         child: _distributeHome(),
       ),
     );

@@ -7,7 +7,6 @@ class CustomerPage extends StatefulWidget {
 
 class CustomerPageState extends State<CustomerPage> {
   
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

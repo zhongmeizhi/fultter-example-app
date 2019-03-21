@@ -6,11 +6,9 @@ class TreasurePage extends StatefulWidget {
 }
 
 class TreasurePageState extends State<TreasurePage> {
-  double screenWidth = 0.0;
   
   @override
   Widget build(BuildContext context) {
-    screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFF4F4F4),
       body: Container(

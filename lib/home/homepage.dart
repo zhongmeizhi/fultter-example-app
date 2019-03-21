@@ -6,15 +6,22 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  double screenWidth = 0.0;
   
   @override
   Widget build(BuildContext context) {
-    screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color(0xFFF4F4F4),
+      // backgroundColor: Color(0xFFF4F4F4),
       body: new Container(
-        child: _bannerWidget(),
+        // padding: const EdgeInsets.all(0),
+        // margin: const EdgeInsets.all(0),
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // TODO 屏幕适配
+            new Image.asset('assets/images/banner360.jpg', width: 414, height: 160),
+            _bannerWidget(), 
+          ],
+        )
       ),
     );
   }

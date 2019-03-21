@@ -9,6 +9,6 @@ A new Flutter application.
 - [API文档](https://flutter.io/docs/cookbook)
 
 ##### TODO
-* 补图
 * 路由
 * node or java后台
+* 屏幕适配
