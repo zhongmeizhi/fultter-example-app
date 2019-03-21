@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: MyHomePage(title: '首页'),
+      home: MyHomePage(title: '金融理财'),
     );
   }
 }
@@ -26,14 +26,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
-
-    void _onItemTapped (int index)  {
-      print('tap一下$index\lo');
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -50,9 +46,51 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         currentIndex: _selectedIndex,
         fixedColor: Colors.deepOrange,
-        onTap: _onItemTapped,
+        onTap: (index) {
+          _selectedIndex = index;
+          setState(() {
+            print(_selectedIndex);
+          });
+        },
       ),
-      body: Center(),
+      body: new Center(
+        child: _distributeHome(),
+      ),
     );
   }
+  Widget _distributeHome () { // 分发Home页面路由
+    switch(_selectedIndex) {
+      case 1:
+        return Container(
+          child: Text(
+            '你的财富页',
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        );
+      break;
+      case 2:
+        return Container(
+          child: Text(
+            '这是你的页面',
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        );
+      break;
+      default:
+        return Container(
+          child: Text(
+            '首页',
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        );
+      break;
+    }
+  }
 }
+
