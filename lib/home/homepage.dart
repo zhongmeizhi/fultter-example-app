@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,8 +18,7 @@ class HomePageState extends State<HomePage> {
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // TODO 屏幕适配
-            new Image.asset('assets/images/banner360.jpg', width: 414, height: 160),
+            new Image.asset('assets/images/banner360.jpg', width: ScreenUtil().setWidth(750), height: ScreenUtil().setWidth(292)),
             _bannerWidget(), 
           ],
         )

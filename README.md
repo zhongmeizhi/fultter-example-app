@@ -11,4 +11,3 @@ A new Flutter application.
 ##### TODO
 * 路由
 * node or java后台
-* 屏幕适配

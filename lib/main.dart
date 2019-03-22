@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/home/homepage.dart';
 import 'package:flutter_app/treasure/treasurepage.dart';
 import 'package:flutter_app/customer/customerpage.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    // 初始化页面 width=750; height=1334;
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -22,9 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
-
   final String title;
-
   MainPage({Key key, this.title}) : super(key: key);
 
   @override
@@ -36,6 +32,8 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    // 初始化页面 width=750; height=1334;
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
 
     return Scaffold(
       appBar: AppBar(
