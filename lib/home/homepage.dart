@@ -7,35 +7,34 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  var rate, pro, rateTime, desc, limitDesc;
   @override
   Widget build(BuildContext context) {
 
     List _choiceList = [
       {
-        rate: '4.32%',
-        pro: '招招利',
-        rateTime: '七日年化收益率', 
-        desc: '灵活存取',
-        limitDesc: '10元起投'
+        'rate': '4.32%',
+        'pro': '招招利',
+        'rateTime': '七日年化收益率', 
+        'desc': '灵活存取',
+        'limitDesc': '10元起投'
       }, {
-        rate: '4.21%',
-        pro: '农加利',
-        rateTime: '七日年化收益率', 
-        desc: '农行说了算',
-        limitDesc: '不限制'
+        'rate': '4.21%',
+        'pro': '农加利',
+        'rateTime': '七日年化收益率', 
+        'desc': '28天',
+        'limitDesc': '锁定期'
       }, {
-        rate: '5.55%',
-        pro: '宇宙行理财',
-        rateTime: '浮动', 
-        desc: '存1年',
-        limitDesc: '10086万元起投'
+        'rate': '5.55%',
+        'pro': '宇宙行理财',
+        'rateTime': '七日年化收益率', 
+        'desc': '180天可自动转让',
+        'limitDesc': '锁定期1天'
       }, {
-        rate: '4.72%',
-        pro: '招行理财',
-        rateTime: '七日年化收益率', 
-        desc: '灵活存取',
-        limitDesc: '1000元起投'
+        'rate': '4.72%',
+        'pro': '招行理财',
+        'rateTime': '七日年化收益率', 
+        'desc': '灵活存取',
+        'limitDesc': '1000元起投'
       }, 
     ];
 
@@ -164,26 +163,82 @@ Widget _choicenessWidget (List _choiceList) {
 
   for (int i = 0; i < _choiceList.length; i++) {
     Map item = _choiceList[i];
-
     items.add(
       SizedBox(
-        height: 66,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Text('item["pro"]'),
-            ),
-            Container(
-              height: 22,
-              // alignment: Alignment(0, 0),
-              child: Text(
-                '期货-天天利E',
-                textAlign: TextAlign.left,
-                style: TextStyle(fontSize: ScreenUtil().setSp(28), height: 1.2),
+        height: ScreenUtil().setWidth(200),
+        child: Padding(
+          padding: EdgeInsets.only(top: ScreenUtil().setWidth(23), bottom: ScreenUtil().setWidth(23)),
+          child: Column(
+            children: <Widget>[Row(
+                  children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(18)),
+                    child: Text(
+                      item['pro'],
+                      style: TextStyle(fontSize: ScreenUtil().setSp(28), color: Color(0xFF666666))
+                    )
+                  )
+                ]
               ),
-            ),
-          ],
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          item['rate'],
+                          style: TextStyle(fontSize: ScreenUtil().setSp(52), fontWeight: FontWeight.w700, color: Colors.red)
+                        ),
+                        Text(
+                          item['rateTime'],
+                          style: TextStyle(fontSize: ScreenUtil().setSp(22), color: Color(0xFFB8B8B8))
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              item['desc'],
+                              style: TextStyle(fontSize: ScreenUtil().setSp(28))
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              item['limitDesc'],
+                              style: TextStyle(fontSize: ScreenUtil().setSp(24), color: Color(0xFFB8B8B8))
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: FlatButton(
+                      color: Colors.white,
+                      textColor: Colors.deepOrange,
+                      splashColor: Colors.deepOrange,
+                      child: Text("存入"),
+                      // side = BorderSide.none,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
+                      ),
+                      onPressed: () => {},
+                    )
+                  ),
+                ]
+              ),
+            ],
+          )
         )
       )
     );
