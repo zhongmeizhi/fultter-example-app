@@ -42,8 +42,12 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  # - 只能前后各一个空格啊。。。不然找不到
   assets:
    - assets/images/banner360.jpg
+   - assets/images/gift.png
+   - assets/images/invite.png
+   - assets/images/subscribed.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

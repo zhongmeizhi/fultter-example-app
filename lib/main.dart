@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_app/home/homepage.dart';
 import 'package:flutter_app/treasure/treasurepage.dart';
 import 'package:flutter_app/customer/customerpage.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() => runApp(MyApp());
 
