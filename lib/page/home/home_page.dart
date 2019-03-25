@@ -10,6 +10,18 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
+    List _activityList = [
+      {
+        'iconSrc': 'assets/images/gift.png',
+        'title': '挖宝加息',
+        'desc': '挖宝享每日加息'
+      }, {
+        'iconSrc': 'assets/images/invite.png',
+        'title': '邀请奖励',
+        'desc': '每邀1人奖80元'
+      }
+    ];
+
     List _choiceList = [
       {
         'rate': '4.32%',
@@ -45,9 +57,9 @@ class HomePageState extends State<HomePage> {
         children: <Widget>[
           _bannerWidget(),
           _displayDataWidget(), 
-          _activityAdWidget(),
+          _activityAdWidget(_activityList),
           _subscribedWidget(),
-          _choicenessWidget(_choiceList)
+          _choicenessWidget(_choiceList, context)
         ],
       )
     );
@@ -97,51 +109,36 @@ Widget _displayDataWidget () {
   );
 }
 
-Widget _activityAdWidget () {
+Widget _activityAdWidget (List _activityList) {
+
+  final List<Widget> items = [];
+  for (int i = 0; i < _activityList.length; i++) {
+    Map item = _activityList[i];
+    items.add(Expanded(
+      flex: 1,
+      child: Padding(
+        padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+        child: Row(
+          children: <Widget>[
+            new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(80), height: ScreenUtil().setWidth(80)),
+            Padding(
+              padding: EdgeInsets.only(left: ScreenUtil().setWidth(20)),
+              child: Column(
+                children: <Widget>[
+                  Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(30))),
+                  Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(22)))
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    ));
+  }
+
   return Flex(
     direction: Axis.horizontal,
-    children: <Widget>[
-      Expanded(
-        flex: 1,
-        child: Padding(
-          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-          child: Row(
-            children: <Widget>[
-              new Image.asset('assets/images/gift.png', width: ScreenUtil().setWidth(80), height: ScreenUtil().setWidth(80)),
-              Padding(
-                padding: EdgeInsets.only(left: ScreenUtil().setWidth(20)),
-                child: Column(
-                  children: <Widget>[
-                    Text('挖宝加息', style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(30))),
-                    Text('挖宝享每日加息', style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(22)))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Padding(
-          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-          child: Row(
-            children: <Widget>[
-              new Image.asset('assets/images/invite.png', width: ScreenUtil().setWidth(80), height: ScreenUtil().setWidth(80)),
-              Padding(
-                padding: EdgeInsets.only(left: ScreenUtil().setWidth(20)),
-                child: Column(
-                  children: <Widget>[
-                    Text('邀请奖励', style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(30))),
-                    Text('每邀1人奖80元', style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(22)))
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    ],
+    children: items,
   );
 }
 
@@ -157,10 +154,9 @@ Widget _subscribedWidget () {
   );
 }
 
-Widget _choicenessWidget (List _choiceList) {
+Widget _choicenessWidget (List _choiceList, context) {
 
   final List<Widget> items = [];
-
   for (int i = 0; i < _choiceList.length; i++) {
     Map item = _choiceList[i];
     items.add(
@@ -183,7 +179,7 @@ Widget _choicenessWidget (List _choiceList) {
               Row(
                 children: <Widget>[
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Column(
                       children: <Widget>[
                         Text(
@@ -198,7 +194,7 @@ Widget _choicenessWidget (List _choiceList) {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Column(
                       children: <Widget>[
                         Row(
@@ -219,22 +215,25 @@ Widget _choicenessWidget (List _choiceList) {
                         )
                       ],
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
+                  ), 
+                  Container(
+                    width: ScreenUtil().setWidth(132),
+                    height: ScreenUtil().setWidth(60),
                     child: FlatButton(
                       color: Colors.white,
                       textColor: Colors.deepOrange,
-                      splashColor: Colors.deepOrange,
+                      splashColor: Colors.white,
+                      highlightColor: Colors.white,
                       child: Text("存入"),
-                      // side = BorderSide.none,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
                       ),
-                      onPressed: () => {},
-                    )
-                  ),
+                      onPressed: () => {
+                        Navigator.pushNamed(context, "login_page")
+                      },
+                    ),
+                  )
                 ]
               ),
             ],
@@ -260,7 +259,6 @@ Widget _choicenessWidget (List _choiceList) {
           ),
         ),
         Column(children: items),
-        
         SizedBox(
           child: Text('已经到最底部啦...')
         )
