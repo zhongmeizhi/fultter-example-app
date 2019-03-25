@@ -10,6 +10,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+
+  String _phoneNum = '';
+
+  void _checkPhoneNum(val) {
+    setState(() {
+      _phoneNum = val;
+    });
+  }
+
+  _submitLogin () {
+   if (_phoneNum.length == 11) {
+      return () {
+        print(_phoneNum + 'xx');
+      };
+    } else {
+      return null;
+    }
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -19,34 +37,20 @@ class LoginPageState extends State<LoginPage> {
       ),
       backgroundColor: Colors.white,
       body: new Container(
-        child: _loginFormWidget(),
+        child: _loginFormWidget(_checkPhoneNum, _submitLogin),
       ),
     );
   }
 }
 
-Widget _loginFormWidget () {
-
-  Function _checkPhoneNum = (val) => {
-//    if (val.length == 11) {
-//      _isLoginAble =  _submitLogin
-//    } else {
-//      _isLoginAble = null
-//    }
-  };
-
-  Object _isLoginAble;
-
-  Function _submitLogin = () => {
-    print('登陆')
-  };
+Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
 
   return Center(
     child:  Padding(
       padding: EdgeInsets.all(ScreenUtil().setWidth(19)),
       child: Column(
         children: <Widget>[
-          Image.asset('assets/images/logo.jpg', width: ScreenUtil().setWidth(70), height: ScreenUtil().setWidth(91)),
+          Image.asset('assets/images/logo.jpg', width: ScreenUtil().setWidth(70), height: ScreenUtil().setWidth(90)),
           Padding(
             padding: EdgeInsets.only(top: ScreenUtil().setWidth(15), bottom: ScreenUtil().setWidth(40)),
             child: Text(
@@ -59,7 +63,7 @@ Widget _loginFormWidget () {
               keyboardType: TextInputType.numberWithOptions(),
               decoration: InputDecoration(
                   labelText: "手机号",
-                  hintText: "",
+                  hintText: "请输入11位手机号",
                   prefixIcon: Icon(Icons.phone_iphone)
               ),
               onChanged: (val) {
@@ -77,7 +81,7 @@ Widget _loginFormWidget () {
                 textColor: Colors.white,
                 disabledColor: Color(0xFFDDDDDD),
                 disabledTextColor:Color(0xFF8c8c8c) ,
-                onPressed: _isLoginAble,
+                onPressed: _submitLogin()
               ),
             )
           )
