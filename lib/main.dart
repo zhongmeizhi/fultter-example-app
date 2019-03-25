@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     // 初始化页面 width=750; height=1334;
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+    ScreenUtil.instance = ScreenUtil(width: 375, height: 812)..init(context);
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar( // 底部导航

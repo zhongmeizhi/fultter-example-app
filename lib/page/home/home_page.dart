@@ -67,7 +67,7 @@ class HomePageState extends State<HomePage> {
 }
 
 Widget _bannerWidget () {
-  return new Image.asset('assets/images/banner360.jpg', width: ScreenUtil().setWidth(750), height: ScreenUtil().setWidth(292));
+  return new Image.asset('assets/images/banner360.jpg', width: ScreenUtil().setWidth(375), height: ScreenUtil().setWidth(146));
 }
 
 Widget _displayDataWidget () {
@@ -76,33 +76,33 @@ Widget _displayDataWidget () {
       ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: double.infinity,
-          minHeight: ScreenUtil().setWidth(72)
+          minHeight: ScreenUtil().setWidth(36)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(28), right: ScreenUtil().setWidth(10)),
-              child: Icon(Icons.pie_chart, color: Color(0xFF5ca0fd), size: ScreenUtil().setWidth(38),), 
+              padding: EdgeInsets.only(left: ScreenUtil().setWidth(14), right: ScreenUtil().setWidth(5)),
+              child: Icon(Icons.pie_chart, color: Color(0xFF5ca0fd), size: ScreenUtil().setWidth(19),),
             ),
             Padding(
-              padding: EdgeInsets.only(right: ScreenUtil().setWidth(26)),
+              padding: EdgeInsets.only(right: ScreenUtil().setWidth(13)),
               child: Text(
                 '平台交易数据',
-                style: TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF333333), fontSize: ScreenUtil().setSp(28), height: 0.85),
+                style: TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF333333), fontSize: ScreenUtil().setSp(14), height: 0.85),
               ), 
             ),
             Text(
               '昨日成交3人，今日已成交0人',
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF5ca0fd), fontSize: ScreenUtil().setSp(22)),
+              style: TextStyle(color: Color(0xFF5ca0fd), fontSize: ScreenUtil().setSp(11)),
             ),
           ],
         )
       ),
       Positioned(
-        right: ScreenUtil().setWidth(20),
-        top: ScreenUtil().setWidth(14),
+        right: ScreenUtil().setWidth(10),
+        top: ScreenUtil().setWidth(7),
         child: Icon(Icons.keyboard_arrow_right, color: Color(0xFFA1ADBB),)
       )
     ],
@@ -117,16 +117,16 @@ Widget _activityAdWidget (List _activityList) {
     items.add(Expanded(
       flex: 1,
       child: Padding(
-        padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+        padding: EdgeInsets.all(ScreenUtil().setWidth(18)),
         child: Row(
           children: <Widget>[
-            new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(80), height: ScreenUtil().setWidth(80)),
+            new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(40), height: ScreenUtil().setWidth(40)),
             Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(20)),
+              padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
               child: Column(
                 children: <Widget>[
-                  Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(30))),
-                  Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(22)))
+                  Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(15))),
+                  Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(11)))
                 ],
               ),
             )
@@ -148,8 +148,8 @@ Widget _subscribedWidget () {
       color: Color(0xFFF6F6F6)
     ),
     child: Padding(
-      padding: EdgeInsets.only(top: ScreenUtil().setWidth(20), bottom: ScreenUtil().setWidth(20)),
-      child: Image.asset('assets/images/subscribed.jpg', width: ScreenUtil().setWidth(750)),
+      padding: EdgeInsets.only(top: ScreenUtil().setWidth(10), bottom: ScreenUtil().setWidth(10)),
+      child: Image.asset('assets/images/subscribed.jpg', width: ScreenUtil().setWidth(375)),
     )
   );
 }
@@ -161,17 +161,17 @@ Widget _choicenessWidget (List _choiceList, context) {
     Map item = _choiceList[i];
     items.add(
       SizedBox(
-        height: ScreenUtil().setWidth(200),
+        height: ScreenUtil().setWidth(102),
         child: Padding(
-          padding: EdgeInsets.only(top: ScreenUtil().setWidth(23), bottom: ScreenUtil().setWidth(23)),
+          padding: EdgeInsets.only(top: ScreenUtil().setWidth(12), bottom: ScreenUtil().setWidth(12)),
           child: Column(
             children: <Widget>[Row(
                   children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(18)),
+                    padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(9)),
                     child: Text(
                       item['pro'],
-                      style: TextStyle(fontSize: ScreenUtil().setSp(28), color: Color(0xFF666666))
+                      style: TextStyle(fontSize: ScreenUtil().setSp(14), color: Color(0xFF666666))
                     )
                   )
                 ]
@@ -184,11 +184,11 @@ Widget _choicenessWidget (List _choiceList, context) {
                       children: <Widget>[
                         Text(
                           item['rate'],
-                          style: TextStyle(fontSize: ScreenUtil().setSp(52), fontWeight: FontWeight.w700, color: Colors.red)
+                          style: TextStyle(fontSize: ScreenUtil().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)
                         ),
                         Text(
                           item['rateTime'],
-                          style: TextStyle(fontSize: ScreenUtil().setSp(22), color: Color(0xFFB8B8B8))
+                          style: TextStyle(fontSize: ScreenUtil().setSp(11), color: Color(0xFFB8B8B8))
                         )
                       ],
                     ),
@@ -201,7 +201,7 @@ Widget _choicenessWidget (List _choiceList, context) {
                           children: <Widget>[
                             Text(
                               item['desc'],
-                              style: TextStyle(fontSize: ScreenUtil().setSp(28))
+                              style: TextStyle(fontSize: ScreenUtil().setSp(14))
                             ),
                           ],
                         ),
@@ -209,7 +209,7 @@ Widget _choicenessWidget (List _choiceList, context) {
                           children: <Widget>[
                             Text(
                               item['limitDesc'],
-                              style: TextStyle(fontSize: ScreenUtil().setSp(24), color: Color(0xFFB8B8B8))
+                              style: TextStyle(fontSize: ScreenUtil().setSp(12), color: Color(0xFFB8B8B8))
                             )
                           ],
                         )
@@ -217,8 +217,8 @@ Widget _choicenessWidget (List _choiceList, context) {
                     ),
                   ), 
                   Container(
-                    width: ScreenUtil().setWidth(132),
-                    height: ScreenUtil().setWidth(60),
+                    width: ScreenUtil().setWidth(66),
+                    height: ScreenUtil().setWidth(30),
                     child: FlatButton(
                       color: Colors.white,
                       textColor: Colors.deepOrange,
@@ -244,18 +244,18 @@ Widget _choicenessWidget (List _choiceList, context) {
   }
 
   return Padding(
-    padding:EdgeInsets.only(left: ScreenUtil().setWidth(30), right: ScreenUtil().setWidth(30)),
+    padding:EdgeInsets.only(left: ScreenUtil().setWidth(15), right: ScreenUtil().setWidth(15)),
     child: Column(
       children: <Widget>[
         ConstrainedBox(
           constraints: BoxConstraints(
             minWidth: double.infinity, //宽度尽可能大
-            minHeight: ScreenUtil().setWidth(36) 
+            minHeight: ScreenUtil().setWidth(18)
           ),
           child: Text(
             '精选推荐',
             textAlign: TextAlign.start,
-            style: TextStyle(fontSize: ScreenUtil().setSp(36), fontWeight: FontWeight.w700, height: 1.5),
+            style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.w700, height: 1.5),
           ),
         ),
         Column(children: items),

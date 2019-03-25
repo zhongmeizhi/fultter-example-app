@@ -15,7 +15,7 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('登陆'),
+        title: Text('Z.登陆'),
       ),
       backgroundColor: Colors.white,
       body: new Container(
@@ -43,10 +43,17 @@ Widget _loginFormWidget () {
 
   return Center(
     child:  Padding(
-      padding: EdgeInsets.all(ScreenUtil().setWidth(38)),
+      padding: EdgeInsets.all(ScreenUtil().setWidth(19)),
       child: Column(
         children: <Widget>[
-          Image.asset('assets/images/banner360.jpg', width: ScreenUtil().setWidth(750), height: ScreenUtil().setWidth(292)),
+          Image.asset('assets/images/logo.jpg', width: ScreenUtil().setWidth(70), height: ScreenUtil().setWidth(91)),
+          Padding(
+            padding: EdgeInsets.only(top: ScreenUtil().setWidth(15), bottom: ScreenUtil().setWidth(40)),
+            child: Text(
+              '金服互联网金融平台',
+              style: TextStyle(color: Color(0xFFb3b3b3)),
+            ),
+          ),
           TextField(
               autofocus: false,
               keyboardType: TextInputType.numberWithOptions(),
@@ -60,10 +67,10 @@ Widget _loginFormWidget () {
               },
           ),
           Padding(
-            padding: EdgeInsets.only(top: ScreenUtil().setWidth(50)),
+            padding: EdgeInsets.only(top: ScreenUtil().setWidth(25)),
             child: SizedBox(
-              width: ScreenUtil().setWidth(671),
-              height: ScreenUtil().setWidth(80),
+              width: ScreenUtil().setWidth(335),
+              height: ScreenUtil().setWidth(40),
               child: FlatButton(
                 child: Text("下一步"),
                 color: Color(0xFFed4e39),
