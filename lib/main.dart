@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_app/home/homepage.dart';
-import 'package:flutter_app/treasure/treasurepage.dart';
-import 'package:flutter_app/customer/customerpage.dart';
+import 'package:flutter_app/page/home/home_page.dart';
+import 'package:flutter_app/page/treasure/treasure_page.dart';
+import 'package:flutter_app/page/customer/customer_page.dart';
+import 'package:flutter_app/page/login/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
-      ),
+      ),//注册路由表
+    routes:{
+      "login_page": (context) => new LoginPage(title: '登录'),
+    } ,
       home: MainPage(title: 'Z.金融理财'),
     );
   }
@@ -37,12 +41,6 @@ class _MainPageState extends State<MainPage> {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: <Widget>[ //导航栏右侧菜单
-          IconButton(icon: Icon(Icons.share), onPressed: () {}),
-        ],
-      ),
       bottomNavigationBar: BottomNavigationBar( // 底部导航
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
@@ -54,7 +52,6 @@ class _MainPageState extends State<MainPage> {
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
-            // print(_selectedIndex);
           });
         },
       ),
