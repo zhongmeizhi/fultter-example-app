@@ -11,6 +11,9 @@ class TreasurePageState extends State<TreasurePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF4F4F4),
+      appBar: AppBar(
+        title: Text('Z.财富'),
+      ),
       body: Container(
         child: _userInfoWidget(),
       )

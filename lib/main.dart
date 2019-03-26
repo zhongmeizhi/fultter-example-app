@@ -60,6 +60,7 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
+  
   Widget _distributeHome () { // 分发Home页面路由
     switch(_selectedIndex) {
       case 0:

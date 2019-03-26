@@ -20,7 +20,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   _submitLogin () {
-   if (_phoneNum.length == 11) {
+  if (_phoneNum.length == 11) {
       return () {
         print(_phoneNum + 'xx');
       };
@@ -36,8 +36,10 @@ class LoginPageState extends State<LoginPage> {
         title: Text('Z.登陆'),
       ),
       backgroundColor: Colors.white,
-      body: new Container(
-        child: _loginFormWidget(_checkPhoneNum, _submitLogin),
+      body: new ListView(
+        children: <Widget>[
+          _loginFormWidget(_checkPhoneNum, _submitLogin),
+        ]
       ),
     );
   }

@@ -11,5 +11,5 @@ A new Flutter application.
 - [API文档](https://flutter.io/docs/cookbook)
 
 ##### TODO
-* 事件完善
+* Class类型转换为Widget传参报错，Futter报错为源码错误。
 * node or java后台

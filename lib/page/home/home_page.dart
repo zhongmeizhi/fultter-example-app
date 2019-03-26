@@ -10,56 +10,60 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
+    List _choiceList = [
+      {
+        'id': 'c1',
+        'rate': '4.32%',
+        'pro': '招招利',
+        'rateTime': '七日年化收益率',
+        'desc': '灵活存取',
+        'limitDesc': '10元起投'
+      }, {
+        'id': 'c2',
+        'rate': '4.21%',
+        'pro': '农加利',
+        'rateTime': '七日年化收益率',
+        'desc': '28天',
+        'limitDesc': '锁定期'
+      }, {
+        'id': 'c3',
+        'rate': '5.55%',
+        'pro': '宇宙行理财',
+        'rateTime': '七日年化收益率',
+        'desc': '180天可自动转让',
+        'limitDesc': '锁定期1天'
+      }, {
+        'id': 'c4',
+        'rate': '4.72%',
+        'pro': '招行理财',
+        'rateTime': '七日年化收益率',
+        'desc': '灵活存取',
+        'limitDesc': '1000元起投'
+      },
+    ];
     List _activityList = [
       {
+        'id': 'a1',
         'iconSrc': 'assets/images/gift.png',
         'title': '挖宝加息',
         'desc': '挖宝享每日加息'
       }, {
+        'id': 'a2',
         'iconSrc': 'assets/images/invite.png',
         'title': '邀请奖励',
         'desc': '每邀1人奖80元'
       }
     ];
 
-    List _choiceList = [
-      {
-        'rate': '4.32%',
-        'pro': '招招利',
-        'rateTime': '七日年化收益率', 
-        'desc': '灵活存取',
-        'limitDesc': '10元起投'
-      }, {
-        'rate': '4.21%',
-        'pro': '农加利',
-        'rateTime': '七日年化收益率', 
-        'desc': '28天',
-        'limitDesc': '锁定期'
-      }, {
-        'rate': '5.55%',
-        'pro': '宇宙行理财',
-        'rateTime': '七日年化收益率', 
-        'desc': '180天可自动转让',
-        'limitDesc': '锁定期1天'
-      }, {
-        'rate': '4.72%',
-        'pro': '招行理财',
-        'rateTime': '七日年化收益率', 
-        'desc': '灵活存取',
-        'limitDesc': '1000元起投'
-      }, 
-    ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
-        // shrinkWrap: true,
         children: <Widget>[
           _bannerWidget(),
           _displayDataWidget(), 
-          _activityAdWidget(_activityList),
-          _subscribedWidget(),
-          _choicenessWidget(_choiceList, context)
+          _activityAdWidget(activityList: _activityList, context: context),
+          _subscribedWidget(context: context),
+          _choicenessWidget(choiceList: _choiceList, context: context)
         ],
       )
     );
@@ -93,7 +97,7 @@ Widget _displayDataWidget () {
               ), 
             ),
             Text(
-              '昨日成交3人，今日已成交0人',
+              '昨日成交163人，今日已成交57人',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(color: Color(0xFF5ca0fd), fontSize: ScreenUtil().setSp(11)),
             ),
@@ -109,29 +113,39 @@ Widget _displayDataWidget () {
   );
 }
 
-Widget _activityAdWidget (List _activityList) {
+Widget _activityAdWidget ({context, activityList}) {
+
+  void _intoActivityDetail({id}) {
+    print(id);
+    Navigator.pushNamed(context, "login_page");
+  }
 
   final List<Widget> items = [];
-  for (int i = 0; i < _activityList.length; i++) {
-    Map item = _activityList[i];
+  for (int i = 0; i < activityList.length; i++) {
+    Map item = activityList[i];
     items.add(Expanded(
       flex: 1,
       child: Padding(
         padding: EdgeInsets.all(ScreenUtil().setWidth(18)),
-        child: Row(
-          children: <Widget>[
-            new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(40), height: ScreenUtil().setWidth(40)),
-            Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
-              child: Column(
-                children: <Widget>[
-                  Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(15))),
-                  Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(11)))
-                ],
-              ),
-            )
-          ],
-        ),
+        child: GestureDetector(
+          child: Row(
+            children: <Widget>[
+              new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(40), height: ScreenUtil().setWidth(40)),
+              Padding(
+                padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
+                child: Column(
+                  children: <Widget>[
+                    Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(15))),
+                    Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(11)))
+                  ],
+                ),
+              )
+            ],
+          ),
+          onTap: () => {
+            _intoActivityDetail(id: item['id'])
+          }
+        )
       ),
     ));
   }
@@ -142,23 +156,36 @@ Widget _activityAdWidget (List _activityList) {
   );
 }
 
-Widget _subscribedWidget () {
-  return DecoratedBox(
-    decoration: BoxDecoration(
-      color: Color(0xFFF6F6F6)
+Widget _subscribedWidget ({context}) {
+
+  void _clickSubscribed () {
+    Navigator.pushNamed(context, "login_page");
+  }
+
+  return GestureDetector(
+    child: DecoratedBox(
+        decoration: BoxDecoration(
+            color: Color(0xFFF6F6F6)
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: ScreenUtil().setWidth(10), bottom: ScreenUtil().setWidth(10)),
+          child: Image.asset('assets/images/subscribed.jpg', width: ScreenUtil().setWidth(375)),
+        )
     ),
-    child: Padding(
-      padding: EdgeInsets.only(top: ScreenUtil().setWidth(10), bottom: ScreenUtil().setWidth(10)),
-      child: Image.asset('assets/images/subscribed.jpg', width: ScreenUtil().setWidth(375)),
-    )
+    onTap: _clickSubscribed,
   );
 }
 
-Widget _choicenessWidget (List _choiceList, context) {
+Widget _choicenessWidget ({context, choiceList}) {
+
+  void _intoChoicenessDetail({id}) {
+    print(id);
+    Navigator.pushNamed(context, "login_page");
+  }
 
   final List<Widget> items = [];
-  for (int i = 0; i < _choiceList.length; i++) {
-    Map item = _choiceList[i];
+  for (int i = 0; i < choiceList.length; i++) {
+    Map item = choiceList[i];
     items.add(
       SizedBox(
         height: ScreenUtil().setWidth(102),
@@ -230,9 +257,9 @@ Widget _choicenessWidget (List _choiceList, context) {
                         side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
                       ),
                       onPressed: () => {
-                        Navigator.pushNamed(context, "login_page")
-                      },
-                    ),
+                        _intoChoicenessDetail(id: item['id'])
+                      }
+                    )
                   )
                 ]
               ),
@@ -260,7 +287,8 @@ Widget _choicenessWidget (List _choiceList, context) {
         ),
         Column(children: items),
         SizedBox(
-          child: Text('已经到最底部啦...')
+          height: ScreenUtil().setWidth(36),
+          child: Text('已经到最底部啦...', style: TextStyle(color: Colors.grey),)
         )
       ],
     )

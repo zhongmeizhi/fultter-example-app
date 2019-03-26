@@ -11,6 +11,9 @@ class CustomerPageState extends State<CustomerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF4F4F4),
+      appBar: AppBar(
+        title: Text('Z.我的'),
+      ),
       body: new Container(
         child: _userInfoWidget(),
       ),
