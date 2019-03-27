@@ -18,8 +18,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     _doCountDown();
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 3500));
-    _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 5000));
+    _animation = Tween(begin: 0.5, end: 1.0).animate(_controller);
 
     _animation.addStatusListener((status) {
       if (status ==AnimationStatus.completed) {
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _timerUtil.setOnTimerTickCallback((int tick) {
       double _tick = tick / 1000;
       setState(() {
-       _count = _tick.toInt(); 
+        _count = _tick.toInt(); 
       });
       if (_tick == 0) {
         _goMain();
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           new FadeTransition(
             opacity: _animation,
             child: new Image.asset(
-              'assets/images/splash.gif',
+              'assets/images/projector.png',
               width: double.infinity,
               fit:BoxFit.fill,
               height: double.infinity,
