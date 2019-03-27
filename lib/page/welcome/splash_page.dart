@@ -11,15 +11,15 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
   AnimationController _controller;
   Animation _animation;
-  int _count = 4;
+  int _count = 5;
   TimerUtil _timerUtil;
 
   @override
   void initState() {
     _doCountDown();
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 5000));
-    _animation = Tween(begin: 0.5, end: 1.0).animate(_controller);
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
+    _animation = Tween(begin: 0.8, end: 1.0).animate(_controller);
 
     _animation.addStatusListener((status) {
       if (status ==AnimationStatus.completed) {
