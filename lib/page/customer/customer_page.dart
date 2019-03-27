@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomerPage extends StatefulWidget {
   @override
-  CustomerPageState createState() => CustomerPageState();
+  _CustomerPageState createState() => _CustomerPageState();
 }
 
-class CustomerPageState extends State<CustomerPage> {
+class _CustomerPageState extends State<CustomerPage> {
   
   @override
   Widget build(BuildContext context) {

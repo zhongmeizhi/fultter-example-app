@@ -6,10 +6,10 @@ class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
 
   @override
-  LoginPageState createState() => LoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
 
   String _phoneNum = '';
 

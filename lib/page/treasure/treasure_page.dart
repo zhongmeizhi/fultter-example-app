@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
-  TreasurePageState createState() => TreasurePageState();
+  _TreasurePageState createState() => _TreasurePageState();
 }
 
-class TreasurePageState extends State<TreasurePage> {
+class _TreasurePageState extends State<TreasurePage> {
   
   @override
   Widget build(BuildContext context) {
