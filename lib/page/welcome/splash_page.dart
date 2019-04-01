@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter_app/page/home/home_page.dart';
 
@@ -9,6 +10,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
+
   AnimationController _controller;
   Animation _animation;
   int _count = 5;
@@ -43,6 +45,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void _doCountDown() {
     _timerUtil = new TimerUtil(mTotalTime: 3 * 1000);
     _timerUtil.setOnTimerTickCallback((int tick) {
+      // 如果已经被销毁，那么不执行
+      if (!mounted) {
+        return;
+      }
       double _tick = tick / 1000;
       setState(() {
         _count = _tick.toInt(); 
@@ -56,6 +62,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+
+    // 初始化页面 width=750; height=1334;
+    ScreenUtil.instance = ScreenUtil(width: 375, height: 812)..init(context);
+
     return new Material(
       child: new Stack(
         children: <Widget>[
@@ -68,27 +78,31 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               height: double.infinity,
             ),
           ),
-          new Container(
-            alignment: Alignment.bottomRight,
-            margin: EdgeInsets.all(20),
-            child: InkWell(
-              onTap: () {
-                _goMain();
-              },
-              child: new Container(
-                padding: EdgeInsets.all(12),
-                child: new Text('跳过 $_count s', style: new TextStyle(fontSize: 14, color: Colors.white),),
-                decoration: new BoxDecoration(
-                  color: Color(0x66000000),
-                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
-                  border: new Border.all(
-                    width: 0.33,
-                    color: Colors.blue[50],
+          Positioned(
+            top: ScreenUtil().setWidth(33),
+            right: ScreenUtil().setWidth(11),
+            child: new Container(
+              alignment: Alignment.bottomRight,
+              margin: EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  _goMain();
+                },
+                child: new Container(
+                  padding: EdgeInsets.all(12),
+                  child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ScreenUtil().setSp(12), color: Colors.white),),
+                  decoration: new BoxDecoration(
+                    color: Color(0x66000000),
+                    borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                    border: new Border.all(
+                      width: ScreenUtil().setWidth(1),
+                      color: Colors.blue[50],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

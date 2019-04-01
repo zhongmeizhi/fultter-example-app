@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/unit/event_bus.dart';
 
 class CustomerPage extends StatefulWidget {
   @override
@@ -6,6 +7,8 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+
+  final EventBus bus = new EventBus();
   
   @override
   Widget build(BuildContext context) {
