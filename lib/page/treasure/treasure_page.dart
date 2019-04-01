@@ -1,32 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_app/page/treasure/bank_selection_page.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
   _TreasurePageState createState() => _TreasurePageState();
 }
 
-class _TreasurePageState extends State<TreasurePage> {
-  
+class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderStateMixin {
+
+  List tabs = [
+    {
+      'id': 't1',
+      'label': '银行精选',
+    }, {
+      'id': 't2',
+      'label': '基金'
+    }, {
+      'id': 't3',
+      'label': '券商'
+    }, {
+      'id': 't4',
+      'label': '转让'
+    }, {
+      'id': 't5',
+      'label': '预约投资'
+    }, {
+      'id': 't6',
+      'label': '普惠'
+    },
+  ];
+  TabController _tabController;
+
+  _pickTab (val) {
+    print(val);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // 创建Controller
+    // 只有 with SingleTickerProviderStateMixin 后才有 TickerProvider，也就是 this
+    _tabController = TabController(length: tabs.length, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF4F4F4),
+      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         title: Text('Z.财富'),
+        bottom: TabBar(
+          controller: _tabController,
+          labelPadding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(2), vertical: 0),
+          isScrollable: true,
+          tabs: tabs.map((tab) {
+            return Container(
+              width: ScreenUtil().setWidth(90),
+              child: Tab(text: tab['label']),
+            );
+          }).toList(),
+          onTap: _pickTab,
+        ),
       ),
-      body: Container(
-        child: _userInfoWidget(),
-      )
+      body: new TabBarView(
+        controller: _tabController,
+        children: tabs.map((tab) {
+          switch (tab['id']) {
+            case 't1':
+              return BankSelectionPage(item: tab);
+            break;
+            default:
+              return Center(
+                child: Text(tab['label']),
+              );
+            break;
+          }
+        }).toList(),
+      ),
     );
   }
 }
 
-Widget _userInfoWidget () {
-  return Center(
-    child: Text(
-      '一个富有的小青年.',
-      overflow: TextOverflow.ellipsis,
-      style: TextStyle(fontWeight: FontWeight.bold),
-    ),
-  );
-}

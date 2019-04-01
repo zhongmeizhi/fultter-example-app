@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:flutter_app/page/home/home_page.dart';
+import 'package:flutter_app/main.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _animation.addStatusListener((status) {
       if (status ==AnimationStatus.completed) {
         Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => HomePage()), (route) => route == null);
+          MaterialPageRoute(builder: (context) => MainPage()), (route) => route == null);
       }
     });
     _controller.forward();
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   void _goMain() {
-    Navigator.of(context).pushReplacementNamed('/MainPage');
+    Navigator.of(context).pushReplacementNamed('MainPage');
   }
 
   void _doCountDown() {
@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             child: new Image.asset(
               'assets/images/projector.png',
               width: double.infinity,
-              fit:BoxFit.fill,
+              fit: BoxFit.fill,
               height: double.infinity,
             ),
           ),
@@ -83,7 +83,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             right: ScreenUtil().setWidth(11),
             child: new Container(
               alignment: Alignment.bottomRight,
-              margin: EdgeInsets.all(20),
               child: InkWell(
                 onTap: () {
                   _goMain();
@@ -93,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ScreenUtil().setSp(12), color: Colors.white),),
                   decoration: new BoxDecoration(
                     color: Color(0x66000000),
-                    borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(6))),
                     border: new Border.all(
                       width: ScreenUtil().setWidth(1),
                       color: Colors.blue[50],

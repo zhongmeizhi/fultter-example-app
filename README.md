@@ -6,6 +6,7 @@ A new Flutter application.
 
 ![首屏图](preview/projector_page.png)
 ![首页](preview/home_page.png)
+![银行理财页](preview/bank_section.png)
 ![登录页](preview/login_page.png)
 
 

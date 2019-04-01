@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_app/component/bank_product.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -186,88 +187,7 @@ Widget _choicenessWidget ({context, choiceList}) {
   final List<Widget> items = [];
   for (int i = 0; i < choiceList.length; i++) {
     Map item = choiceList[i];
-    items.add(
-      SizedBox(
-        height: ScreenUtil().setWidth(102),
-        child: Padding(
-          padding: EdgeInsets.only(top: ScreenUtil().setWidth(12), bottom: ScreenUtil().setWidth(12)),
-          child: Column(
-            children: <Widget>[Row(
-                  children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(9)),
-                    child: Text(
-                      item['pro'],
-                      style: TextStyle(fontSize: ScreenUtil().setSp(14), color: Color(0xFF666666))
-                    )
-                  )
-                ]
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          item['rate'],
-                          style: TextStyle(fontSize: ScreenUtil().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)
-                        ),
-                        Text(
-                          item['rateTime'],
-                          style: TextStyle(fontSize: ScreenUtil().setSp(11), color: Color(0xFFB8B8B8))
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              item['desc'],
-                              style: TextStyle(fontSize: ScreenUtil().setSp(14))
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              item['limitDesc'],
-                              style: TextStyle(fontSize: ScreenUtil().setSp(12), color: Color(0xFFB8B8B8))
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ), 
-                  Container(
-                    width: ScreenUtil().setWidth(66),
-                    height: ScreenUtil().setWidth(30),
-                    child: FlatButton(
-                      color: Colors.white,
-                      textColor: Colors.deepOrange,
-                      splashColor: Colors.white,
-                      highlightColor: Colors.white,
-                      child: Text("存入"),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
-                      ),
-                      onPressed: () => {
-                        _intoChoicenessDetail(id: item['id'])
-                      }
-                    )
-                  )
-                ]
-              ),
-            ],
-          )
-        )
-      )
-    );
+    items.add(new BankProduct(item: item, intoChoicenessDetail: _intoChoicenessDetail));
   }
 
   return Padding(

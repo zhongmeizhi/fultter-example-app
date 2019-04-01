@@ -13,7 +13,7 @@ class _CustomerPageState extends State<CustomerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF4F4F4),
+      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         title: Text('Z.我的'),
       ),

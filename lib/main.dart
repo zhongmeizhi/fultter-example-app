@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepOrange,
       ),//注册路由表
     routes:{
-      "/MainPage": (context) => new MainPage(),
+      "MainPage": (context) => new MainPage(),
       "login_page": (context) => new LoginPage(title: '登录'),
     } ,
       home: SplashScreen(),
@@ -35,7 +35,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
