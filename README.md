@@ -1,7 +1,5 @@
 # flutter_app
 
-A new Flutter application.
-
 > 这是一个使用flutter编写的金融理财项目
 
 ![首屏图](preview/projector_page.png)
@@ -16,5 +14,4 @@ A new Flutter application.
 - [API文档](https://flutter.io/docs/cookbook)
 
 ##### TODO
-* Class类型转换为Widget传参报错，Futter报错为源码错误。
 * node or java后台m
