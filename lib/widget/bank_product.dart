@@ -2,22 +2,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BankProduct extends StatelessWidget {
+class BankProductWidget extends StatelessWidget {
   
   final item;
   final Function intoChoicenessDetail;
 
-  BankProduct({this.item, this.intoChoicenessDetail});
+  BankProductWidget({@required this.item, this.intoChoicenessDetail});
 
   @override
   Widget build(BuildContext context) {
 
+    // 判断是否有产品名称
     bool _containsProName = item.containsKey('pro');
 
     return Container(
       padding: EdgeInsets.only(top: ScreenUtil().setWidth(12), bottom: ScreenUtil().setWidth(12)),
       child: Column(
         children: <Widget>[
+          // 如果有产品名称就展示
           _containsProName ? _proNameWidget(item['pro']) : Container(height: 0.0,),
           Row(
             children: <Widget>[

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/component/bank_product.dart';
+import 'package:flutter_app/widget/bank_product.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -187,7 +187,7 @@ Widget _choicenessWidget ({context, choiceList}) {
   final List<Widget> items = [];
   for (int i = 0; i < choiceList.length; i++) {
     Map item = choiceList[i];
-    items.add(new BankProduct(item: item, intoChoicenessDetail: _intoChoicenessDetail));
+    items.add(new BankProductWidget(item: item, intoChoicenessDetail: _intoChoicenessDetail));
   }
 
   return Padding(

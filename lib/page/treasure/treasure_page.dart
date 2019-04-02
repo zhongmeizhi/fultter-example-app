@@ -72,7 +72,7 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
             break;
             default:
               return Center(
-                child: Text(tab['label']),
+                child: Text('这里是 -> ' + tab['label']),
               );
             break;
           }

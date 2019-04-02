@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/component/bank_product.dart';
+import 'package:flutter_app/widget/bank_product.dart';
 
 class BankSelectionPage extends StatefulWidget {
   final item;
@@ -102,7 +102,7 @@ class _BankSelectionState extends State<BankSelectionPage> {
             padding: EdgeInsets.symmetric(
               horizontal: ScreenUtil().setWidth(20)
             ),
-            child: new BankProduct(item: item, intoChoicenessDetail: _intoChoicenessDetail)
+            child: new BankProductWidget(item: item, intoChoicenessDetail: _intoChoicenessDetail)
           )
         );
       }
