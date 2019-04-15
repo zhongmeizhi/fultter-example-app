@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/widget/bank_product.dart';
+import 'package:flutter_app/view/bank_product.dart';
+// 轮播
+import 'package:flutter_app/widget/carousel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -72,7 +74,20 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget _bannerWidget () {
-  return new Image.asset('assets/images/banner360.jpg', width: ScreenUtil().setWidth(375), height: ScreenUtil().setWidth(146));
+  // 轮播
+  return Carousel(
+    carouselList: <Widget>[
+      new Image.asset('assets/images/banner360_1.jpg', fit: BoxFit.fill),
+      new Image.asset('assets/images/banner360_2.jpg', fit: BoxFit.fill),
+      new Image.asset('assets/images/banner360_3.jpg', fit: BoxFit.fill)
+    ],
+    tagWidth: ScreenUtil().setWidth(375),
+    height: ScreenUtil().setWidth(146),
+    tagBottom: ScreenUtil().setWidth(8),
+    tagColor: Color(0xffff33),
+    activeTagColor: Colors.white,
+    tagSize: ScreenUtil().setWidth(8)
+  );
 }
 
 Widget _displayDataWidget () {
