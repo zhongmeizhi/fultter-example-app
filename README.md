@@ -2,6 +2,15 @@
 
 > 这是一个使用flutter编写的金融理财项目
 
+已完成
+* 静态页面
+* 无限轮播
+* 屏幕适配
+* 状态管理
+* EvnetBus
+* 事件处理
+* 页面路由
+
 ![首屏图](preview/projector_page.png)
 ![首页](preview/home_page.png)
 ![银行理财页](preview/bank_section.png)
@@ -15,3 +24,5 @@
 
 ##### TODO
 * node or java后台m
+* Redux
+* RxDart
