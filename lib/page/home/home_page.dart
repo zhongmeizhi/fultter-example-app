@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+// 功能widget
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/view/bank_product.dart';
-// 轮播
+import 'package:dio/dio.dart';
 import 'package:flutter_app/widget/carousel.dart';
+// 布局widget
+import 'package:flutter_app/view/bank_product.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +12,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  void getHttp() async {
+    print('object object object');
+    try {
+      // origin:  https://github.com/flutterchina/dio/issues/76
+      // when you run adb reverse tcp:8080 tcp:8080 you can connect to localhost on your device it proxies your request to your local webserver 
+      Response response = await Dio().get('http://localhost:2333/');
+      print(response.data.toString());
+      print("response.data.toString()");
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    getHttp();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
 
