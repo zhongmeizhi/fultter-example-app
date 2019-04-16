@@ -45,6 +45,12 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFffffff),

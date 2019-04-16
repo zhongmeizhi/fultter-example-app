@@ -2,14 +2,20 @@
 
 > 这是一个使用flutter编写的金融理财项目
 
-已完成
-* 静态页面
-* 无限轮播
-* 屏幕适配
-* 状态管理
-* EvnetBus
-* 事件处理
-* 页面路由
+项目计划
+* [x] 静态页面
+* [x] 有状态widget
+* [x] 屏幕适配（ScreenUtil）
+* [x] 事件处理
+* [x] 页面路由
+* [x] 无限轮播
+* [x] EvnetBus
+* [x] 封装httpClient
+* [x] node服务器
+* [ ] Redux
+* [ ] RxDart
+
+效果图：
 
 ![首屏图](preview/projector_page.png)
 ![首页](preview/home_page.png)
@@ -21,8 +27,3 @@
 外链:
 - [flutter官网](https://flutter.io/docs/get-started/codelab)
 - [API文档](https://flutter.io/docs/cookbook)
-
-##### TODO
-* node or java后台m
-* Redux
-* RxDart

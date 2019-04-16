@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 // 功能widget
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_app/widget/carousel.dart';
 // 布局widget
 import 'package:flutter_app/view/bank_product.dart';
+// 请求
+import 'package:flutter_app/unit/my_xhr.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,17 +14,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  List _choiceList = [];
+
   void getHttp() async {
-    print('object object object');
-    try {
-      // origin:  https://github.com/flutterchina/dio/issues/76
-      // when you run adb reverse tcp:8080 tcp:8080 you can connect to localhost on your device it proxies your request to your local webserver 
-      Response response = await Dio().get('http://localhost:2333/');
-      print(response.data.toString());
-      print("response.data.toString()");
-    } catch (e) {
-      print(e);
-    }
+    List data = await MyXhr.$get('http://127.0.0.1:2333/choice-list');
+    print('xxx');
+    //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
+    if (!mounted) return;
+    setState(() {
+      _choiceList = data;
+      print('222');
+    });
   }
 
   @override
@@ -34,38 +35,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    List _choiceList = [
-      {
-        'id': 'c1',
-        'rate': '4.32%',
-        'pro': '招招利',
-        'rateTime': '七日年化收益率',
-        'desc': '灵活存取',
-        'limitDesc': '10元起投'
-      }, {
-        'id': 'c2',
-        'rate': '4.21%',
-        'pro': '农加利',
-        'rateTime': '七日年化收益率',
-        'desc': '28天',
-        'limitDesc': '锁定期'
-      }, {
-        'id': 'c3',
-        'rate': '5.55%',
-        'pro': '宇宙行理财',
-        'rateTime': '七日年化收益率',
-        'desc': '180天可自动转让',
-        'limitDesc': '锁定期1天'
-      }, {
-        'id': 'c4',
-        'rate': '4.72%',
-        'pro': '招行理财',
-        'rateTime': '七日年化收益率',
-        'desc': '灵活存取',
-        'limitDesc': '1000元起投'
-      },
-    ];
     List _activityList = [
       {
         'id': 'a1',
