@@ -16,8 +16,9 @@ class _HomePageState extends State<HomePage> {
 
   List _choiceList = [];
 
+
   void getHttp() async {
-    List data = await MyXhr.$get('http://127.0.0.1:2333/choice-list');
+    List data = await MyXhr.$get('/choice-list');
     print('xxx');
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     List _activityList = [
       {
         'id': 'a1',

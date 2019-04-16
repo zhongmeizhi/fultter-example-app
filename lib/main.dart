@@ -5,6 +5,8 @@ import 'package:flutter_app/page/home/home_page.dart';
 import 'package:flutter_app/page/treasure/treasure_page.dart';
 import 'package:flutter_app/page/customer/customer_page.dart';
 import 'package:flutter_app/page/login/login_page.dart';
+// 请求
+import 'package:flutter_app/unit/my_xhr.dart';
 
 void main() => runApp(MyApp());
 
@@ -37,10 +39,17 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex;
 
+  // 初始化 请求的baseURL
+  void _setBaseUrl () {
+    MyXhr myXhr = new MyXhr();
+    myXhr.$option(baseUrl: 'http://127.0.0.1:2333');
+  }
+
   @override
   void initState() {
-    super.initState();
+    _setBaseUrl();
     _selectedIndex = 0;
+    super.initState();
   }
 
   @override

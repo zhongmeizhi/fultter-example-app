@@ -11,7 +11,9 @@
 * [x] 无限轮播
 * [x] EvnetBus
 * [x] 封装httpClient
-* [x] node服务器
+* [x] koa2 node服务器
+* [ ] node架构完善
+* [ ] 统一路由动画
 * [ ] Redux
 * [ ] RxDart
 

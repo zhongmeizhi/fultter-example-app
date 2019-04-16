@@ -5,35 +5,28 @@ import 'dart:io';
 
 class MyXhr {
 
-  // 要封装单例，实现baseURL
+  static String _baseUrl = '';
 
-  // //私有构造函数
-  // MyXhr._internal();
-  // //保存单例
-  // static MyXhr _singleton = new MyXhr._internal();
-  // //工厂构造函数
-  // factory MyXhr() => _singleton;
+  //私有构造函数
+  MyXhr._internal();
+  //保存单例
+  static MyXhr _singleton = new MyXhr._internal();
+  //工厂构造函数
+  factory MyXhr() => _singleton;
+
+  // 配置
+  void $option({String baseUrl = ''}) {
+    _baseUrl = baseUrl;
+  }
+
+  // 以后要加拦截器
 
   // get请求
   static $get(String url) async {
+    _baseUrl ??= '';
     var responseBody;
     var httpClient = new HttpClient();
-    var request = await httpClient.getUrl(Uri.parse(url));
-    var response = await request.close();
-    if (response.statusCode == 200) {
-      responseBody = await response.transform(utf8.decoder).join();
-      responseBody = json.decode(responseBody);
-    } else {
-      print("error");
-    }
-    return responseBody['data'];
-  }
-
-  // post请求
-  static $post(String url) async {
-    var responseBody;
-    var httpClient = new HttpClient();
-    var request = await httpClient.postUrl(Uri.parse(url));
+    var request = await httpClient.getUrl(Uri.parse(_baseUrl + url));
     var response = await request.close();
     if (response.statusCode == 200) {
       responseBody = await response.transform(utf8.decoder).join();
@@ -45,4 +38,3 @@ class MyXhr {
   }
 
 }
-
