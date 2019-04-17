@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// 页面
 import 'package:flutter_app/page/treasure/bank_selection_page.dart';
+import 'package:flutter_app/page/treasure/fund_selection_page.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
@@ -75,6 +77,9 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
           switch (tab['id']) {
             case 't1':
               return BankSelectionPage(item: tab);
+            break;
+            case 't2':
+              return FundSelectionPage();
             break;
             default:
               return Center(

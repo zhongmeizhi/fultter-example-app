@@ -123,7 +123,7 @@ Widget _activityAdWidget ({context, activityList}) {
 
   void _intoActivityDetail({id}) {
     print(id);
-    Navigator.pushNamed(context, "login_page");
+    Navigator.pushNamed(context, "/login_page");
   }
 
   final List<Widget> items = [];
@@ -165,7 +165,7 @@ Widget _activityAdWidget ({context, activityList}) {
 Widget _subscribedWidget ({context}) {
 
   void _clickSubscribed () {
-    Navigator.pushNamed(context, "login_page");
+    Navigator.pushNamed(context, "/login_page");
   }
 
   return GestureDetector(
@@ -186,7 +186,7 @@ Widget _choicenessWidget ({context, choiceList}) {
 
   void _intoChoicenessDetail({id}) {
     print(id);
-    Navigator.pushNamed(context, "login_page");
+    Navigator.pushNamed(context, "/login_page");
   }
 
   final List<Widget> items = [];

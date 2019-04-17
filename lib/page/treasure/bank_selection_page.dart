@@ -27,7 +27,7 @@ class _BankSelectionState extends State<BankSelectionPage> {
 
   void _intoChoicenessDetail({id}) {
     print(id);
-    Navigator.pushNamed(context, "login_page");
+    Navigator.pushNamed(context, "/login_page");
   }
 
   @override

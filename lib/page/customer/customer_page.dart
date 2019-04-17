@@ -36,7 +36,7 @@ Widget _accountWidget ({@required context}) {
   
   Widget _loginBannerWidget () {
     void _loginAccount() {
-      Navigator.pushNamed(context, "login_page");
+      Navigator.pushNamed(context, "/login_page");
     }
     return GestureDetector(
       child: Stack(

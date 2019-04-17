@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   void _goMain() {
-    Navigator.of(context).pushReplacementNamed('MainPage');
+    Navigator.pushReplacementNamed(context, '/main_page');
   }
 
   void _doCountDown() {
