@@ -1,3 +1,13 @@
+/*
+ * Created by Flutter中文网
+ * 
+ * 此代码 系 copy
+ * 
+ * 出处见 页头
+ * 
+ * 仅学习使用。mark
+ */
+
 //订阅者回调签名
 typedef void EventCallback(arg);
 

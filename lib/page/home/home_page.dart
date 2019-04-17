@@ -16,21 +16,18 @@ class _HomePageState extends State<HomePage> {
 
   List _choiceList = [];
 
-
-  void getHttp() async {
+  void getChoice() async {
     List data = await MyXhr.$get('/choice-list');
-    print('xxx');
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {
       _choiceList = data;
-      print('222');
     });
   }
 
   @override
   void initState() {
-    getHttp();
+    getChoice();
     super.initState();
   }
 
