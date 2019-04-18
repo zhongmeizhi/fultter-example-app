@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_app/unit/event_bus.dart';
+// storage
+import 'package:flutter_app/storage/storage.dart';
+// 请求
+import 'package:flutter_app/api/my_xhr.dart';
 
 class CustomerPage extends StatefulWidget {
   @override
@@ -10,6 +14,53 @@ class CustomerPage extends StatefulWidget {
 class _CustomerPageState extends State<CustomerPage> {
 
   final EventBus bus = new EventBus();
+
+  bool _isLogin = false;
+  Map _userInfo;
+
+  // 获取用户数据
+  Future _getUserInfo (phone) async {
+    var data = await MyXhr.$get('/user-info?phone=$phone');
+    return data;
+  }
+
+  // 检查登录
+  void _checkoutLogin() {
+    LocalStorage.getString('phone').then((phone) {
+      if (phone != null) {
+        _getUserInfo(phone).then((userInfo) {
+          setState(() {
+            _isLogin = true;
+            _userInfo = userInfo;
+          });
+        });
+      }
+    });
+  }
+
+  // 进入登录页
+  void _loginAccount() {
+    Navigator.pushNamed(context, "/login_page").then((res) {
+      _checkoutLogin();
+    });
+  }
+
+  // 退出登录
+  void _logout() {
+    LocalStorage.remove('phone').then((res) {
+      setState(() {
+        _isLogin = false;
+        _userInfo = null;
+      });
+    });
+  }
+  
+  @override
+  void initState() {
+    super.initState();
+    // 判断登录
+    _checkoutLogin();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -20,7 +71,7 @@ class _CustomerPageState extends State<CustomerPage> {
       ),
       body: ListView(
         children: <Widget>[
-          _accountWidget(context: context),
+          _isLogin ? _accountWidget(userInfo: _userInfo, logout: _logout) : _registeredWidget(context: context, loginAccount: _loginAccount),
           _brWidget(),
           _shoppingListWidget(),
           _brWidget(),
@@ -32,12 +83,118 @@ class _CustomerPageState extends State<CustomerPage> {
   }
 }
 
-Widget _accountWidget ({@required context}) {
+// 用户模块
+Widget _accountWidget ({@required userInfo, @required logout}) {
+
+  Widget _userInfoUnitWidget ({@required icon, @required name}) {
+    return Expanded(
+      flex: 1,
+      child: Row(
+        children: <Widget>[
+          Icon(icon, color: Color(0xFFdca671)),
+          Padding(
+            padding: EdgeInsets.only(left: ScreenUtil().setWidth(9)),
+            child: Text(name, style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(16))),
+          )
+        ],
+      )
+    );
+  }
+
+  return Container(
+    padding: EdgeInsets.symmetric(
+      horizontal:  ScreenUtil().setWidth(20),
+      vertical: ScreenUtil().setWidth(12)
+    ),
+    child: Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Text(userInfo['name'], style: TextStyle(fontSize: ScreenUtil().setSp(16), color: Color(0xFF333333))),
+            ),
+            GestureDetector(
+              child: Icon(
+                Icons.settings,
+                color: Color(0xFF333333),
+              ),
+              onTap: logout
+            )
+          ],
+        ),
+        Stack(
+          children: <Widget>[
+            Positioned(
+              child: Image.asset('assets/images/nicaifu.jpg', width: ScreenUtil().setWidth(335)),
+            ),
+            Positioned(
+              left: ScreenUtil().setWidth(9),
+              bottom: ScreenUtil().setWidth(7),
+              child: Container(
+                width: ScreenUtil().setWidth(317),
+                height: ScreenUtil().setWidth(32),
+                padding: EdgeInsets.only(left: ScreenUtil().setWidth(30)),
+                decoration: BoxDecoration(
+                  color: Color(0xffe65134),
+                  border: Border.all(color: Colors.transparent, width: 1.0),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(ScreenUtil().setWidth(12)),
+                    bottomRight: Radius.circular(ScreenUtil().setWidth(12))
+                  )
+                ),
+                child: Text(
+                  '在途：${userInfo["midway"]}元',
+                  style: TextStyle(
+                      color: Color(0xFFf7b6a9),
+                      fontSize: ScreenUtil().setSp(12),
+                      height: 1.5
+                    ),
+                  ),
+              )
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(18), bottom: ScreenUtil().setWidth(20)),
+                    child: Text('总资产(元)', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: Text(userInfo['money'], style: TextStyle(color: Color(0xFFf2b6ac), fontSize: ScreenUtil().setSp(34))),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(6), bottom: ScreenUtil().setWidth(16)),
+                    child: Text('累计总收益(元) ${userInfo["profit"]}', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12))),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: ScreenUtil().setWidth(10)),
+          child: Row(
+            children: <Widget>[
+              _userInfoUnitWidget(icon: Icons.view_compact, name: '卡券中心'),
+              _userInfoUnitWidget(icon: Icons.pages, name: '会员中心')
+            ],
+          )
+        )
+      ],
+    ),
+  );
+}
+
+// 用户未登录模块
+Widget _registeredWidget ({@required context, @required loginAccount}) {
   
   Widget _loginBannerWidget () {
-    void _loginAccount() {
-      Navigator.pushNamed(context, "/login_page");
-    }
+
     return GestureDetector(
       child: Stack(
         children: <Widget>[
@@ -70,22 +227,7 @@ Widget _accountWidget ({@required context}) {
           ),
         ],
       ),
-      onTap: _loginAccount
-    );
-  }
-
-  Widget _userInfoUnitWidget ({@required icon, @required name}) {
-    return Expanded(
-      flex: 1,
-      child: Row(
-        children: <Widget>[
-          Icon(icon, color: Color(0xFFdca671)),
-          Padding(
-            padding: EdgeInsets.only(left: ScreenUtil().setWidth(9)),
-            child: Text(name, style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(16))),
-          )
-        ],
-      )
+      onTap: loginAccount
     );
   }
 
@@ -98,21 +240,13 @@ Widget _accountWidget ({@required context}) {
           width: ScreenUtil().setWidth(375),
           child: Text('欢迎来到金融理财', style: TextStyle(fontSize: ScreenUtil().setSp(16))),
         ),
-        _loginBannerWidget(),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(14), horizontal: ScreenUtil().setWidth(10)),
-          child: Row(
-            children: <Widget>[
-              _userInfoUnitWidget(icon: Icons.view_compact, name: '卡券中心'),
-              _userInfoUnitWidget(icon: Icons.pages, name: '会员中心')
-            ],
-          )
-        )
+        _loginBannerWidget()
       ],
     ),
   );
 }
 
+// 用户产品清单
 Widget _shoppingListWidget () {
 
   Widget _shoppingUnitWidget ({@required title, @required subtitle}) {
@@ -153,6 +287,7 @@ Widget _shoppingListWidget () {
   );
 }
 
+// 客服模块
 Widget _contactWidget () {
   Widget _contactStyleWidget ({@required icon, @required text}) {
     return Expanded(
@@ -180,6 +315,7 @@ Widget _contactWidget () {
   );
 }
 
+// 
 Widget _brWidget ({height = 9}) {
   return Container(
     height: ScreenUtil().setWidth(height),

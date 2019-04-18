@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// storage
+import 'package:flutter_app/storage/storage.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -22,7 +24,9 @@ class _LoginPageState extends State<LoginPage> {
   _submitLogin () {
   if (_phoneNum.length == 11) {
       return () {
-        print(_phoneNum + 'xx');
+        LocalStorage.setString('phone', _phoneNum);
+        // 登录成功
+        Navigator.pop(context);
       };
     } else {
       return null;
