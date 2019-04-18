@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // 页面
-import 'package:flutter_app/page/treasure/bank_selection_page.dart';
-import 'package:flutter_app/page/treasure/fund_selection_page.dart';
+import 'package:flutter_app/page/treasure/selection/bank_selection_page.dart';
+import 'package:flutter_app/page/treasure/selection/fund_selection_page.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
   List tabs = [
     {
       'id': 't1',
-      'label': '银行精选',
+      'label': '银行精选'
     }, {
       'id': 't2',
       'label': '基金'

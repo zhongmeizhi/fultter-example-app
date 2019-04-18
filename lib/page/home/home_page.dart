@@ -5,7 +5,7 @@ import 'package:flutter_app/widget/carousel.dart';
 // 布局widget
 import 'package:flutter_app/view/bank_product.dart';
 // 请求
-import 'package:flutter_app/unit/my_xhr.dart';
+import 'package:flutter_app/api/my_xhr.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -8,8 +8,9 @@ class FundSelectionPage extends StatefulWidget {
 class FundState extends State<FundSelectionPage> {
   @override
   Widget build(BuildContext context) {
+
     return FlatButton(
-      child: Text('进入-> WebView', style: TextStyle(fontSize: 22.0),),
+      child: Text('进入 -> 百度搜索', style: TextStyle(fontSize: 22.0),),
       textColor: Colors.deepOrange,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       onPressed: () {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 // 自己的文件包
 import 'package:flutter_app/page/welcome/splash_page.dart';
 import 'package:flutter_app/page/home/home_page.dart';
 import 'package:flutter_app/page/treasure/treasure_page.dart';
 import 'package:flutter_app/page/customer/customer_page.dart';
-import 'package:flutter_app/page/login/login_page.dart';
 // 请求
-import 'package:flutter_app/unit/my_xhr.dart';
+import 'package:flutter_app/api/my_xhr.dart';
+// 路由
+import 'package:flutter_app/routes/router.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,20 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Z.金融理财',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),//注册路由表
-    routes:{
-      "/main_page": (context) => new MainPage(),
-      "/login_page": (context) => new LoginPage(title: '登录'),
-      "/baidu": (val) => new WebviewScaffold(
-          url: "http://www.baidu.com/",
-          appBar: new AppBar(
-            title: new Text("百度webview"),
-          ),
-        ),
-    } ,
+      routes:Router.routes ,
       home: SplashScreen(),
     );
   }
@@ -49,7 +40,7 @@ class _MainPageState extends State<MainPage> {
   // 初始化 请求的baseURL
   void _setBaseUrl () {
     MyXhr myXhr = new MyXhr();
-    myXhr.$option(baseUrl: 'http://127.0.0.1:2333');
+    myXhr.$option(baseUrl: 'http://10.93.157.10:2333');
   }
 
   @override
@@ -82,8 +73,9 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-  
-  Widget _distributeHome () { // 分发Home页面路由
+
+  // 分发Home页面路由
+  Widget _distributeHome () {
     switch(_selectedIndex) {
       case 0:
         return new HomePage();
