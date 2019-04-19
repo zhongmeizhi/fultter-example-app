@@ -31,6 +31,10 @@ class _CustomerPageState extends State<CustomerPage> {
       if (phone != null) {
         // 获取后台数据
         _getUserInfo(phone).then((userInfo) {
+          // Unhandled exception: setState() called after dispose()
+          if (!mounted) {
+            return;
+          }
           setState(() {
             _isLogin = true;
             _userInfo = userInfo;
@@ -50,6 +54,10 @@ class _CustomerPageState extends State<CustomerPage> {
   // 退出登录
   void _logout() {
     LocalStorage.remove('phone').then((res) {
+      // Unhandled exception: setState() called after dispose()
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _isLogin = false;
         _userInfo = null;

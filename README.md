@@ -27,7 +27,9 @@
 * [x] 请求数据动态拼接
 * [x] Storage 保持登录状态
 * [x] 实现 webview
-* [ ] PageStorage 页面重绘
+* [x] 缓存组件
+* [x] 页面 keepa-live
+* [x] 解决页面切换重绘问题
 * [ ] Redux
 * [ ] node架构完善
 * [ ] RxDart

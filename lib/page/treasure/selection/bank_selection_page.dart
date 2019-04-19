@@ -24,6 +24,10 @@ class _BankSelectionState extends State<BankSelectionPage> {
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {
+      // Unhandled exception: setState() called after dispose()
+      if (!mounted) {
+        return;
+      }
       _bankProductList = data;
     });
   }

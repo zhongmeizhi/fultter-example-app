@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       title: 'Z.金融理财',
-      theme: ThemeData(
+      theme: new ThemeData(
         primarySwatch: Colors.deepOrange,
       ),//注册路由表
       routes:Router.routes ,
-      home: SplashScreen(),
+      home: new SplashScreen(),
     );
   }
 }
@@ -45,8 +45,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
+  int _selectedIndex = 0;
 
-  int _selectedIndex;
+  // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
+  List _indexedStackCache = <int>[0];
 
   // 初始化 请求的baseURL
   void _setBaseUrl () {
@@ -54,54 +56,75 @@ class _MainPageState extends State<MainPage> {
     myXhr.$option(baseUrl: 'http://10.93.157.10:2333');
   }
 
+  // bottomNavigationBar 点击事件
+  void _tapBottomBar (index) {
+    // Unhandled exception: setState() called after dispose()
+    if (!mounted) {
+      // 这算Flutter的BUG吧
+      // 每次都有手动弄，又不值得封装
+      return;
+    }
+    setState(() {
+      _selectedIndex = index;
+      if (_indexedStackCache.indexOf(index) == -1) {
+        _indexedStackCache.add(index);
+      }
+    });
+  }
+
   @override
   void initState() {
-    _setBaseUrl();
-    _selectedIndex = 0;
     super.initState();
+    _setBaseUrl();
   }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar( // 底部导航
+      bottomNavigationBar: new BottomNavigationBar( // 底部导航
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
-          BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
+          new BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
+          new BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
+          new BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
         ],
         currentIndex: _selectedIndex,
         fixedColor: Colors.deepOrange,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        onTap: _tapBottomBar,
       ),
-      body: new Container(
-        key: PageStorageKey(1),
-        child: _distributeHome(),
+      // IndexedStack 显示第index个child，其它child在页面上是不可见的
+      // 但是 每个人page会在IndexedStack初始化的时候都会调用接口
+      body: new IndexedStack(
+        index: _selectedIndex,
+        // child: _distributeHome(),
+        children: <Widget>[
+          new HomePage(),
+          // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
+          (_indexedStackCache.indexOf(1) != -1) ? new TreasurePage() : Container(),
+          (_indexedStackCache.indexOf(2) != -1) ? new CustomerPage() : Container(),
+        ],
       ),
     );
   }
 
   // 分发Home页面路由
-  Widget _distributeHome () {
-    switch(_selectedIndex) {
-      case 0:
-        return new HomePage();
-        break;
-      case 1:
-        return new TreasurePage();
-      break;
-      case 2:
-        return new CustomerPage();
-      break;
-      default:
-        return HomePage();
-      break;
-    }
-  }
+  // 这种方式保持状态能力有限
+  // 使用 IndexedStack 代替
+  // Widget _distributeHome () {
+  //   switch(_selectedIndex) {
+  //     case 0:
+  //       return new HomePage();
+  //       break;
+  //     case 1:
+  //       return new TreasurePage();
+  //     break;
+  //     case 2:
+  //       return new CustomerPage();
+  //     break;
+  //     default:
+  //       return HomePage();
+  //     break;
+  //   }
+  // }
 }
 
