@@ -19,8 +19,6 @@ class MyXhr {
     _baseUrl = baseUrl;
   }
 
-  // 以后要加拦截器
-
   // get请求
   static $get(String url) async {
     _baseUrl ??= '';
@@ -36,5 +34,11 @@ class MyXhr {
     }
     return responseBody['data'];
   }
+
+  // 其他请求类型待续
+
+  // 以后要加拦截器
+
+  // 异常捕获也需要完善
 
 }

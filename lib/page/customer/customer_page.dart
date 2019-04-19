@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_app/unit/event_bus.dart';
-// storage
-import 'package:flutter_app/storage/storage.dart';
-// 请求
-import 'package:flutter_app/api/my_xhr.dart';
+import 'package:flutter_app/storage/storage.dart'; // storage
+import 'package:flutter_app/api/my_xhr.dart'; // 请求
+import 'package:flutter_app/unit/route_animation.dart'; // 路由动画
+// 页面
+import 'package:flutter_app/page/login/login_page.dart';
 
 class CustomerPage extends StatefulWidget {
   @override
@@ -28,6 +29,7 @@ class _CustomerPageState extends State<CustomerPage> {
   void _checkoutLogin() {
     LocalStorage.getString('phone').then((phone) {
       if (phone != null) {
+        // 获取后台数据
         _getUserInfo(phone).then((userInfo) {
           setState(() {
             _isLogin = true;
@@ -40,7 +42,7 @@ class _CustomerPageState extends State<CustomerPage> {
 
   // 进入登录页
   void _loginAccount() {
-    Navigator.pushNamed(context, "/login_page").then((res) {
+    MyRoute.scaleRoute(context, LoginPage()).then((res) {
       _checkoutLogin();
     });
   }

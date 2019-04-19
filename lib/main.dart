@@ -34,7 +34,18 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
+// 可以 with
+// AutomaticKeepAliveClientMixin
+// 然后重写 wantKeepAlive
+// @override
+// bool get wantKeepAlive => true;
+// 但是：
+// body中并没有使用PageView或TabBarView
+// 所有无效
+
 class _MainPageState extends State<MainPage> {
+
+
   int _selectedIndex;
 
   // 初始化 请求的baseURL
@@ -69,6 +80,7 @@ class _MainPageState extends State<MainPage> {
         },
       ),
       body: new Container(
+        key: PageStorageKey(1),
         child: _distributeHome(),
       ),
     );

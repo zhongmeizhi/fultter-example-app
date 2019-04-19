@@ -9,7 +9,13 @@ class TreasurePage extends StatefulWidget {
   _TreasurePageState createState() => _TreasurePageState();
 }
 
-class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderStateMixin {
+class _TreasurePageState extends State<TreasurePage>
+  with SingleTickerProviderStateMixin,
+    AutomaticKeepAliveClientMixin {
+
+  // with AutomaticKeepAliveClientMixin 重写 wantKeepAlive
+  @override
+  bool get wantKeepAlive => true;
 
   List tabs = [
     {
@@ -52,6 +58,7 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
     super.dispose();
   }
 
+  //  使用 TabBar + TabBarView
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,8 +79,16 @@ class _TreasurePageState extends State<TreasurePage> with SingleTickerProviderSt
         ),
       ),
       body: new TabBarView(
+        key: new Key('treasure_page'),
         controller: _tabController,
         children: tabs.map((tab) {
+          // 利用 PageStorageKey 保持页面滚动状态
+          // Widget _pageStorage (Widget widget) {
+          //   return Container(
+          //     key: PageStorageKey(tab['id']),
+          //     child: widget
+          //   );
+          // }
           switch (tab['id']) {
             case 't1':
               return BankSelectionPage(item: tab);
