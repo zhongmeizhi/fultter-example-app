@@ -47,11 +47,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # - 只能前后各一个空格啊。。。不然找不到
   assets:
-   - assets/images/banner360_1.jpg
-   - assets/images/banner360_2.jpg
-   - assets/images/banner360_3.jpg
-   - assets/images/gift.png
-   - assets/images/invite.png
+   - assets/images/banner_1.jpg
+   - assets/images/banner_2.jpg
+   - assets/images/banner_3.jpg
    - assets/images/subscribed.jpg
    - assets/images/logo.jpg
    - assets/images/projector.png

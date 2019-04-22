@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'Z.金融理财',
       theme: new ThemeData(
         primarySwatch: Colors.deepOrange,
-      ),//注册路由表
-      routes:Router.routes ,
+      ),
+      routes:Router.routes , //注册路由表
       home: new SplashScreen(),
     );
   }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 // 功能widget
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_app/widget/carousel.dart';
-// 布局widget
-import 'package:flutter_app/view/bank_product.dart';
 // 请求
 import 'package:flutter_app/api/my_xhr.dart';
 
@@ -37,12 +35,12 @@ class _HomePageState extends State<HomePage> {
     List _activityList = [
       {
         'id': 'a1',
-        'iconSrc': 'assets/images/gift.png',
-        'title': '挖宝加息',
+        'iconSrc': Icons.access_time,
+        'title': '加息奖励',
         'desc': '挖宝享每日加息'
       }, {
         'id': 'a2',
-        'iconSrc': 'assets/images/invite.png',
+        'iconSrc': Icons.person_add,
         'title': '邀请奖励',
         'desc': '每邀1人奖80元'
       }
@@ -67,9 +65,9 @@ Widget _bannerWidget () {
   // 轮播
   return Carousel(
     carouselList: <Widget>[
-      new Image.asset('assets/images/banner360_1.jpg', fit: BoxFit.fill),
-      new Image.asset('assets/images/banner360_2.jpg', fit: BoxFit.fill),
-      new Image.asset('assets/images/banner360_3.jpg', fit: BoxFit.fill)
+      new Image.asset('assets/images/banner_1.jpg', fit: BoxFit.fill),
+      new Image.asset('assets/images/banner_2.jpg', fit: BoxFit.fill),
+      new Image.asset('assets/images/banner_3.jpg', fit: BoxFit.fill)
     ],
     tagWidth: ScreenUtil().setWidth(375),
     height: ScreenUtil().setWidth(146),
@@ -98,7 +96,7 @@ Widget _displayDataWidget () {
             Padding(
               padding: EdgeInsets.only(right: ScreenUtil().setWidth(13)),
               child: Text(
-                '平台交易数据',
+                '理财成交单',
                 style: TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF333333), fontSize: ScreenUtil().setSp(14), height: 0.85),
               ), 
             ),
@@ -136,7 +134,7 @@ Widget _activityAdWidget ({context, activityList}) {
         child: GestureDetector(
           child: Row(
             children: <Widget>[
-              new Image.asset(item['iconSrc'], width: ScreenUtil().setWidth(40), height: ScreenUtil().setWidth(40)),
+              new Icon(item['iconSrc'], color: Colors.deepOrange,),
               Padding(
                 padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
                 child: Column(
@@ -182,17 +180,11 @@ Widget _subscribedWidget ({context}) {
   );
 }
 
-Widget _choicenessWidget ({context, choiceList}) {
+Widget _choicenessWidget ({context, List choiceList}) {
 
   void _intoChoicenessDetail({id}) {
     print(id);
     Navigator.pushNamed(context, "/login_page");
-  }
-
-  final List<Widget> items = [];
-  for (int i = 0; i < choiceList.length; i++) {
-    Map item = choiceList[i];
-    items.add(new BankProductWidget(item: item, intoChoicenessDetail: _intoChoicenessDetail));
   }
 
   return Padding(
@@ -205,12 +197,58 @@ Widget _choicenessWidget ({context, choiceList}) {
             minHeight: ScreenUtil().setWidth(18)
           ),
           child: Text(
-            '精选推荐',
+            '热门推荐',
             textAlign: TextAlign.start,
             style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.w700, height: 1.5),
           ),
         ),
-        Column(children: items),
+        // 使用Wrap的方式展示产品
+        Wrap(
+          children: choiceList.map((item) {
+            return Container(
+              width: ScreenUtil().setWidth(160),
+              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(6), vertical: ScreenUtil().setWidth(8)),
+              padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(8)),
+              decoration: BoxDecoration(
+                border: Border.all(style: BorderStyle.solid, color: Colors.deepOrange),
+                borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(8)))
+              ),
+              child: Column(
+                children: <Widget>[
+                  Text(item['pro'], style: TextStyle(fontSize: ScreenUtil().setSp(16))),
+                  Text(item['rate'], style: TextStyle(fontSize: ScreenUtil().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)),
+                  Text(item['rateTime'], style: TextStyle(color: Colors.grey, fontSize: ScreenUtil().setSp(12)),),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(6)),
+                    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(3)),
+                    decoration: BoxDecoration(
+                      border: Border.all(style: BorderStyle.solid, color: Colors.deepOrange)
+                    ),
+                    child: Text(item['desc']),
+                  ),
+                  Container(
+                    width: ScreenUtil().setWidth(110),
+                    height: ScreenUtil().setWidth(30),
+                    child: FlatButton(
+                      color: Colors.deepOrange,
+                      textColor: Colors.white,
+                      splashColor: Colors.white,
+                      highlightColor: Colors.white,
+                      child: Text("存入"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
+                      ),
+                      onPressed: () => {
+                        _intoChoicenessDetail(id: item['id'])
+                      }
+                    )
+                  )
+                ],
+              ),
+            );
+          }).toList(),
+        ),
         SizedBox(
           height: ScreenUtil().setWidth(36),
           child: Text('已经到最底部啦...', style: TextStyle(color: Colors.grey),)

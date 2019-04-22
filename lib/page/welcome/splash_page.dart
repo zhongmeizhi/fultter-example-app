@@ -95,7 +95,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(6))),
                     border: new Border.all(
                       width: ScreenUtil().setWidth(1),
-                      color: Colors.blue[50],
+                      color: Colors.deepOrange[50],
                     ),
                   ),
                 ),
