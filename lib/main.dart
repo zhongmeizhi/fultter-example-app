@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-// 自己的文件包
+// 页面
 import 'package:flutter_app/page/welcome/splash_page.dart';
 import 'package:flutter_app/page/home/home_page.dart';
 import 'package:flutter_app/page/treasure/treasure_page.dart';
 import 'package:flutter_app/page/customer/customer_page.dart';
+import 'package:flutter_app/page/news/news_page.dart';
 // 请求
 import 'package:flutter_app/api/my_xhr.dart';
 // 路由
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Z.金融理财',
       theme: new ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.blue,
       ),
       routes:Router.routes , //注册路由表
       home: new SplashScreen(),
@@ -41,8 +42,7 @@ class MainPage extends StatefulWidget {
 // bool get wantKeepAlive => true;
 // 但是：
 // body中并没有使用PageView或TabBarView
-// 所有无效
-
+// wantKeepAlive会无效果
 class _MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
@@ -83,13 +83,15 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
+        type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type，可能是BUG
         items: <BottomNavigationBarItem>[
           new BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
           new BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
+          new BottomNavigationBarItem(icon: Icon(Icons.book), title: Text('新闻')),
           new BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
         ],
         currentIndex: _selectedIndex,
-        fixedColor: Colors.deepOrange,
+        fixedColor: Colors.blue,
         onTap: _tapBottomBar,
       ),
       // IndexedStack 显示第index个child，其它child在页面上是不可见的
@@ -101,7 +103,8 @@ class _MainPageState extends State<MainPage> {
           new HomePage(),
           // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
           (_indexedStackCache.indexOf(1) != -1) ? new TreasurePage() : Container(),
-          (_indexedStackCache.indexOf(2) != -1) ? new CustomerPage() : Container(),
+          (_indexedStackCache.indexOf(2) != -1) ? new NewsPage() : Container(),
+          (_indexedStackCache.indexOf(3) != -1) ? new CustomerPage() : Container(),
         ],
       ),
     );

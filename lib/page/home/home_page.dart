@@ -134,7 +134,7 @@ Widget _activityAdWidget ({context, activityList}) {
         child: GestureDetector(
           child: Row(
             children: <Widget>[
-              new Icon(item['iconSrc'], color: Colors.deepOrange,),
+              new Icon(item['iconSrc'], color: Colors.blue,),
               Padding(
                 padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
                 child: Column(
@@ -210,7 +210,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
               margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(6), vertical: ScreenUtil().setWidth(8)),
               padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(8)),
               decoration: BoxDecoration(
-                border: Border.all(style: BorderStyle.solid, color: Colors.deepOrange),
+                border: Border.all(style: BorderStyle.solid, color: Colors.blue),
                 borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(8)))
               ),
               child: Column(
@@ -222,7 +222,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
                     margin: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(6)),
                     padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(3)),
                     decoration: BoxDecoration(
-                      border: Border.all(style: BorderStyle.solid, color: Colors.deepOrange)
+                      border: Border.all(style: BorderStyle.solid, color: Colors.blue)
                     ),
                     child: Text(item['desc']),
                   ),
@@ -230,14 +230,14 @@ Widget _choicenessWidget ({context, List choiceList}) {
                     width: ScreenUtil().setWidth(110),
                     height: ScreenUtil().setWidth(30),
                     child: FlatButton(
-                      color: Colors.deepOrange,
+                      color: Colors.blue,
                       textColor: Colors.white,
                       splashColor: Colors.white,
                       highlightColor: Colors.white,
                       child: Text("存入"),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
+                        side: BorderSide(style: BorderStyle.solid, color: Colors.blue)
                       ),
                       onPressed: () => {
                         _intoChoicenessDetail(id: item['id'])

@@ -72,11 +72,11 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
     // 银行名称
     items.add(
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20), vertical: ScreenUtil().setWidth(5)),
+        padding: EdgeInsets.only(left: ScreenUtil().setWidth(20), top: ScreenUtil().setWidth(6)),
         child: Text(
           bank['bankName'],
           textAlign: TextAlign.start,
-          style: TextStyle(fontSize: ScreenUtil().setSp(16), fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: ScreenUtil().setSp(12), fontWeight: FontWeight.w500),
         )
       )
     );

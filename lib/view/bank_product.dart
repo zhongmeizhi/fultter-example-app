@@ -23,13 +23,14 @@ class BankProductWidget extends StatelessWidget {
           _containsProName ? _proNameWidget(item['pro']) : Container(height: 0.0,),
           Row(
             children: <Widget>[
-              Expanded(
-                flex: 1,
+              Container(
+                width: ScreenUtil().setWidth(100),
+                alignment: Alignment.topLeft,
                 child: Column(
                   children: <Widget>[
                     Text(
                       item['rate'],
-                      style: TextStyle(fontSize: ScreenUtil().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)
+                      style: TextStyle(fontSize: ScreenUtil().setSp(22), color: Colors.red)
                     ),
                     Text(
                       item['rateTime'],
@@ -37,6 +38,12 @@ class BankProductWidget extends StatelessWidget {
                     )
                   ],
                 ),
+              ),
+              Container(
+                width:  ScreenUtil().setWidth(1),
+                margin: EdgeInsets.only(right: ScreenUtil().setWidth(12)),
+                height: ScreenUtil().setWidth(33),
+                color: Color(0xFFc3c3c3),
               ),
               Expanded(
                 flex: 1,
@@ -60,25 +67,16 @@ class BankProductWidget extends StatelessWidget {
                     )
                   ],
                 ),
-              ), 
+              ),
               Container(
-                width: ScreenUtil().setWidth(66),
-                height: ScreenUtil().setWidth(30),
-                child: FlatButton(
-                  color: Colors.white,
-                  textColor: Colors.deepOrange,
-                  splashColor: Colors.white,
-                  highlightColor: Colors.white,
-                  child: Text("存入"),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side: BorderSide(style: BorderStyle.solid, color: Colors.deepOrange)
-                  ),
-                  onPressed: () => {
-                    intoChoicenessDetail(id: item['id'])
-                  }
+                width:  ScreenUtil().setWidth(63),
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.error, color: Colors.blue,),
+                    Text('已售罄')
+                  ],
                 )
-              )
+              ),
             ]
           ),
         ],
@@ -91,10 +89,10 @@ Widget _proNameWidget (productName) {
   return Row(
     children: <Widget>[
       Padding(
-        padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(9)),
+        padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(1)),
         child: Text(
           productName,
-          style: TextStyle(fontSize: ScreenUtil().setSp(14), color: Color(0xFF666666))
+          style: TextStyle(fontSize: ScreenUtil().setSp(12), color: Color(0xFF666666))
         )
       )
     ]

@@ -60,7 +60,7 @@ Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
           Padding(
             padding: EdgeInsets.only(top: ScreenUtil().setWidth(15), bottom: ScreenUtil().setWidth(40)),
             child: Text(
-              '金服互联网金融平台',
+              '互联网金融平台',
               style: TextStyle(color: Color(0xFFb3b3b3)),
             ),
           ),

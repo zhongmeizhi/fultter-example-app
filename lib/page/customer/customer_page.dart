@@ -99,14 +99,9 @@ Widget _accountWidget ({@required userInfo, @required logout}) {
   Widget _userInfoUnitWidget ({@required icon, @required name}) {
     return Expanded(
       flex: 1,
-      child: Row(
-        children: <Widget>[
-          Icon(icon, color: Color(0xFFdca671)),
-          Padding(
-            padding: EdgeInsets.only(left: ScreenUtil().setWidth(9)),
-            child: Text(name, style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(16))),
-          )
-        ],
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(name, style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(16))),
       )
     );
   }
@@ -136,51 +131,55 @@ Widget _accountWidget ({@required userInfo, @required logout}) {
         Stack(
           children: <Widget>[
             Positioned(
-              child: Image.asset('assets/images/nicaifu.jpg', width: ScreenUtil().setWidth(335)),
-            ),
-            Positioned(
-              left: ScreenUtil().setWidth(9),
-              bottom: ScreenUtil().setWidth(7),
               child: Container(
-                width: ScreenUtil().setWidth(317),
-                height: ScreenUtil().setWidth(32),
-                padding: EdgeInsets.only(left: ScreenUtil().setWidth(30)),
+                width: ScreenUtil().setWidth(335),
+                height: ScreenUtil().setWidth(123),
+                margin: EdgeInsets.all(ScreenUtil().setWidth(6)),
                 decoration: BoxDecoration(
-                  color: Color(0xffe65134),
-                  border: Border.all(color: Colors.transparent, width: 1.0),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(ScreenUtil().setWidth(12)),
-                    bottomRight: Radius.circular(ScreenUtil().setWidth(12))
-                  )
+                  border: Border.all(color: Colors.blue),
+                  borderRadius: BorderRadius.all(Radius.circular(12))
                 ),
-                child: Text(
-                  '在途：${userInfo["midway"]}元',
-                  style: TextStyle(
-                      color: Color(0xFFf7b6a9),
-                      fontSize: ScreenUtil().setSp(12),
-                      height: 1.5
-                    ),
-                  ),
-              )
+              ),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
               child: Column(
                 children: <Widget>[
                   Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(18), bottom: ScreenUtil().setWidth(20)),
-                    child: Text('总资产(元)', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
+                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(18), bottom: ScreenUtil().setWidth(10)),
+                    child: Text('总资产(元)')
                   ),
                   Container(
-                    width: double.infinity,
-                    child: Text(userInfo['money'], style: TextStyle(color: Color(0xFFf2b6ac), fontSize: ScreenUtil().setSp(34))),
+                    margin: EdgeInsets.only(bottom: ScreenUtil().setWidth(8)),
+                    child: Text(userInfo['money'], style: TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(16))),
                   ),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(6), bottom: ScreenUtil().setWidth(16)),
-                    child: Text('累计总收益(元) ${userInfo["profit"]}', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12))),
-                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: <Widget>[
+                            Text('累计收益'),
+                            Text('+${userInfo["profit"]}元', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: ScreenUtil().setWidth(1),
+                        height: ScreenUtil().setWidth(22),
+                        color: Color(0xFFc3c3c3),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: <Widget>[
+                            Text('在途'),
+                            Text('${userInfo["midway"]}元', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             )
@@ -190,8 +189,8 @@ Widget _accountWidget ({@required userInfo, @required logout}) {
           padding: EdgeInsets.only(top: ScreenUtil().setWidth(10)),
           child: Row(
             children: <Widget>[
-              _userInfoUnitWidget(icon: Icons.view_compact, name: '卡券中心'),
-              _userInfoUnitWidget(icon: Icons.pages, name: '会员中心')
+              _userInfoUnitWidget(icon: Icons.view_compact, name: '取现'),
+              _userInfoUnitWidget(icon: Icons.pages, name: '充值')
             ],
           )
         )
@@ -208,23 +207,23 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
     return GestureDetector(
       child: Stack(
         children: <Widget>[
-          Image.asset('assets/images/red_envelope.jpg', width: ScreenUtil().setWidth(360)),
+          Image.asset('assets/images/red_envelope.jpg', width: ScreenUtil().setWidth(360), height: ScreenUtil().setWidth(160), fit: BoxFit.fill,),
           Align(
             alignment: Alignment.center,
             child: Column(
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: ScreenUtil().setWidth(20)),
-                  child: Text('金服旗下互联网金融平台', style: TextStyle(color: Color(0xfef3ca80), fontSize: ScreenUtil().setSp(12)))
+                  child: Text('互联网金融平台', style: TextStyle(color: Color(0xfef3ca80), fontSize: ScreenUtil().setSp(12)))
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: ScreenUtil().setWidth(40)),
                   child: FlatButton(
-                    disabledTextColor: Color(0xff704C18),
-                    disabledColor: Color(0xfff5e3b2),
+                    disabledTextColor: Colors.blue,
+                    disabledColor: Colors.blue,
                     padding:EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(38), vertical: ScreenUtil().setWidth(5)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ScreenUtil().setWidth(22))),
-                    child: Text("注册领500元红包", style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.bold)),
+                    child: Text("注册领红包", style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.bold, color: Colors.white)),
                     onPressed: null
                   )
                 ),
@@ -271,26 +270,17 @@ Widget _shoppingListWidget () {
 
   return Column(
     children: <Widget>[
-      Container(
-        width: ScreenUtil().setWidth(350),
-        padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(12)),
-        child: Stack(
-          children: <Widget>[
-            Text('我的账户', style: TextStyle(fontSize: ScreenUtil().setSp(16))),
-            Positioned(
-              right: ScreenUtil().setWidth(12),
-              child: Text('提现', style: TextStyle(color: Color(0xFF8B8B8B), fontSize: ScreenUtil().setSp(12))),
-            )
-          ],
-        ),
-      ),
       Wrap(
         alignment: WrapAlignment.start,
         children: <Widget>[
-          _shoppingUnitWidget(title: '货基', subtitle: '货基享受4.72%收益'),
-          _shoppingUnitWidget(title: '随心宝', subtitle: '省心投资 灵活转让'),
-          _shoppingUnitWidget(title: '安心计划', subtitle: '期限灵活 提前可转'),
-          _shoppingUnitWidget(title: '智投宝', subtitle: '自动投标 智能匹配'),
+          _shoppingUnitWidget(title: '零钱理财', subtitle: '53412.21元'),
+          _shoppingUnitWidget(title: '期限理财', subtitle: '346342.21元'),
+          _shoppingUnitWidget(title: '网贷', subtitle: '233523.21元'),
+          _shoppingUnitWidget(title: '基金', subtitle: '5476.21元'),
+          _shoppingUnitWidget(title: '养老', subtitle: '949764.21元'),
+          _shoppingUnitWidget(title: '银行精选', subtitle: '23416.21元'),
+          _shoppingUnitWidget(title: '私募', subtitle: '756423.21元'),
+          _shoppingUnitWidget(title: '资产管理', subtitle: '645212.21元'),
         ],
       )
     ],

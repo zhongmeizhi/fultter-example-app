@@ -11,7 +11,7 @@ class FundState extends State<FundSelectionPage> {
 
     return FlatButton(
       child: Text('进入 -> 百度搜索', style: TextStyle(fontSize: 22.0),),
-      textColor: Colors.deepOrange,
+      textColor: Colors.blue,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       onPressed: () {
         Navigator.pushNamed(context, '/baidu');
