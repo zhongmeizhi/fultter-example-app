@@ -8,11 +8,28 @@
 
 没错。用了Flutter就停不下来了。
 
-***
-
 > Example尽量多些常用的交互，少写些静态页面。
 
-### 效果图：
+## 订阅点watch，喜欢点Star，尽量别 Fork。
+
+***
+
+### 项目介绍
+
+* 项目采用`IndexedStack`作为大框架，同时配置动态加载和缓存。
+* 请求封装在`/lib/api/my_xhr.dart`，后台服务放置于`/back-end`目录，使用NodeJS搭建（单纯读JSON返回）
+* 屏幕适配使用了李卓原的适配方案，源码放置于`/lib/unit/screen_util_source.dart`
+* 登陆使用`SharedPreferences`(类似`LocalStorage`)实现长期登陆。
+* 轮播图使用`SingleTickerProviderStateMixin`的`Control`+`PageView`+`TabPageSelector`+`Timer`实现
+* 动态路由封装在`/lib/unit/route_animation.dart`
+* EventBus使用FlutterChina的方式
+* WebView使用`flutter_webview_plugin`实现
+* 财富页仿蚂蚁财富定期理财，利用`TabBar`+`TabBarView`实现，同时使用`AutomaticKeepAliveClientMixin`重写`wantKeepAlive`
+* 银行精选使用for循环组装成页面的方式实现渲染
+* 登录页仿陆金所登陆，主要使用`Wrap`实现
+* 新闻页仿微信朋友圈，使用`CustomScrollView`+`SliverGrid`实现
+
+### 效果图
 
  | ![首页](preview/home_page.png)    | ![银行理财页](preview/bank_section.png) | ![webview](preview/webview.png) |
 | ---------------------------------------- | --------------------------------- | --------------------------------------- |
@@ -20,8 +37,8 @@
 
 ### 动态图（录制+压缩过程导致图片失真，请见谅）
 
-| ![欢迎图](preview/welcome.gif)   | ![登录动态图](preview/login.gif) |
-| ---------------------------------------- | ---------------------------------------- |
+| ![欢迎图](preview/welcome.gif)   | ![登录动态图](preview/news.gif) | ![登录动态图](preview/login.gif) |
+| ---------------------------------------- | ---------------------------------------- | --------------------------- |
 
 
 ### 项目计划
