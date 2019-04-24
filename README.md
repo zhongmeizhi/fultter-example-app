@@ -10,22 +10,24 @@
 
 > Example尽量多些常用的交互，少写些静态页面。
 
-## 订阅点watch，喜欢点Star，尽量别 Fork。
+## 喜欢请Star，尽量别 Fork。
 
 ***
 
 ### 项目介绍
 
-* 项目采用`IndexedStack`作为大框架，同时配置动态加载和缓存。
-* 请求封装在`/lib/api/my_xhr.dart`，后台服务放置于`/back-end`目录，使用NodeJS搭建（单纯读JSON返回）
+* 项目主要部分都有注释
+* 采用`IndexedStack`作为大框架，设置：按需加载和缓存。
+* 请求封装在`/lib/api/my_xhr.dart`
+* 后台服务放置于`/back-end`目录，使用NodeJS搭建（单纯读JSON返回）
 * 屏幕适配使用了李卓原的适配方案，源码放置于`/lib/unit/screen_util_source.dart`
 * 登陆使用`SharedPreferences`(类似`LocalStorage`)实现长期登陆。
 * 轮播图使用`SingleTickerProviderStateMixin`的`Control`+`PageView`+`TabPageSelector`+`Timer`实现
 * 动态路由封装在`/lib/unit/route_animation.dart`
 * EventBus使用FlutterChina的方式
-* WebView使用`flutter_webview_plugin`实现
 * 财富页仿蚂蚁财富定期理财，利用`TabBar`+`TabBarView`实现，同时使用`AutomaticKeepAliveClientMixin`重写`wantKeepAlive`
-* 银行精选使用for循环组装成页面的方式实现渲染
+* 银行精选使用for循环各种拼装的方式实现渲染
+* WebView使用`flutter_webview_plugin`实现
 * 登录页仿陆金所登陆，主要使用`Wrap`实现
 * 新闻页仿微信朋友圈，使用`CustomScrollView`+`SliverGrid`实现
 
@@ -60,5 +62,4 @@
 * [ ] RxDart
 
 ### 外链:
-- [flutter官网](https://flutter.io/docs/get-started/codelab)
-- [API文档](https://flutter.io/docs/cookbook)
+- [API文档](https://flutter.io/docs/get-started/codelab)
