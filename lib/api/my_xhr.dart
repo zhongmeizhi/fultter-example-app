@@ -27,6 +27,7 @@ class MyXhr {
     var request = await httpClient.getUrl(Uri.parse(_baseUrl + url));
     var response = await request.close();
     if (response.statusCode == 200) {
+      // 序列化 response
       responseBody = await response.transform(utf8.decoder).join();
       responseBody = json.decode(responseBody);
     } else {

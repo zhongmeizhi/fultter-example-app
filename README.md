@@ -16,32 +16,65 @@
 
 ### 项目介绍
 
-* 项目主要部分都有注释
-* 采用`IndexedStack`作为大框架，设置：按需加载和缓存。
-* 请求封装在`/lib/api/my_xhr.dart`
+项目主要部分都有注释
+
+> 开屏图使用`pushReplacementNamed`+`AnimationController`+`Timer`实现
+
+![开屏](/preview/welcome.gif)
+
+> 采用`IndexedStack`作为大框架，设置：按需加载和缓存。
+
+![主架构](/preview/bottom_tab.gif)
+
+
+> 登陆使用`SharedPreferences`(类似`LocalStorage`)实现长期登陆。
+
+![登陆](/preview/login.gif)
+
+
+> 轮播图使用`SingleTickerProviderStateMixin`的`Control`+`PageView`+`TabPageSelector`+`Timer`实现
+
+![轮播图](/preview/carousel.gif)
+
+
+> 新闻页使用`CustomScrollView`实现
+
+![webview](/preview/custom_scroll.gif)
+
+
+> 财富页仿蚂蚁财富定期理财，利用`TabBar`+`TabBarView`实现，同时使用`AutomaticKeepAliveClientMixin`重写`wantKeepAlive`
+
+![财富页](/preview/top_bar.gif)
+
+
+> WebView使用`flutter_webview_plugin`实现
+
+![webview](/preview/webview.gif)
+
+
+> 请求封装在`/lib/api/my_xhr.dart`
+
+```
+    _baseUrl ??= '';
+    var responseBody;
+    var httpClient = new HttpClient();
+    var request = await httpClient.getUrl(Uri.parse(_baseUrl + url));
+    var response = await request.close();
+    if (response.statusCode == 200) {
+      // 序列化 response
+      responseBody = await response.transform(utf8.decoder).join();
+      responseBody = json.decode(responseBody);
+    } else {
+      print("error");
+    }
+    return responseBody['data'];
+```
+
 * 后台服务放置于`/back-end`目录，使用NodeJS搭建（单纯读JSON返回）
+* 银行精选使用for循环各种拼装的方式实现渲染
 * 屏幕适配使用了李卓原的适配方案，源码放置于`/lib/unit/screen_util_source.dart`
-* 登陆使用`SharedPreferences`(类似`LocalStorage`)实现长期登陆。
-* 轮播图使用`SingleTickerProviderStateMixin`的`Control`+`PageView`+`TabPageSelector`+`Timer`实现
 * 动态路由封装在`/lib/unit/route_animation.dart`
 * EventBus使用FlutterChina的方式
-* 财富页仿蚂蚁财富定期理财，利用`TabBar`+`TabBarView`实现，同时使用`AutomaticKeepAliveClientMixin`重写`wantKeepAlive`
-* 银行精选使用for循环各种拼装的方式实现渲染
-* WebView使用`flutter_webview_plugin`实现
-* 登录页仿陆金所登陆，主要使用`Wrap`实现
-* 新闻页仿微信朋友圈，使用`CustomScrollView`+`SliverGrid`实现
-
-### 效果图
-
- | ![首页](preview/home_page.png)    | ![银行理财页](preview/bank_section.png) | ![webview](preview/webview.png) |
-| ---------------------------------------- | --------------------------------- | --------------------------------------- |
-| ![用户信息页](preview/customer_page.png) | ![登录页](preview/login_page.png) | ![用户页](preview/account_page.png) | 
-
-### 动态图（录制+压缩过程导致图片失真，请见谅）
-
-| ![欢迎图](preview/welcome.gif)   | ![登录动态图](preview/news.gif) | ![登录动态图](preview/login.gif) |
-| ---------------------------------------- | ---------------------------------------- | --------------------------- |
-
 
 ### 项目计划
 * [x] 静态页面
