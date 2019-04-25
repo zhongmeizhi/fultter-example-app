@@ -18,6 +18,10 @@
 
 项目主要部分都有注释
 
+> 更改 项目名称和图片
+
+![app](/preview/app.png)
+
 > 开屏图使用`pushReplacementNamed`+`AnimationController`+`Timer`实现
 
 ![开屏](/preview/welcome.gif)
