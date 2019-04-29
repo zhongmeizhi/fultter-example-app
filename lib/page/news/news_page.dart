@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsPage extends StatefulWidget {
   @override
@@ -12,6 +12,10 @@ class _NewsState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text('Z.新闻'),
+      //   centerTitle: true, // appBar文字居中
+      // ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

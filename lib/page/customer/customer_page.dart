@@ -78,6 +78,12 @@ class _CustomerPageState extends State<CustomerPage> {
       backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         title: Text('Z.我的'),
+        centerTitle: true, // appBar文字居中
+      ),
+      endDrawer: Drawer(
+        child: Container(
+          child: Icon(Icons.ac_unit),
+        ),
       ),
       body: ListView(
         children: <Widget>[

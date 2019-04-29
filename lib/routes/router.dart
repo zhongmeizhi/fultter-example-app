@@ -13,6 +13,7 @@ class Router {
         url: "http://www.baidu.com/",
         appBar: new AppBar(
           title: new Text("百度webview"),
+          centerTitle: true, // appBar文字居中
         ),
       ),
     };

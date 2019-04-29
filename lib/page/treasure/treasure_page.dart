@@ -77,6 +77,7 @@ class _TreasurePageState extends State<TreasurePage>
           }).toList(),
           onTap: _pickTab,
         ),
+        centerTitle: true, // appBar文字居中
       ),
       body: new TabBarView(
         key: new Key('treasure_page'),

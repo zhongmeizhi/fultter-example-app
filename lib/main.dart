@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false, // 不显示Debug图标
       routes:Router.routes , //注册路由表
       home: new SplashScreen(),
     );
