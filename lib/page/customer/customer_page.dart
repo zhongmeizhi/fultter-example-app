@@ -18,6 +18,7 @@ class _CustomerPageState extends State<CustomerPage> {
 
   bool _isLogin = false;
   Map _userInfo;
+  List _expandIndex = [false, false];
 
   // 获取用户数据
   Future _getUserInfo (phone) async {
@@ -74,6 +75,17 @@ class _CustomerPageState extends State<CustomerPage> {
   
   @override
   Widget build(BuildContext context) {
+
+    List _account = [
+      {
+        'name': '一账通账户',
+        'text': '未登录',
+      }, {
+        'name': '万里通账户',
+        'text': '未登录',
+      }
+    ];
+
     return Scaffold(
       backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
@@ -81,8 +93,33 @@ class _CustomerPageState extends State<CustomerPage> {
         centerTitle: true, // appBar文字居中
       ),
       endDrawer: Drawer(
-        child: Container(
-          child: Icon(Icons.ac_unit),
+        child: Column(
+          children: <Widget>[
+            DrawerHeader(
+              child: Image.asset('assets/images/logo.jpg'),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 22),
+              child: ExpansionPanelList(
+                expansionCallback: (int panelIndex, bool isExpanded) {
+                  setState(() {
+                    _expandIndex[panelIndex] = !isExpanded;
+                  });
+                },
+                children: _account.map((val) {
+                  return ExpansionPanel(
+                    isExpanded: _expandIndex[0],
+                    headerBuilder: (BuildContext context, bool isExpanded){
+                      return Text(val['name']);
+                    },
+                    body: Container(
+                      child: Text(val['text']),
+                    )
+                  );
+                }).toList()
+              )
+            )
+          ],
         ),
       ),
       body: ListView(

@@ -14,71 +14,11 @@
 
 ***
 
-### 项目介绍
-
-项目主要部分都有注释
-
-> 更改 项目名称和图片
-
-![app](/preview/app.png)
-
-> 开屏图使用`pushReplacementNamed`+`AnimationController`+`Timer`实现
-
-![开屏](/preview/welcome.gif)
-
-> 采用`IndexedStack`作为大框架，设置：按需加载和缓存。
-
-![主架构](/preview/bottom_tab.gif)
-
-
-> 登陆使用`SharedPreferences`(类似`LocalStorage`)实现长期登陆。
-
-![登陆](/preview/login.gif)
-
-
-> 轮播图使用`SingleTickerProviderStateMixin`的`Control`+`PageView`+`TabPageSelector`+`Timer`实现
-
-![轮播图](/preview/carousel.gif)
-
-
-> 新闻页使用`CustomScrollView`实现
-
-![webview](/preview/custom_scroll.gif)
-
-
-> 财富页仿蚂蚁财富定期理财，利用`TabBar`+`TabBarView`实现，同时使用`AutomaticKeepAliveClientMixin`重写`wantKeepAlive`
-
-![财富页](/preview/top_bar.gif)
-
-
-> WebView使用`flutter_webview_plugin`实现
-
-![webview](/preview/webview.gif)
-
-
-> 请求封装在`/lib/api/my_xhr.dart`
-
-```
-    _baseUrl ??= '';
-    var responseBody;
-    var httpClient = new HttpClient();
-    var request = await httpClient.getUrl(Uri.parse(_baseUrl + url));
-    var response = await request.close();
-    if (response.statusCode == 200) {
-      // 序列化 response
-      responseBody = await response.transform(utf8.decoder).join();
-      responseBody = json.decode(responseBody);
-    } else {
-      print("error");
-    }
-    return responseBody['data'];
-```
-
-* 后台服务放置于`/back-end`目录，使用NodeJS搭建（单纯读JSON返回）
-* 银行精选使用for循环各种拼装的方式实现渲染
-* 屏幕适配使用了李卓原的适配方案，源码放置于`/lib/unit/screen_util_source.dart`
-* 动态路由封装在`/lib/unit/route_animation.dart`
-* EventBus使用FlutterChina的方式
+### 项目预览
+|![0](/preview/0.png)|![1](/preview/1.png)|![2](/preview/2.png)|
+|---|---|---|
+|![3](/preview/3.png)|![4](/preview/4.png)|![5](/preview/5.png)|
+|![6](/preview/6.png)|![7](/preview/7.png)|![8](/preview/8.png)|
 
 ### 项目计划
 * [x] 静态页面
