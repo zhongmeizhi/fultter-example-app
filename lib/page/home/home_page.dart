@@ -23,6 +23,18 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // 下拉刷新方法
+  Future<Null> _handleRefresh() async {
+    await Future.delayed(Duration(seconds: 1), () { //Future.delayed（）方法可以选择延迟处理任务
+      setState(() {
+        print('开始刷新数据');
+        getChoice();
+        // onrefresh要返回future； child：必须为scrollable
+        return null;
+      });
+    });
+  }
+
   @override
   void initState() {
     getChoice();
@@ -45,17 +57,21 @@ class _HomePageState extends State<HomePage> {
         'desc': '每邀1人奖80元'
       }
     ];
+    
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: <Widget>[
-          _bannerWidget(),
-          _displayDataWidget(), 
-          _activityAdWidget(activityList: _activityList, context: context),
-          _subscribedWidget(context: context),
-          _choicenessWidget(choiceList: _choiceList, context: context)
-        ],
+      body: RefreshIndicator( // 下拉刷新
+        onRefresh: _handleRefresh,
+        child: ListView(
+          children: <Widget>[
+            _bannerWidget(),
+            _displayDataWidget(), 
+            _activityAdWidget(activityList: _activityList, context: context),
+            _subscribedWidget(context: context),
+            _choicenessWidget(choiceList: _choiceList, context: context)
+          ],
+        )
       )
     );
   }

@@ -34,6 +34,7 @@
 * [x] 缓存组件
 * [x] 页面 keepa-live
 * [x] 解决页面切换重绘问题
+* [x] 首页 下拉刷新
 * [ ] Redux
 * [ ] node架构完善
 * [ ] RxDart

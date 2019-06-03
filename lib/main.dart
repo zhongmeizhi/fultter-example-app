@@ -54,7 +54,7 @@ class _MainPageState extends State<MainPage> {
   // 初始化 请求的baseURL
   void _setBaseUrl () {
     MyXhr myXhr = new MyXhr();
-    myXhr.$option(baseUrl: 'http://10.93.157.10:2333');
+    myXhr.$option(baseUrl: 'http://10.93.157.7:2333');
   }
 
   // bottomNavigationBar 点击事件
