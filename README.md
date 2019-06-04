@@ -35,9 +35,20 @@
 * [x] 页面 keepa-live
 * [x] 解决页面切换重绘问题
 * [x] 首页 下拉刷新
+* [x] App 升级方案
+* [ ] RxDart
 * [ ] Redux
 * [ ] node架构完善
-* [ ] RxDart
+
+<details>
+    <summary>summary</summary>
+.
+
+> 巴拉巴拉
+
+.
+
+</details>
 
 ### 外链:
 - [API文档](https://flutter.io/docs/get-started/codelab)

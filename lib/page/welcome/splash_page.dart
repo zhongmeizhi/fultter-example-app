@@ -38,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.dispose();
   }
 
+  // 开屏广告结束，跳转到首页
   void _goMain() {
     Navigator.pushReplacementNamed(context, '/main_page');
   }
