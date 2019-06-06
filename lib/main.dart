@@ -9,10 +9,9 @@ import 'package:flutter_app/page/news/news_page.dart';
 import 'package:flutter_app/api/my_xhr.dart';
 // 路由
 import 'package:flutter_app/routes/router.dart';
-// App升级
-import 'package:flutter_downloader/flutter_downloader.dart';
-// 使用 MethodChannel
-import 'package:flutter/services.dart';
+// 更新App操作
+import 'package:flutter_app/unit/update_app.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -40,17 +39,15 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-// 可以 with
-// AutomaticKeepAliveClientMixin
-// 然后重写 wantKeepAlive
-// @override
-// bool get wantKeepAlive => true;
-// 但是：
-// body中并没有使用PageView或TabBarView
-// wantKeepAlive会无效果
+// 可以 with AutomaticKeepAliveClientMixin
+// 然后重写 bool get wantKeepAlive => true
+// 但是：body中并没有使用PageView或TabBarView 会使 wantKeepAlive无效果
 class _MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
+
+  // 并不是 GlobalKey 类型
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
   List _indexedStackCache = <int>[0];
@@ -77,12 +74,6 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  // 检查版本是否过低
-  bool isVersionLower (String version) {
-    // List _versionUtilList = version.split('.');
-    return true;
-  }
-
   // 获取安装地址
   Future<Map> getApkLocalInfo() async {
     // 不发请求了。直接硬编码
@@ -93,59 +84,62 @@ class _MainPageState extends State<MainPage> {
     return directory;
   }
 
-  // 下载
-  Future<void> executeDownload(_appPath) async {
-    //下载
-    final taskId = await FlutterDownloader.enqueue(
-        url: _appPath + '/app-release.apk',
-        savedDir: _appPath,
-        showNotification: true,
-        openFileFromNotification: true);
-    FlutterDownloader.registerCallback((id, status, progress) {
-      // 当下载完成时，调用安装
-      if (taskId == id && status == DownloadTaskStatus.complete) {
-        installApk(_appPath);
-      }
-    });
-  }
-
-  // 安装
-  Future<Null> installApk(_appPath) async {
-    // 本地资源访问
-    // flutter_app为项目名
-    const platform = const MethodChannel('flutter_app');
-    try {
-      // 调用app地址
-      await platform.invokeMethod('install', {'path': _appPath + '/app-release.apk'});
-    } on PlatformException catch (_) {}
-  }
 
   @override
   void initState() {
     super.initState();
-    
     // 设置基础URL信息
     _setBaseUrl();
 
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    UpdateApp _updateApp = new UpdateApp();
     // 可以在第一次打开APP时执行"版本更新"的网络请求
     getApkLocalInfo().then((directory) {
       String _version = directory['version'];
       // 比较服务器的版本号跟当前的版本号，来判断要不要升级APP应用程序
-      if (isVersionLower(_version)) {
+      if (_updateApp.checkVersionLowerOf(_version)) {
         String _appPath = directory['url'];
 
-        // T O D O 应该是弹出dalog询问是否升级
-        // 下载新版本
-        executeDownload(_appPath);
+        // 应该是弹出dalog询问是否升级
+        // T O D O 为什么不能调用 showDialog呢。。。
+        _scaffoldKey.currentState.showBottomSheet((content) {
+          return AlertDialog(
+            title: Text('提示'),
+            content: Text('有优化更新，赶紧体验一下吧。'),
+            actions: [
+              RaisedButton(
+                textColor: Colors.white,
+                child: Text('取消'),
+                onPressed: () {
+                  Navigator.maybePop(context);
+                },
+              ),
+              RaisedButton(
+                textColor: Colors.white,
+                child: Text('确定'),
+                onPressed: () {
+                  // 下载 并 安装新版本
+                  _updateApp.executeDownload(_appPath);
+                  Navigator.maybePop(context);
+                },
+              )
+            ]
+          );
+        });
       }
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+      key: _scaffoldKey,
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
         type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type，可能是BUG
         items: <BottomNavigationBarItem>[

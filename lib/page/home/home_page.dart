@@ -111,13 +111,11 @@ Widget _displayDataWidget () {
             ),
             Padding(
               padding: EdgeInsets.only(right: ScreenUtil().setWidth(13)),
-              child: Text(
-                '理财成交单',
+              child: Text('理财成交单',
                 style: TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF333333), fontSize: ScreenUtil().setSp(14), height: 0.85),
               ), 
             ),
-            Text(
-              '昨日成交163人，今日已成交57人',
+            Text('昨日成交163人，今日已成交57人',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(color: Color(0xFF5ca0fd), fontSize: ScreenUtil().setSp(11)),
             ),

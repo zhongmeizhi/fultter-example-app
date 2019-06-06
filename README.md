@@ -36,6 +36,7 @@
 * [x] 解决页面切换重绘问题
 * [x] 首页 下拉刷新
 * [x] App 升级方案
+* [x] Overlay 悬浮控件
 * [ ] RxDart
 * [ ] Redux
 * [ ] node架构完善

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/toast.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsPage extends StatefulWidget {
@@ -86,6 +87,9 @@ class _NewsState extends State<NewsPage> {
                   leading: Icon(Icons.equalizer),
                   title: Text('...' + product.toString()),
                   subtitle: Text('啦啦啦'),
+                  onTap: () {
+                    Toast.show(context, '点击：' + product.toString());
+                  },
                 );
               }).toList(),
             ),
@@ -94,4 +98,5 @@ class _NewsState extends State<NewsPage> {
       ),
     );
   }
+  
 }
