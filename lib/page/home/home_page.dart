@@ -12,7 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  ScrollController _scrollController = ScrollController();
   List _choiceList = [];
+    
 
   void getChoice() async {
     List data = await MyXhr.$get('/choice-list');
@@ -35,10 +37,33 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // 下拉加载
+  void addListenerBottomUpdate() {
+    _scrollController.addListener(() {
+      // 判断是否到了最底部
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        setState(() {
+          // 加载数据
+          _choiceList.addAll(List.generate(2, (idx) {
+            return {
+                "id": "c",
+                "rate": "3.45%",
+                "pro": "下拉加载",
+                "rateTime": "业绩基准(年化)",
+                "desc": "中低风险",
+                "limitDesc": "锁定期"
+            };
+          }).toList());
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
-    getChoice();
     super.initState();
+    getChoice();
+    addListenerBottomUpdate();
   }
 
   @override
@@ -57,13 +82,13 @@ class _HomePageState extends State<HomePage> {
         'desc': '每邀1人奖80元'
       }
     ];
-    
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: RefreshIndicator( // 下拉刷新
         onRefresh: _handleRefresh,
         child: ListView(
+          controller: _scrollController,
           children: <Widget>[
             _bannerWidget(),
             _displayDataWidget(), 

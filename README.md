@@ -24,6 +24,7 @@
 * [x] 静态页面
 * [x] ScreenUtil 屏幕适配
 * [x] 路由 + 回调 + 动画
+* [x] 自定义App桌面 图标 + 名称
 * [x] 封装无限轮播图
 * [x] EvnetBus
 * [x] 封装httpClient请求
@@ -35,8 +36,10 @@
 * [x] 页面 keepa-live
 * [x] 解决页面切换重绘问题
 * [x] 首页 下拉刷新
+* [x] 首页 上拉加载
+* [x] 搜索功能
 * [x] App 升级方案
-* [x] Overlay 悬浮控件
+* [x] 自定义 Overlay 悬浮控件
 * [ ] RxDart
 * [ ] Redux
 * [ ] node架构完善

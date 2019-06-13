@@ -96,6 +96,9 @@ class _TreasurePageState extends State<TreasurePage>
             case 't2':
               return FundSelectionPage();
             break;
+            // case 't3':
+            //   return FundSelectionPage();
+            // break;
             default:
               return Center(
                 child: Text('这里是 -> ' + tab['label']),

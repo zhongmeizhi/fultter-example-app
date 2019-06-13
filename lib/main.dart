@@ -145,7 +145,7 @@ class _MainPageState extends State<MainPage> {
         items: <BottomNavigationBarItem>[
           new BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
           new BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
-          new BottomNavigationBarItem(icon: Icon(Icons.book), title: Text('新闻')),
+          new BottomNavigationBarItem(icon: Icon(Icons.book), title: Text('资讯')),
           new BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
         ],
         currentIndex: _selectedIndex,
