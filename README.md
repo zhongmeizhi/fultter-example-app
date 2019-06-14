@@ -19,7 +19,7 @@
 |---|---|---|
 |![3](/preview/3.png)|![4](/preview/4.png)|![5](/preview/5.png)|
 |![6](/preview/6.png)|![7](/preview/7.png)|![8](/preview/8.png)|
-
+|![9](/preview/9.png)|![search](/preview/search.gif)|![update](/preview/update.gif)|
 ### 项目计划
 * [x] 静态页面
 * [x] ScreenUtil 屏幕适配
