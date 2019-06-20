@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MySearch extends SearchDelegate {
 
@@ -34,29 +35,51 @@ class MySearch extends SearchDelegate {
     if (this.query == '') {
       return Container();
     } else {
-      List _data = List.generate(12, (idx) => idx);
+      List _data = List.generate(10, (idx) => idx);
       // 搜索结果
-      return GridView.builder(
-        itemCount: _data.length,
-        //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //横轴元素个数
-          crossAxisCount: 2,
-          //纵轴间距
-          mainAxisSpacing: 20.0,
-          //横轴间距
-          crossAxisSpacing: 10.0,
-          //子组件宽高长度比例
-          childAspectRatio: 1.0
-        ),
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          color: Colors.cyan.withAlpha(55),
-          child: Center(
-            child: Text('${this.query}的搜索结果 ${index.toString()}'),
-          )
-        );
-      });
+      return Container(
+        margin: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(12), horizontal: ScreenUtil().setWidth(6)),
+        child: GridView.builder(
+          itemCount: _data.length,
+          //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //横轴元素个数
+            crossAxisCount: 2,
+            //纵轴间距
+            mainAxisSpacing: 10.0,
+            //横轴间距
+            crossAxisSpacing: 10.0,
+            //子组件宽高长度比例
+            childAspectRatio: 1.0
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.pink.withAlpha(55)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: ScreenUtil().setWidth(60),
+                      backgroundImage: AssetImage('assets/images/One-Piece/${index.toString()}.jpg'),
+                      // child: Image.asset('assets/images/One-Piece/${index.toString()}.jpg'),
+                    )
+                  ),
+                  Positioned(
+                    child: Container(
+                      alignment: Alignment.topCenter,
+                      child: Text(this.query, style: TextStyle(fontSize: ScreenUtil().setSp(16)),),
+                    ),
+                  )
+                ],
+              )
+            );
+          }
+        )
+      );
     }
   }
 
