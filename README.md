@@ -12,8 +12,8 @@
 
 数据后台启动：
 1. cd到项目`back-end`目录下
-2. 控制台运行`npm run dev`
-3. 控制台运行`npm i`
+2. 控制台运行`npm i`
+3. 控制台运行`node server.js`
 4. 启动数据服务成功
 
 ## 喜欢请Star，尽量别 Fork。
