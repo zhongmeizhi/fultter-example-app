@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 // page
-import 'package:flutter_app/main.dart';
+import 'package:flutter_app/page/main_page.dart';
 import 'package:flutter_app/page/login/login_page.dart';
 
 class Router {

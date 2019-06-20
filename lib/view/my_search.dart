@@ -6,8 +6,11 @@ class MySearch extends SearchDelegate {
 
   MySearch(this._searchValue);
 
+
   @override
   List<Widget> buildActions(BuildContext context) {
+    print(_searchValue);
+    
     return [
       RawMaterialButton(
         constraints: BoxConstraints(minWidth: 50.0, minHeight: 36.0),

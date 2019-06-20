@@ -10,10 +10,19 @@ class UpdateApp {
     // List _versionUtilList = version.split('.');
     return true;
   }
+
+  // 获取安装地址
+  Future<Map> getApkLocalInfo() async {
+    // 不发请求了。直接硬编码
+    final directory = {
+      'version': '1.0.1',
+      'url': 'xxx'
+    };
+    return directory;
+  }
   
-  // 安装
+  //下载
   Future<void> executeDownload(_appPath) async {
-    //下载
     final taskId = await FlutterDownloader.enqueue(
         url: _appPath + '/app-release.apk',
         savedDir: _appPath,

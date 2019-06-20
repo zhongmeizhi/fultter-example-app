@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:flutter_app/main.dart';
+import 'package:flutter_app/page/main_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

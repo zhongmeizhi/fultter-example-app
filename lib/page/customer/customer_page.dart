@@ -6,6 +6,9 @@ import 'package:flutter_app/api/my_xhr.dart'; // 请求
 import 'package:flutter_app/unit/route_animation.dart'; // 路由动画
 // 页面
 import 'package:flutter_app/page/login/login_page.dart';
+// View
+import 'package:flutter_app/view/user-info/shop_list.dart';
+import 'package:flutter_app/view/user-info/user_assert.dart';
 
 class CustomerPage extends StatefulWidget {
   @override
@@ -86,6 +89,26 @@ class _CustomerPageState extends State<CustomerPage> {
       }
     ];
 
+    List<Widget> dispenseWidget() {
+      if (_isLogin) {
+        return [
+          UserAssertWidget(userInfo: _userInfo, logout: _logout) ,
+          _brWidget(), // 灰色间隔
+          ShopListWidget(),
+          _brWidget(), // 灰色间隔
+          _contactWidget(),
+          _brWidget(), // 灰色间隔
+        ];
+      } else {
+        return  [
+          _registeredWidget(context: context, loginAccount: _loginAccount),
+          _brWidget(), // 灰色间隔
+          _contactWidget(),
+          _brWidget(), // 灰色间隔
+        ];
+      }
+    }
+
     return Scaffold(
       backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
@@ -123,123 +146,10 @@ class _CustomerPageState extends State<CustomerPage> {
         ),
       ),
       body: ListView(
-        children: <Widget>[
-          _isLogin ? _accountWidget(userInfo: _userInfo, logout: _logout) : _registeredWidget(context: context, loginAccount: _loginAccount),
-          _brWidget(),
-          _shoppingListWidget(),
-          _brWidget(),
-          _contactWidget(),
-          _brWidget()
-        ],
+        children: dispenseWidget(),
       ),
     );
   }
-}
-
-// 用户模块
-Widget _accountWidget ({@required userInfo, @required logout}) {
-
-  Widget _userInfoUnitWidget ({@required icon, @required name}) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        alignment: Alignment.center,
-        child: Text(name, style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(16))),
-      )
-    );
-  }
-
-  return Container(
-    padding: EdgeInsets.symmetric(
-      horizontal:  ScreenUtil().setWidth(20),
-      vertical: ScreenUtil().setWidth(12)
-    ),
-    child: Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Text(userInfo['name'], style: TextStyle(fontSize: ScreenUtil().setSp(16), color: Color(0xFF333333))),
-            ),
-            GestureDetector(
-              child: Icon(
-                Icons.settings,
-                color: Color(0xFF333333),
-              ),
-              onTap: logout
-            )
-          ],
-        ),
-        Stack(
-          children: <Widget>[
-            Positioned(
-              child: Container(
-                width: ScreenUtil().setWidth(335),
-                height: ScreenUtil().setWidth(123),
-                margin: EdgeInsets.all(ScreenUtil().setWidth(6)),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                  borderRadius: BorderRadius.all(Radius.circular(12))
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(top: ScreenUtil().setWidth(18), bottom: ScreenUtil().setWidth(10)),
-                    child: Text('总资产(元)')
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: ScreenUtil().setWidth(8)),
-                    child: Text(userInfo['money'], style: TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(16))),
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: <Widget>[
-                            Text('累计收益'),
-                            Text('+${userInfo["profit"]}元', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: ScreenUtil().setWidth(1),
-                        height: ScreenUtil().setWidth(22),
-                        color: Color(0xFFc3c3c3),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: <Widget>[
-                            Text('在途'),
-                            Text('${userInfo["midway"]}元', style: TextStyle(color: Color(0xFFf7b6a9), fontSize: ScreenUtil().setSp(12)))
-                          ],
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: ScreenUtil().setWidth(10)),
-          child: Row(
-            children: <Widget>[
-              _userInfoUnitWidget(icon: Icons.view_compact, name: '取现'),
-              _userInfoUnitWidget(icon: Icons.pages, name: '充值')
-            ],
-          )
-        )
-      ],
-    ),
-  );
 }
 
 // 用户未登录模块
@@ -298,37 +208,6 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
   );
 }
 
-// 用户产品清单
-Widget _shoppingListWidget () {
-
-  Widget _shoppingUnitWidget ({@required title, @required subtitle}) {
-    return Container(
-      width: ScreenUtil().setWidth(174),
-      child: ListTile(
-        title: Text(title),
-        subtitle: Text(subtitle),
-      ),
-    );
-  }
-
-  return Column(
-    children: <Widget>[
-      Wrap(
-        alignment: WrapAlignment.start,
-        children: <Widget>[
-          _shoppingUnitWidget(title: '零钱理财', subtitle: '53412.21元'),
-          _shoppingUnitWidget(title: '期限理财', subtitle: '346342.21元'),
-          _shoppingUnitWidget(title: '网贷', subtitle: '233523.21元'),
-          _shoppingUnitWidget(title: '基金', subtitle: '5476.21元'),
-          _shoppingUnitWidget(title: '养老', subtitle: '949764.21元'),
-          _shoppingUnitWidget(title: '银行精选', subtitle: '23416.21元'),
-          _shoppingUnitWidget(title: '私募', subtitle: '756423.21元'),
-          _shoppingUnitWidget(title: '资产管理', subtitle: '645212.21元'),
-        ],
-      )
-    ],
-  );
-}
 
 // 客服模块
 Widget _contactWidget () {
