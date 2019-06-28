@@ -37,12 +37,15 @@
 * [x] Overlay 悬浮效果
 * [x] 局部路由
 * [ ] RxDart
+* [ ] BLoC模式（Business Logic Component）
 * [ ] Redux
 * [ ] node架构完善
 
 <details>
 <summary>外链</summary>
 
+* BLoC模式
+* 能不能不使用setState就能刷新页面呢？如何在多个页面中共享状态？
 * [API文档](https://flutter.io/docs/get-started/codelab)
 
 </details>
