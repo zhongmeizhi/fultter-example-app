@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   List _indexedStackCache = <int>[0];
 
   // 初始化 请求的baseURL
-  void _setBaseUrl () {
+  void setBaseUrl () {
     MyXhr myXhr = new MyXhr();
     myXhr.$option(baseUrl: 'http://10.93.157.7:2333');
   }
@@ -51,19 +51,8 @@ class _MainPageState extends State<MainPage> {
       }
     });
   }
-
-  @override
-  void initState() {
-    super.initState();
-    // 设置基础URL信息
-    _setBaseUrl();
-
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
+  
+  void checkAppVersion() {
     UpdateApp _updateApp = new UpdateApp();
     // 可以在第一次打开APP时执行"版本更新"的网络请求
     _updateApp.getApkLocalInfo().then((directory) {
@@ -101,6 +90,14 @@ class _MainPageState extends State<MainPage> {
         );
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // 设置基础URL信息
+    setBaseUrl();
+    checkAppVersion();
   }
 
   @override

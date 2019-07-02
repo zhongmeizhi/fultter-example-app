@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // 页面
 import 'package:flutter_app/page/treasure/selection/bank_selection_page.dart';
 import 'package:flutter_app/page/treasure/selection/fund_selection_page.dart';
+import 'package:flutter_app/page/treasure/selection/dealer_selection_page.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
@@ -18,10 +19,10 @@ class _TreasurePageState extends State<TreasurePage>
       'label': '银行精选'
     }, {
       'id': 't2',
-      'label': '基金'
+      'label': '券商'
     }, {
       'id': 't3',
-      'label': '券商'
+      'label': '基金'
     }, {
       'id': 't4',
       'label': '转让'
@@ -74,30 +75,26 @@ class _TreasurePageState extends State<TreasurePage>
         ),
         centerTitle: true, // appBar文字居中
       ),
-      body: new TabBarView(
+      body:
+       new TabBarView(
         key: new Key('treasure_page'),
         controller: _tabController,
         children: tabs.map((tab) {
           // 利用 PageStorageKey 保持页面滚动状态
-          // Widget _pageStorage (Widget widget) {
-          //   return Container(
           //     key: PageStorageKey(tab['id']),
-          //     child: widget
-          //   );
-          // }
           switch (tab['id']) {
             case 't1':
               return BankSelectionPage(item: tab);
             break;
             case 't2':
+              return DealerSelectionPage();
+            break;
+            case 't3':
               return FundSelectionPage();
             break;
-            // case 't3':
-            //   return FundSelectionPage();
-            // break;
             default:
               return Center(
-                child: Text('这里是 -> ' + tab['label']),
+                child: Text('这里是 -> ' + tab['label']),   
               );
             break;
           }
