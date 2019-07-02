@@ -15,7 +15,18 @@ class BankSelectionPage extends StatefulWidget {
   
 }
 
-class _BankSelectionState extends State<BankSelectionPage> {
+// 子页面可以单独设置是否缓存
+
+// with AutomaticKeepAliveClientMixin 重写 wantKeepAlive
+
+// @override
+// bool get wantKeepAlive => true;
+
+class _BankSelectionState extends State<BankSelectionPage>
+  with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
   
   List _bankProductList = [];
 
@@ -48,9 +59,9 @@ class _BankSelectionState extends State<BankSelectionPage> {
     super.initState();
   }
 
+  // 会提示 被 @mustCallSuper 重写后半年在调用这个重写方法
   @override
   Widget build(BuildContext context) {
-
     return ListView(
       children: _itemsWidget(bankProductList: _bankProductList, intoChoicenessDetail: _intoChoicenessDetail),
     );
@@ -58,8 +69,8 @@ class _BankSelectionState extends State<BankSelectionPage> {
 
 }
 
-// 通过请求获取数据，使用for循环List.add()动态拼接返回items。在setSate时items不会重新渲染
-// 将拼接过程放到 class 外部。渲染正常
+// 如果在setSate时items不会重新渲染
+// 可以看看Flutter的Diff算法。
 List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDetail}) {
 
   List<Widget> items = [];

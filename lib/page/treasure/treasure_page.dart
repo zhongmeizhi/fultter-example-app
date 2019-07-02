@@ -12,10 +12,6 @@ class TreasurePage extends StatefulWidget {
 class _TreasurePageState extends State<TreasurePage>
   with SingleTickerProviderStateMixin {
 
-  // with AutomaticKeepAliveClientMixin 重写 wantKeepAlive
-  // @override
-  // bool get wantKeepAlive => true;
-
   List tabs = [
     {
       'id': 't1',

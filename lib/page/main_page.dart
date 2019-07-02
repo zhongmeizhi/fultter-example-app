@@ -71,33 +71,34 @@ class _MainPageState extends State<MainPage> {
       // 比较服务器的版本号跟当前的版本号，来判断要不要升级APP应用程序
       if (_updateApp.checkVersionLowerOf(_version)) {
         String _appPath = directory['url'];
-
-        // 应该是弹出dalog询问是否升级
-        // T O D O 为什么不能调用 showDialog呢。。。
-        _scaffoldKey.currentState.showBottomSheet((content) {
-          return AlertDialog(
-            title: Text('提示'),
-            content: Text('有优化更新，赶紧体验一下吧。'),
-            actions: [
-              RaisedButton(
-                textColor: Colors.white,
-                child: Text('取消'),
-                onPressed: () {
-                  Navigator.maybePop(context);
-                },
-              ),
-              RaisedButton(
-                textColor: Colors.white,
-                child: Text('确定'),
-                onPressed: () {
-                  // 下载 并 安装新版本
-                  _updateApp.executeDownload(_appPath);
-                  Navigator.maybePop(context);
-                },
-              )
-            ]
-          );
-        });
+        // 弹出dalog询问是否升级
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('提示'),
+              content: Text('有优化更新，赶紧体验一下吧。'),
+              actions: [
+                RaisedButton(
+                  textColor: Colors.white,
+                  child: Text('取消'),
+                  onPressed: () {
+                    Navigator.maybePop(context);
+                  },
+                ),
+                RaisedButton(
+                  textColor: Colors.white,
+                  child: Text('确定'),
+                  onPressed: () {
+                    // 下载 并 安装新版本
+                    _updateApp.executeDownload(_appPath);
+                    Navigator.maybePop(context);
+                  },
+                )
+              ]
+            );
+          }
+        );
       }
     });
   }

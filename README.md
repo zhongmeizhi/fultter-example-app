@@ -28,10 +28,10 @@
 * [x] koa2 + node 后台服务器
 * [x] httpClient请求
 * [x] Storage 保持登录状态
-* [x] 实现 webview
-* [x] keepa-live && 缓存Widget
 * [x] 解决页面切换重绘问题
+* [x] 实现 webview
 * [x] 下拉刷新 + 上拉加载
+* [x] keepa-live && 缓存Widget
 * [x] 搜索功能
 * [x] App 升级方案
 * [x] Overlay 悬浮效果
