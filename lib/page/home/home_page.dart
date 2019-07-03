@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // 功能widget
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_app/widget/carousel.dart';
 // 请求
 import 'package:flutter_app/api/my_xhr.dart';
+// 页面
+import 'package:flutter_app/page/product/product_details_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -221,9 +224,12 @@ Widget _subscribedWidget ({context}) {
 
 Widget _choicenessWidget ({context, List choiceList}) {
 
-  void _intoChoicenessDetail({id}) {
-    print(id);
-    Navigator.pushNamed(context, "/login_page");
+  void _intoChoicenessDetail({proInfo}) {
+    // 调用IOS的右滑动回退功能
+    Navigator.push(context, CupertinoPageRoute(builder: (context) {
+      // 让ProductDetailsPage具有右滑的功能
+      return ProductDetailsPage(pro: proInfo);
+    }));
   }
 
   return Padding(
@@ -279,7 +285,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
                         side: BorderSide(style: BorderStyle.solid, color: Colors.blue)
                       ),
                       onPressed: () => {
-                        _intoChoicenessDetail(id: item['id'])
+                        _intoChoicenessDetail(proInfo: item)
                       }
                     )
                   )

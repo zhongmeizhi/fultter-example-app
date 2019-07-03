@@ -76,7 +76,7 @@ class _TreasurePageState extends State<TreasurePage>
         centerTitle: true, // appBar文字居中
       ),
       body:
-       new TabBarView(
+      new TabBarView(
         key: new Key('treasure_page'),
         controller: _tabController,
         children: tabs.map((tab) {

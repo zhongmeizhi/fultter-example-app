@@ -38,9 +38,10 @@
 * [x] Overlay 悬浮效果
 * [x] 局部路由
 * [x] 拖动式排序
-* [ ] RxDart
-* [ ] BLoC模式（Business Logic Component）
-* [ ] Redux
+* [x] 页面侧滑回退
+* [x] RxDart
+* [x] BLoC（Business Logic Component）
+* [ ] Bloc模式完善
 * [ ] node架构完善
 
 <details>
