@@ -2,6 +2,7 @@
 
 > 喜欢请Star，尽量别 Fork。
 
+大部分用Flutter原生API来完成项目，使用流行的Bloc（Business Logic Component）模式来做状态管理，使用Node.JS作为后端服务，尽可能多的实现完整App该有的功能。
 
 ### Node 后台：
 1. 安装`node.js`
@@ -35,12 +36,12 @@
 * [x] keepa-live && 缓存Widget
 * [x] 搜索功能
 * [x] App 升级方案
-* [x] Overlay 悬浮效果
+* [x] Overlay 实现Toast提示
 * [x] 局部路由
 * [x] 拖动式排序
 * [x] 页面侧滑回退
 * [x] RxDart
-* [x] BLoC（Business Logic Component）
+* [x] BLoC模式 实现状态管理
 * [ ] Bloc模式完善
 * [ ] node架构完善
 

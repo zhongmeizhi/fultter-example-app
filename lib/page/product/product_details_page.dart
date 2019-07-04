@@ -5,27 +5,6 @@ import 'package:flutter_app/unit/bloc_provider.dart';
 // 页面
 import 'package:flutter_app/page/payment/payment_page.dart';
 
-import 'dart:async';
-class CountBLoC {
-  int _count;
-  StreamController<int> _countController;
-
-  CountBLoC() {
-    _count = 0;
-    _countController = StreamController<int>();
-  }
-  
-  Stream<int> get value => _countController.stream;
-
-  increment() {
-    _countController.sink.add(++_count);
-  }
-
-  dispose() {
-    _countController.close();
-  }
-}
-
 class ProductDetailsPage extends StatelessWidget {
 
   final Map pro;
@@ -34,25 +13,41 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // final bloc = BlocProvider.of(context);
-
-    final bloc = new CountBLoC();
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('${pro['pro']}'),
+        title: Text('产品详情'),
         centerTitle: true,
       ),
       body: Container(
         child: Column(
           children: <Widget>[
+            Row(
+              children: <Widget>[
+                Text('${pro['pro']}', style: TextStyle(fontSize: 26))
+              ],
+            ),
             Text('$pro'),
             StreamBuilder(
-              stream: bloc.value,
+              stream: bloc.stream,
               initialData: bloc.value,
               builder: (context, snapshot) {
-                return Text(
-                  'You hit me: ${snapshot.data} times',
+                return Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: '购买金额'),
+                      TextSpan(text: '${snapshot.data}'),
+                      TextSpan(text: '元'),
+                    ]
+                  ),
+                  style: TextStyle(fontSize: 26),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('去支付'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  CupertinoPageRoute(builder: (context) => PaymentPage())
                 );
               },
             )
@@ -60,10 +55,9 @@ class ProductDetailsPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.navigate_next),
-        onPressed: () =>
-            Navigator.of(context).push(CupertinoPageRoute(builder: (context) => PaymentPage()))
-          ),
+        child: Icon(Icons.add),
+        onPressed: () => bloc.increment(),
+      )
     );
   }
 }

@@ -20,22 +20,29 @@ class BlocProvider extends InheritedWidget {
     .bLoC;
 }
 
+// 简单的 Bloc
 class CountBLoC {
   int _count;
-  StreamController<int> _countController;
+  var _countController;
 
   CountBLoC() {
     _count = 0;
-    _countController = StreamController<int>();
+    _countController = StreamController<int>.broadcast();
   }
   
-  Stream<int> get value => _countController.stream;
+  Stream<int> get stream => _countController.stream;
+  int get value => _count;
 
   increment() {
+    // xx
     _countController.sink.add(++_count);
   }
 
   dispose() {
+    // 销毁时要关掉
     _countController.close();
   }
 }
+
+// 外部通过调用 bloc
+CountBLoC bloc = CountBLoC();
