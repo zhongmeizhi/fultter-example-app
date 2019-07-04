@@ -5,6 +5,8 @@ import 'package:flutter_app/unit/bloc_provider.dart';
 class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    // var bloc = BlocProvider.of(context);
     
     return Scaffold(
       appBar: AppBar(

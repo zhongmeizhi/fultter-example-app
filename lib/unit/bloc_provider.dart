@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class BlocProvider extends InheritedWidget {
+// class BlocProvider extends InheritedWidget {
+//   final CountBLoC bLoC = CountBLoC();
 
-  final CountBLoC bLoC = CountBLoC();
+//   BlocProvider({Key key, Widget child}) : super(key: key, child: child);
 
-  BlocProvider({
-    @required bLoc,
-    Key key,
-    Widget child
-  }) : super(key: key, child: child);
+//   @override
+//   bool updateShouldNotify(_) => true;
 
-  // 更新自动通知
-  @override
-  bool updateShouldNotify(_) => true;
-
-  static CountBLoC of(BuildContext context) =>
-    (context.inheritFromWidgetOfExactType(BlocProvider) as BlocProvider)
-    .bLoC;
-}
+//   static CountBLoC of(BuildContext context) =>
+//       (context.inheritFromWidgetOfExactType(BlocProvider) as BlocProvider).bLoC;
+// }
 
 // 简单的 Bloc
 class CountBLoC {
@@ -26,10 +19,12 @@ class CountBLoC {
   var _countController;
 
   CountBLoC() {
-    _count = 0;
+    //  control要用broadcast，否则会报重复监听的异常
     _countController = StreamController<int>.broadcast();
+    _count = 0;
   }
   
+  // 外部get
   Stream<int> get stream => _countController.stream;
   int get value => _count;
 

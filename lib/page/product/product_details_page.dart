@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // Bloc注入
 import 'package:flutter_app/unit/bloc_provider.dart';
 // 页面
@@ -12,6 +13,8 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // var bloc = BlocProvider.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -43,15 +46,22 @@ class ProductDetailsPage extends StatelessWidget {
                 );
               },
             ),
-            RaisedButton(
-              child: Text('去支付'),
-              onPressed: () {
-                Navigator.of(context).push(
-                  CupertinoPageRoute(builder: (context) => PaymentPage())
-                );
-              },
-            )
+            
           ],
+        ),
+      ),
+      bottomSheet: RaisedButton(
+        color: Colors.blue,
+        padding: EdgeInsets.fromLTRB(22, 6, 22, 6),
+        onPressed: () {
+          Navigator.of(context).push(
+            CupertinoPageRoute(builder: (context) => PaymentPage())
+          );
+        },
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          height: ScreenUtil().setWidth(32),
+          child: Text('去支付', style: TextStyle(color: Colors.white, fontSize: 22),),
         ),
       ),
       floatingActionButton: FloatingActionButton(
