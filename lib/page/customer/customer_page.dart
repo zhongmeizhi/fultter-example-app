@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zmz_app/unit/event_bus.dart';
+// import 'package:zmz_app/unit/event_bus.dart';
 import 'package:zmz_app/storage/storage.dart'; // storage
 import 'package:zmz_app/api/my_xhr.dart'; // 请求
 import 'package:zmz_app/unit/route_animation.dart'; // 路由动画
@@ -17,7 +17,7 @@ class CustomerPage extends StatefulWidget {
 
 class _CustomerPageState extends State<CustomerPage> {
 
-  final EventBus bus = new EventBus();
+  // final EventBus bus = new EventBus();
 
   bool _isLogin = false;
   Map _userInfo;

@@ -35,7 +35,7 @@
 * [x] 下拉刷新 + 上拉加载
 * [x] keepa-live && 缓存Widget
 * [x] 搜索功能
-* [x] App 升级方案
+* [x] App强制更新
 * [x] Overlay 实现Toast提示
 * [x] 局部路由
 * [x] 拖动式排序
@@ -46,10 +46,12 @@
 * [ ] node架构完善
 
 <details>
-<summary>外链</summary>
+<summary>End 附：</summary>
 
 * BLoC模式
-* 能不能不使用setState就能刷新页面呢？如何在多个页面中共享状态？
-* [API文档](https://flutter.io/docs/get-started/codelab)
+* 不使用setState就能刷新页面
+* 在多个页面中共享状态。
 
 </details>
+
+[Flutter API文档](https://flutter.io/docs/get-started/codelab)

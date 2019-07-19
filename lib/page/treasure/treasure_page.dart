@@ -20,10 +20,10 @@ class _TreasurePageState extends State<TreasurePage>
       'label': '学习'
     }, {
       'id': 't2',
-      'label': '券商'
+      'label': '银行精选'
     }, {
       'id': 't3',
-      'label': '银行精选'
+      'label': '券商'
     }, {
       'id': 't4',
       'label': '转让'

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zmz_app/view/my_search.dart';
+import 'package:zmz_app/view/common/my_search.dart';
 
 class SearchBar extends StatelessWidget {
   
