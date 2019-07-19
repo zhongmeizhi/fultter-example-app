@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // 页面
-import 'package:flutter_app/page/welcome/splash_page.dart';
+import 'package:zmz_app/page/welcome/splash_page.dart';
 // 路由
-import 'package:flutter_app/routes/router.dart';
+import 'package:zmz_app/routes/router.dart';
 
 void main() => runApp(MyApp());
 

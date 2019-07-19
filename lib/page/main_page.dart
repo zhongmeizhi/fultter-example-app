@@ -1,14 +1,14 @@
 
 import 'package:flutter/material.dart';
 // 页面
-import 'package:flutter_app/page/home/home_page.dart';
-import 'package:flutter_app/page/treasure/treasure_page.dart';
-import 'package:flutter_app/page/customer/customer_page.dart';
-import 'package:flutter_app/page/news/news_page.dart';
+import 'package:zmz_app/page/home/home_page.dart';
+import 'package:zmz_app/page/treasure/treasure_page.dart';
+import 'package:zmz_app/page/customer/customer_page.dart';
+import 'package:zmz_app/page/news/news_page.dart';
 // 请求
-import 'package:flutter_app/api/my_xhr.dart';
+import 'package:zmz_app/api/my_xhr.dart';
 // 更新App操作
-import 'package:flutter_app/unit/update_app.dart';
+import 'package:zmz_app/unit/update_app.dart';
 
 
 class MainPage extends StatefulWidget {

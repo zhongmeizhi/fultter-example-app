@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // Bloc注入
-import 'package:flutter_app/unit/bloc_provider.dart';
+import 'package:zmz_app/unit/bloc_provider.dart';
 // 页面
-import 'package:flutter_app/page/payment/payment_page.dart';
+import 'package:zmz_app/page/payment/payment_page.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 

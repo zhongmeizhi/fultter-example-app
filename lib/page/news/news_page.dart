@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/components/toast.dart';
+import 'package:zmz_app/components/toast.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsPage extends StatefulWidget {

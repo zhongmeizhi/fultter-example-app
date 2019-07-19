@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // 功能widget
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/widget/carousel.dart';
+import 'package:zmz_app/widget/carousel.dart';
 // 请求
-import 'package:flutter_app/api/my_xhr.dart';
+import 'package:zmz_app/api/my_xhr.dart';
 // 页面
-import 'package:flutter_app/page/product/product_details_page.dart';
+import 'package:zmz_app/page/product/product_details_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

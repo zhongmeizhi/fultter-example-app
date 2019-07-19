@@ -14,7 +14,7 @@ class HeroRaiseButton extends StatelessWidget {
         child: Text('当前在$text', style: TextStyle(color: Colors.white),),
         onPressed: null
       ),
-      placeholderBuilder: (context, widget) {
+      placeholderBuilder: (BuildContext context, Size heroSize, Widget child) {
         return Container(
           height: 150.0,
           width: 150.0,

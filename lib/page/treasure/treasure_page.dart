@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // 页面
-import 'package:flutter_app/page/treasure/selection/bank_selection_page.dart';
-import 'package:flutter_app/page/treasure/selection/fund_selection_page.dart';
-import 'package:flutter_app/page/treasure/selection/dealer_selection_page.dart';
+import 'package:zmz_app/page/treasure/selection/bank_selection_page.dart';
+import 'package:zmz_app/page/treasure/selection/fund_selection_page.dart';
+import 'package:zmz_app/page/treasure/selection/dealer_selection_page.dart';
+import 'package:zmz_app/view/common/search_bar.dart';
 
 class TreasurePage extends StatefulWidget {
   @override
@@ -16,13 +17,13 @@ class _TreasurePageState extends State<TreasurePage>
   List tabs = [
     {
       'id': 't1',
-      'label': '银行精选'
+      'label': '学习'
     }, {
       'id': 't2',
       'label': '券商'
     }, {
       'id': 't3',
-      'label': '基金'
+      'label': '银行精选'
     }, {
       'id': 't4',
       'label': '转让'
@@ -60,7 +61,7 @@ class _TreasurePageState extends State<TreasurePage>
     return Scaffold(
       backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
-        title: Text('Z.财富'),
+        title: SearchBar(),
         bottom: TabBar(
           controller: _tabController,
           labelPadding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(2), vertical: 0),
@@ -84,13 +85,13 @@ class _TreasurePageState extends State<TreasurePage>
           //     key: PageStorageKey(tab['id']),
           switch (tab['id']) {
             case 't1':
-              return BankSelectionPage(item: tab);
+              return FundSelectionPage();
             break;
             case 't2':
-              return DealerSelectionPage();
+              return BankSelectionPage(item: tab);
             break;
             case 't3':
-              return FundSelectionPage();
+              return DealerSelectionPage();
             break;
             default:
               return Center(

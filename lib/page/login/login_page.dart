@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // storage
-import 'package:flutter_app/storage/storage.dart';
+import 'package:zmz_app/storage/storage.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;

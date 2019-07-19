@@ -39,8 +39,8 @@ class UpdateApp {
   // 安装
   Future<Null> installApk(_appPath) async {
     // 本地资源访问
-    // flutter_app为项目名
-    const platform = const MethodChannel('flutter_app');
+    // zmz_app为项目名
+    const platform = const MethodChannel('zmz_app');
     try {
       // 调用app地址
       await platform.invokeMethod('install', {'path': _appPath + '/app-release.apk'});

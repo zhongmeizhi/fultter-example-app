@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_app/unit/event_bus.dart';
-import 'package:flutter_app/storage/storage.dart'; // storage
-import 'package:flutter_app/api/my_xhr.dart'; // 请求
-import 'package:flutter_app/unit/route_animation.dart'; // 路由动画
+import 'package:zmz_app/unit/event_bus.dart';
+import 'package:zmz_app/storage/storage.dart'; // storage
+import 'package:zmz_app/api/my_xhr.dart'; // 请求
+import 'package:zmz_app/unit/route_animation.dart'; // 路由动画
 // 页面
-import 'package:flutter_app/page/login/login_page.dart';
+import 'package:zmz_app/page/login/login_page.dart';
 // View
-import 'package:flutter_app/view/user-info/shop_list.dart';
-import 'package:flutter_app/view/user-info/user_assert.dart';
+import 'package:zmz_app/view/user-info/shop_list.dart';
+import 'package:zmz_app/view/user-info/user_assert.dart';
 
 class CustomerPage extends StatefulWidget {
   @override

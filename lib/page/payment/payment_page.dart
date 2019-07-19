@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // Bloc注入
-import 'package:flutter_app/unit/bloc_provider.dart';
+import 'package:zmz_app/unit/bloc_provider.dart';
 
 class PaymentPage extends StatelessWidget {
   @override
