@@ -35,7 +35,8 @@ class _MainPageState extends State<MainPage> {
   // 初始化 请求的baseURL
   void setBaseUrl () {
     MyXhr myXhr = new MyXhr();
-    myXhr.$option(baseUrl: 'http://10.93.157.7:2333');
+    // myXhr.$option(baseUrl: 'http://10.93.157.7:2333');
+    myXhr.$option(baseUrl: 'https://223b312f.ngrok.io');
   }
 
   // bottomNavigationBar 点击事件
@@ -132,24 +133,4 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-
-  // 分发Home页面路由
-  // 这种方式保持状态能力有限
-  // 使用 IndexedStack 代替
-  // Widget _distributeHome () {
-  //   switch(_selectedIndex) {
-  //     case 0:
-  //       return new HomePage();
-  //       break;
-  //     case 1:
-  //       return new TreasurePage();
-  //     break;
-  //     case 2:
-  //       return new CustomerPage();
-  //     break;
-  //     default:
-  //       return HomePage();
-  //     break;
-  //   }
-  // }
 }

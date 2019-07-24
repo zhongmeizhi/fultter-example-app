@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zmz_app/unit/bloc_provider.dart';
 // 页面
 import 'package:zmz_app/page/payment/payment_page.dart';
+// 参数
+import 'package:zmz_app/unit/common/my_argument.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 
@@ -50,17 +52,23 @@ class ProductDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomSheet: RaisedButton(
-        color: Colors.blue,
-        padding: EdgeInsets.fromLTRB(22, 6, 22, 6),
+      bottomSheet: RawMaterialButton(
+        fillColor: Colors.blue,
         onPressed: () {
           Navigator.of(context).push(
-            CupertinoPageRoute(builder: (context) => PaymentPage())
+            // IOS的可侧滑回退路由
+            CupertinoPageRoute(
+              builder: (context) => PaymentPage(),
+              settings: RouteSettings(
+                arguments: StringArguments('name', '蘑菇碳')
+              ),
+            )
           );
         },
         child: Container(
           alignment: Alignment.bottomCenter,
-          height: ScreenUtil().setWidth(32),
+          height: ScreenUtil().setWidth(47),
+          padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(10)),
           child: Text('去支付', style: TextStyle(color: Colors.white, fontSize: 22),),
         ),
       ),

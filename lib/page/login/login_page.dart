@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
+// 参数
+import 'package:zmz_app/unit/common/my_argument.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -35,6 +37,10 @@ class _LoginPageState extends State<LoginPage> {
   
   @override
   Widget build(BuildContext context) {
+
+    // 接收RoutSetting的路由参数
+    StringArguments args = ModalRoute.of(context).settings.arguments;
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Z.登陆'),
@@ -45,6 +51,13 @@ class _LoginPageState extends State<LoginPage> {
           _loginFormWidget(_checkPhoneNum, _submitLogin),
         ]
       ),
+      // 小角落里面打印进入的地方，方便以后使用
+      bottomSheet: Container(
+        width: ScreenUtil().setWidth(375),
+        height: ScreenUtil().setWidth(15),
+        alignment: Alignment.center,
+        child: Text(args.message),
+      )
     );
   }
 }
