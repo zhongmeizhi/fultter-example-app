@@ -42,6 +42,7 @@
 * [x] 页面侧滑回退
 * [x] BLoC模式 实现状态管理
 * [x] RxDart
+* [x] 重写Flutter部分类
 * [ ] Bloc模式完善
 * [ ] node架构完善
 

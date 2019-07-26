@@ -9,7 +9,8 @@ import 'package:zmz_app/page/news/news_page.dart';
 import 'package:zmz_app/api/my_xhr.dart';
 // 更新App操作
 import 'package:zmz_app/unit/update_app.dart';
-
+// 功能
+import 'package:zmz_app/unit/common/center_nav.dart';
 
 class MainPage extends StatefulWidget {
   final String title;
@@ -100,6 +101,7 @@ class _MainPageState extends State<MainPage> {
     setBaseUrl();
     checkAppVersion();
   }
+   static const double offset = 15.0; // offset为正时，表示往下偏移；offset为负时，表示往上偏移
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +110,11 @@ class _MainPageState extends State<MainPage> {
       key: _scaffoldKey,
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
         type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type，可能是BUG
+        backgroundColor: Colors.white,
         items: <BottomNavigationBarItem>[
           new BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
           new BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
+          new BottomNavigationBarItem(icon: Icon(null), title: Text('')), // 空BottomNav
           new BottomNavigationBarItem(icon: Icon(Icons.book), title: Text('资讯')),
           new BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
         ],
@@ -127,10 +131,38 @@ class _MainPageState extends State<MainPage> {
           new HomePage(),
           // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
           (_indexedStackCache.indexOf(1) != -1) ? new TreasurePage() : Container(),
-          (_indexedStackCache.indexOf(2) != -1) ? new NewsPage() : Container(),
-          (_indexedStackCache.indexOf(3) != -1) ? new CustomerPage() : Container(),
+          Container(), // 空BottomNav对应页面
+          (_indexedStackCache.indexOf(3) != -1) ? new NewsPage() : Container(),
+          (_indexedStackCache.indexOf(4) != -1) ? new CustomerPage() : Container(),
         ],
       ),
+      floatingActionButton: Container(
+        padding: EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+            color: Colors.transparent
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(55)),
+          color: Colors.white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(0, -1),
+              blurRadius: 0.1,
+              spreadRadius: 0
+            )
+          ]
+        ),
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue,
+          child: Icon(Icons.add, color: Colors.white,),
+          onPressed: (){
+          },
+        ),
+      ),
+      // const 很重要，不然每次点击BottomNav就会被重写一次
+      floatingActionButtonLocation: const CenterNav()
     );
   }
 }
