@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
 
     // 接收RoutSetting的路由参数
-    StringArguments args = ModalRoute.of(context).settings.arguments;
+    StringArguments args = ModalRoute.of(context).settings.arguments ?? StringArguments('title', 'message');
     
     return Scaffold(
       appBar: AppBar(
