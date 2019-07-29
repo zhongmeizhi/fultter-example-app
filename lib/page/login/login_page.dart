@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
 // 参数
-import 'package:zmz_app/unit/common/my_argument.dart';
+import 'package:zmz_app/domain/page_argument.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;

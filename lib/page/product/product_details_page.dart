@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // Bloc注入
-import 'package:zmz_app/unit/bloc_provider.dart';
+import 'package:zmz_app/model/bloc_provider.dart';
 // 页面
 import 'package:zmz_app/page/payment/payment_page.dart';
 // 参数
-import 'package:zmz_app/unit/common/my_argument.dart';
+import 'package:zmz_app/domain/page_argument.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 

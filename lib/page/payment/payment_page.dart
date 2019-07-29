@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // Bloc注入
-import 'package:zmz_app/unit/bloc_provider.dart';
+import 'package:zmz_app/model/bloc_provider.dart';
 // 参数
-import 'package:zmz_app/unit/common/my_argument.dart';
+import 'package:zmz_app/domain/page_argument.dart';
 
 class PaymentPage extends StatelessWidget {
 

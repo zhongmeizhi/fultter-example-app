@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zmz_app/view/bank_product.dart';
 // 请求
-import 'package:zmz_app/api/my_xhr.dart';
+import 'package:zmz_app/service/my_xhr.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
 // 参数
-import 'package:zmz_app/unit/common/my_argument.dart';
+import 'package:zmz_app/domain/page_argument.dart';
 
 class BankSelectionPage extends StatefulWidget {
   final item;

@@ -6,9 +6,9 @@ import 'package:zmz_app/page/treasure/treasure_page.dart';
 import 'package:zmz_app/page/customer/customer_page.dart';
 import 'package:zmz_app/page/news/news_page.dart';
 // 其他
-import 'package:zmz_app/api/my_xhr.dart'; // 请求
+import 'package:zmz_app/service/my_xhr.dart'; // 请求
 import 'package:zmz_app/unit/update_app.dart'; // 更新App操作
-import 'package:zmz_app/unit/common/center_nav.dart'; // BottomNav加号位置
+import 'package:zmz_app/config/center_nav.dart'; // BottomNav加号位置
 
 class MainPage extends StatefulWidget {
   final String title;
