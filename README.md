@@ -1,36 +1,6 @@
 # 蘑菇碳的Flutter金融理财App
 
-> 喜欢请Star，尽量别 Fork。
-
-项目大部分都使用Flutter原生API来完成。
-
-### 目录结构（优化中）
-
-主目录：
-* assets：静态文件
-* back-end：mock数据
-* lib：代码文件
-
-lib目录：
-* config：配置文件
-* constant：常量，枚举
-* domain：实体类
-* model：逻辑模块
-* page：页面
-* plugin：自己封装的较大组件/插件
-* routes：路由
-* service：接口封装 + API地址
-* storage：LocalStorage方法
-* utils：工具类
-* view：可复用Widget
-
-
-### Node 后台：
-1. 安装`node.js`
-2. cd 到项目`back-end`目录下
-3. 控制台运行`npm i`
-4. 控制台运行`node server.js`
-5. 启动服务端成功
+> 项目大部分都使用Flutter原生API来完成。喜欢请Star，尽量别 Fork。
 
 
 ### 项目预览
@@ -67,6 +37,38 @@ lib目录：
 * [ ] Bloc模式完善
 * [ ] node架构完善
 
+
+
+### 目录结构
+
+主目录：
+* assets：静态文件
+* back-end：mock数据
+
+
+lib目录：
+* config：配置文件
+* constant：常量，枚举
+* domain：实体类
+* model：逻辑模块
+* page：页面
+* plugin：独立组件/插件
+* routes：路由
+* service：接口封装 + API地址
+* storage：LocalStorage方法
+* utils：工具类
+* view：可复用Widget
+
+
+### Node 后台：
+1. 安装`node.js`
+2. cd 到项目`back-end`目录下
+3. 控制台运行`npm i`
+4. 控制台运行`node server.js`
+5. 启动服务端成功
+
+
+
 <details>
 <summary>End 附：</summary>
 
@@ -75,5 +77,6 @@ lib目录：
 * 在多个页面中共享状态。
 
 </details>
+
 
 [Flutter API文档](https://flutter.io/docs/get-started/codelab)
