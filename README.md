@@ -4,6 +4,27 @@
 
 项目大部分都使用Flutter原生API来完成。
 
+### 目录结构（优化中）
+
+主目录：
+* assets：静态文件
+* back-end：mock数据
+* lib：代码文件
+
+lib目录：
+* config：配置文件
+* constant：常量，枚举
+* domain：实体类
+* model：逻辑模块
+* page：页面
+* plugin：自己封装的较大组件/插件
+* routes：路由
+* service：接口封装 + API地址
+* storage：LocalStorage方法
+* utils：工具类
+* view：可复用Widget
+
+
 ### Node 后台：
 1. 安装`node.js`
 2. cd 到项目`back-end`目录下
