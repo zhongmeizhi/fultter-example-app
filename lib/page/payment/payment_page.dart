@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 // Bloc注入
-import 'package:zmz_app/model/bloc_provider.dart';
+import 'package:zmz_app/model/count_bloc.dart';
+import 'package:zmz_app/model/provider.dart'; // Bloc注入
 // 参数
 import 'package:zmz_app/domain/page_argument.dart';
 
 class PaymentPage extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class PaymentPage extends StatelessWidget {
     // 接收RoutSetting的路由参数
     StringArguments args = ModalRoute.of(context).settings.arguments;
 
-    print(args);
-
-    // var bloc = BlocProvider.of(context);
+    CounterBloc bloc = BlocProvider.of<CounterBloc>(context);
     
     return Scaffold(
       appBar: AppBar(
@@ -25,8 +23,8 @@ class PaymentPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             StreamBuilder(
-              stream: bloc.stream,
-              initialData: bloc.value,
+              stream: bloc.countStream,
+              initialData: 0,
               builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
                 return Column(
                   children: <Widget>[
@@ -51,7 +49,7 @@ class PaymentPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => bloc.increment(),
+        onPressed: () => bloc.dispatch(),
       ),
     );
   }
