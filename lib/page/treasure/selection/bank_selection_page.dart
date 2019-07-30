@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zmz_app/view/bank_product.dart';
 // 请求
-import 'package:zmz_app/service/my_xhr.dart';
+import 'package:zmz_app/service/api.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
 // 参数
@@ -33,7 +33,7 @@ class _BankSelectionState extends State<BankSelectionPage>
   List _bankProductList = [];
 
   void getBankProduct() async {
-    List data = await MyXhr.$get('/bank_product_list');
+    List data = await Api().getBankProductList();
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {

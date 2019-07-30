@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zmz_app/plugin/carousel.dart';
 // 请求
-import 'package:zmz_app/service/my_xhr.dart';
+import 'package:zmz_app/service/api.dart';
 // 页面
 import 'package:zmz_app/page/product/product_details_page.dart';
 // 参数
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     
 
   void getChoice() async {
-    List data = await MyXhr.$get('/choice-list');
+    List data = await Api().getChoiceList();
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:zmz_app/unit/event_bus.dart';
 import 'package:zmz_app/storage/storage.dart'; // storage
-import 'package:zmz_app/service/my_xhr.dart'; // 请求
-import 'package:zmz_app/unit/route_animation.dart'; // 路由动画
+import 'package:zmz_app/service/api.dart'; // 请求
+import 'package:zmz_app/utils/route_animation.dart'; // 路由动画
 // 页面
 import 'package:zmz_app/page/login/login_page.dart';
 // View
@@ -25,7 +25,7 @@ class _CustomerPageState extends State<CustomerPage> {
 
   // 获取用户数据
   Future _getUserInfo (phone) async {
-    var data = await MyXhr.$get('/user-info?phone=$phone');
+    var data = await Api().getUserInfo(phone);
     return data;
   }
 

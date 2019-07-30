@@ -6,9 +6,8 @@ import 'package:zmz_app/page/treasure/treasure_page.dart';
 import 'package:zmz_app/page/customer/customer_page.dart';
 import 'package:zmz_app/page/news/news_page.dart';
 // 其他
-import 'package:zmz_app/service/my_xhr.dart'; // 请求
-import 'package:zmz_app/unit/update_app.dart'; // 更新App操作
-import 'package:zmz_app/config/center_nav.dart'; // BottomNav加号位置
+import 'package:zmz_app/utils/update_app.dart'; // 更新App操作
+import 'package:zmz_app/utils/center_nav.dart'; // BottomNav加号位置
 
 class MainPage extends StatefulWidget {
   final String title;
@@ -30,13 +29,6 @@ class _MainPageState extends State<MainPage> {
 
   // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
   List _indexedStackCache = <int>[0];
-
-  // 初始化 请求的baseURL
-  void _setBaseUrl () {
-    MyXhr myXhr = new MyXhr();
-    // myXhr.$option(baseUrl: 'http://10.93.157.7:2333');
-    myXhr.$option(baseUrl: 'https://040c9a18.ngrok.io');
-  }
 
   // bottomNavigationBar 点击事件
   void _tapBottomBar (index) {
@@ -61,8 +53,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // 设置基础URL信息
-    _setBaseUrl();
     _checkAndUpate();
   }
 
