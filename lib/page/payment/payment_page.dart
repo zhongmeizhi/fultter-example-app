@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// Bloc注入
-import 'package:zmz_app/model/count_bloc.dart';
-import 'package:zmz_app/model/provider.dart'; // Bloc注入
+import 'package:zmz_app/model/provider.dart'; // provider
+import 'package:zmz_app/model/count_bloc.dart'; // Bloc注入
 // 参数
 import 'package:zmz_app/domain/page_argument.dart';
 
@@ -24,7 +23,7 @@ class PaymentPage extends StatelessWidget {
           children: <Widget>[
             StreamBuilder(
               stream: bloc.countStream,
-              initialData: 0,
+              initialData: bloc.count,
               builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
                 return Column(
                   children: <Widget>[

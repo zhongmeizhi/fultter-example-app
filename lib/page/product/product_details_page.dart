@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// Bloc注入
-import 'package:zmz_app/model/count_bloc.dart';
-import 'package:zmz_app/model/provider.dart'; // Bloc注入
+import 'package:zmz_app/model/provider.dart'; // provider
+import 'package:zmz_app/model/count_bloc.dart'; // Bloc注入
 // 页面
 import 'package:zmz_app/page/payment/payment_page.dart';
 // 参数
@@ -35,7 +34,7 @@ class ProductDetailsPage extends StatelessWidget {
             Text('$pro'),
             StreamBuilder(
               stream: bloc.countStream,
-              initialData: 0,
+              initialData: bloc.count,
               builder: (context, snapshot) {
                 return Text.rich(
                   TextSpan(
