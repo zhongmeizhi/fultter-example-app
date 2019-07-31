@@ -66,7 +66,9 @@ lib目录：
 3. 控制台运行`npm i`
 4. 控制台运行`node server.js`
 5. 启动服务端成功
+6. 记得修改`config`文件下的 baseUrl
 
+附： 如果是本地调试，baseUrl请使用`IP + 端口`
 
 
 <details>

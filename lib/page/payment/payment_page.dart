@@ -19,36 +19,35 @@ class PaymentPage extends StatelessWidget {
         title: Text('支付'),
       ),
       body: Container(
-        child: Column(
-          children: <Widget>[
-            StreamBuilder(
-              stream: bloc.countStream,
-              initialData: bloc.count,
-              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                return Column(
-                  children: <Widget>[
-                    Text(args.title),
-                    Text(args.message),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: '需支付金额'),
-                          TextSpan(text: '${snapshot.data}'),
-                          TextSpan(text: '元'),
-                        ]
-                      ),
-                      style: TextStyle(fontSize: 26),
-                    )
-                  ],
-                );
-              },
-            )
-          ],
-        ),
+        child: StreamBuilder(
+          stream: bloc.countStream,
+          initialData: bloc.count,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  Text(args.title),
+                  Text(args.message),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: '需支付金额'),
+                        // TextSpan(text: '${snapshot.data}'),
+                        TextSpan(text: '${bloc.count}'),
+                        TextSpan(text: '元'),
+                      ]
+                    ),
+                    style: TextStyle(fontSize: 26),
+                  )
+                ],
+              ),
+            );
+          },
+        )
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => bloc.dispatch(),
+        onPressed: () => bloc.countAdd(),
       ),
     );
   }

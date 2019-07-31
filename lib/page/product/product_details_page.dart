@@ -35,16 +35,40 @@ class ProductDetailsPage extends StatelessWidget {
             StreamBuilder(
               stream: bloc.countStream,
               initialData: bloc.count,
-              builder: (context, snapshot) {
-                return Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: '购买金额'),
-                      TextSpan(text: '${snapshot.data}'),
-                      TextSpan(text: '元'),
-                    ]
-                  ),
-                  style: TextStyle(fontSize: 26),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                return Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Text('支付方式'),
+                      title: DropdownButton(
+                        value: bloc.paymentMethod,
+                        items: <DropdownMenuItem>[
+                          DropdownMenuItem(
+                            value: '1',
+                            child: Text('招商银行'),
+                          ),
+                          DropdownMenuItem(
+                            value: '2',
+                            child: Text('农业银行'),
+                          )
+                        ],
+                        onChanged: (val) {
+                          bloc.changePaymentMethod(val.toString());
+                        },
+                      ),
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: '购买金额'),
+                          // TextSpan(text: '${snapshot.data}'),
+                          TextSpan(text: '${bloc.count}'),
+                          TextSpan(text: '元'),
+                        ]
+                      ),
+                      style: TextStyle(fontSize: 26),
+                    ),
+                  ],
                 );
               },
             ),
@@ -74,7 +98,7 @@ class ProductDetailsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => bloc.dispatch(),
+        onPressed: () => bloc.countAdd(),
       )
     );
   }
