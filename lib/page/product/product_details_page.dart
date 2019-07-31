@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zmz_app/model/provider.dart'; // provider
-import 'package:zmz_app/model/count_bloc.dart'; // Bloc注入
+import 'package:zmz_app/bloc/provider.dart'; // provider
+import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 页面
 import 'package:zmz_app/page/payment/payment_page.dart';
 // 参数
@@ -34,14 +34,14 @@ class ProductDetailsPage extends StatelessWidget {
             Text('$pro'),
             StreamBuilder(
               stream: bloc.countStream,
-              initialData: bloc.count,
+              initialData: bloc.money,
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 return Column(
                   children: <Widget>[
                     ListTile(
                       leading: Text('支付方式'),
                       title: DropdownButton(
-                        value: bloc.paymentMethod,
+                        value: bloc.cardtype,
                         items: <DropdownMenuItem>[
                           DropdownMenuItem(
                             value: '1',
@@ -53,7 +53,7 @@ class ProductDetailsPage extends StatelessWidget {
                           )
                         ],
                         onChanged: (val) {
-                          bloc.changePaymentMethod(val.toString());
+                          bloc.changeCardtype(val.toString());
                         },
                       ),
                     ),
@@ -62,7 +62,7 @@ class ProductDetailsPage extends StatelessWidget {
                         children: [
                           TextSpan(text: '购买金额'),
                           // TextSpan(text: '${snapshot.data}'),
-                          TextSpan(text: '${bloc.count}'),
+                          TextSpan(text: '${bloc.money}'),
                           TextSpan(text: '元'),
                         ]
                       ),
@@ -98,7 +98,7 @@ class ProductDetailsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => bloc.countAdd(),
+        onPressed: () => bloc.addMoney(),
       )
     );
   }

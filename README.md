@@ -50,7 +50,7 @@ lib目录：
 * config：配置文件
 * constant：常量，枚举
 * domain：实体类
-* model：逻辑模块
+* bloc：逻辑模块
 * page：页面
 * plugin：独立组件/插件
 * routes：路由

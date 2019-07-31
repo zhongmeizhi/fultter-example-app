@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zmz_app/model/provider.dart'; // provider
-import 'package:zmz_app/model/count_bloc.dart'; // Bloc注入
+import 'package:zmz_app/bloc/provider.dart'; // provider
+import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 参数
 import 'package:zmz_app/domain/page_argument.dart';
 
@@ -21,7 +21,7 @@ class PaymentPage extends StatelessWidget {
       body: Container(
         child: StreamBuilder(
           stream: bloc.countStream,
-          initialData: bloc.count,
+          initialData: bloc.money,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             return Container(
               child: Column(
@@ -33,7 +33,7 @@ class PaymentPage extends StatelessWidget {
                       children: [
                         TextSpan(text: '需支付金额'),
                         // TextSpan(text: '${snapshot.data}'),
-                        TextSpan(text: '${bloc.count}'),
+                        TextSpan(text: '${bloc.money}'),
                         TextSpan(text: '元'),
                       ]
                     ),
@@ -47,7 +47,7 @@ class PaymentPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => bloc.countAdd(),
+        onPressed: () => bloc.addMoney(),
       ),
     );
   }

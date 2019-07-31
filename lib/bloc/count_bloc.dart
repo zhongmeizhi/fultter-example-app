@@ -1,20 +1,16 @@
-import 'package:zmz_app/model/provider.dart';
-// import 'dart:async';
+import 'package:zmz_app/bloc/provider.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:zmz_app/domain/payment_model.dart';
 
-// 简单的 Bloc
-// 每次点击加一块钱
 
 class CounterBloc extends BlocBase {
-  // int _count = 0;
-  // int get count => _count;
-  Map _paymentBloc = {
-    'count': 0,
-    'paymentMethod': '1'
-  };
+  PaymentModel _paymentBloc = new PaymentModel.fromJson({
+    'money': 0,
+    'cardtype': '1'
+  });
   
-  int get count => _paymentBloc['count'];
-  String get paymentMethod => _paymentBloc['paymentMethod'];
+  int get money => _paymentBloc.money;
+  String get cardtype => _paymentBloc.cardtype;
 
   /* 
    * 单订阅 stream，整个生命周期只允许有一个监听
@@ -24,17 +20,17 @@ class CounterBloc extends BlocBase {
   // Stream<int> get countStream => _countController.stream; // 用于 StreamBuilder 的 stream
 
   // 使用RXJS改写
-  BehaviorSubject<Map> _countController = BehaviorSubject();
-  Observable<Map> get countStream => Observable(_countController.stream);
+  BehaviorSubject<PaymentModel> _countController = BehaviorSubject();
+  Observable<PaymentModel> get countStream => Observable(_countController.stream);
 
-  void countAdd() {
-    _paymentBloc['count'] += 100;
+  void addMoney() {
+    _paymentBloc.setMoney(money + 100);
     // _countController.sink.add(_count); // 用于通知修改值
     _countController.add(_paymentBloc); // Subject可以直接用add添加
   }
 
-  void changePaymentMethod(val) {
-    _paymentBloc['paymentMethod'] = val;
+  void changeCardtype(val) {
+    _paymentBloc.setCardType(val);
     _countController.add(_paymentBloc);
   }
 

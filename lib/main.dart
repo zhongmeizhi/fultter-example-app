@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zmz_app/routes/router.dart'; // 路由
-import 'package:zmz_app/model/provider.dart'; // provider
-import 'package:zmz_app/model/count_bloc.dart'; // Bloc注入
+import 'package:zmz_app/bloc/provider.dart'; // provider
+import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 页面
 import 'package:zmz_app/page/welcome/splash_page.dart';
 
