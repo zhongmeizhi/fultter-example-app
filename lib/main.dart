@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new BlocProvider( // Bloc注入
-      bloc: new CounterBloc(), // 主Bloc
+      bloc: new PaymentBloc(), // 主Bloc
       child: new MaterialApp(
         title: 'Z.金融理财',
         theme: new ThemeData(

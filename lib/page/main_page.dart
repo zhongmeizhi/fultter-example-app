@@ -17,9 +17,6 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-// 可以 with AutomaticKeepAliveClientMixin
-// 然后重写 bool get wantKeepAlive => true
-// 但是：body中并没有使用PageView或TabBarView 会使 wantKeepAlive无效果
 class _MainPageState extends State<MainPage> {
 
   int _selectedIndex = 0;
@@ -46,7 +43,7 @@ class _MainPageState extends State<MainPage> {
   void _checkAndUpate() {
     // 可以在第一次打开APP时执行"版本更新"的网络请求
     UpdateApp _updateApp = new UpdateApp();
-    // context 拿到了耶
+    // context 能拿到
     _updateApp.checkAndUpate(context);
   }
 

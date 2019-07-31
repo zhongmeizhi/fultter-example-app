@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
 // 参数
-import 'package:zmz_app/domain/page_argument.dart';
+import 'package:zmz_app/domain/route_argument.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
 
     // 接收RoutSetting的路由参数
-    StringArguments args = ModalRoute.of(context).settings.arguments ?? StringArguments('title', 'message');
+    RouteArguments args = ModalRoute.of(context).settings.arguments ?? RouteArguments('title', 'message');
     
     return Scaffold(
       appBar: AppBar(

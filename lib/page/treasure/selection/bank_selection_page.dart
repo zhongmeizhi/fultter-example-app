@@ -6,7 +6,7 @@ import 'package:zmz_app/service/api.dart';
 // storage
 import 'package:zmz_app/storage/storage.dart';
 // 参数
-import 'package:zmz_app/domain/page_argument.dart';
+import 'package:zmz_app/domain/route_argument.dart';
 
 class BankSelectionPage extends StatefulWidget {
   final item;
@@ -52,7 +52,7 @@ class _BankSelectionState extends State<BankSelectionPage>
       print('已登陆');
     } else {
       // 利用pushNamed的arguments传递参数
-      Navigator.pushNamed(context, "/login_page", arguments: StringArguments('name', '想从银行精选登陆'));
+      Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从银行精选登陆'));
     }
   }
 

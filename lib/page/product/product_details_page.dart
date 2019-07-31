@@ -6,7 +6,7 @@ import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 页面
 import 'package:zmz_app/page/payment/payment_page.dart';
 // 参数
-import 'package:zmz_app/domain/page_argument.dart';
+import 'package:zmz_app/domain/route_argument.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 
@@ -16,7 +16,7 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    CounterBloc bloc = BlocProvider.of<CounterBloc>(context);
+    PaymentBloc bloc = BlocProvider.of<PaymentBloc>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -84,7 +84,7 @@ class ProductDetailsPage extends StatelessWidget {
             CupertinoPageRoute(
               builder: (context) => PaymentPage(),
               settings: RouteSettings(
-                arguments: StringArguments('name', '蘑菇碳')
+                arguments: RouteArguments('name', '蘑菇碳')
               ),
             )
           );

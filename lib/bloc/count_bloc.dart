@@ -3,7 +3,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:zmz_app/domain/payment_model.dart';
 
 
-class CounterBloc extends BlocBase {
+class PaymentBloc extends BlocBase {
   PaymentModel _paymentBloc = new PaymentModel.fromJson({
     'money': 0,
     'cardtype': '1'
@@ -24,8 +24,8 @@ class CounterBloc extends BlocBase {
   Observable<PaymentModel> get countStream => Observable(_countController.stream);
 
   void addMoney() {
-    _paymentBloc.setMoney(money + 100);
     // _countController.sink.add(_count); // 用于通知修改值
+    _paymentBloc.setMoney(money + 100);
     _countController.add(_paymentBloc); // Subject可以直接用add添加
   }
 

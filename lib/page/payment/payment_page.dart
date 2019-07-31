@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zmz_app/bloc/provider.dart'; // provider
 import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 参数
-import 'package:zmz_app/domain/page_argument.dart';
+import 'package:zmz_app/domain/route_argument.dart';
 
 class PaymentPage extends StatelessWidget {
 
@@ -10,9 +10,9 @@ class PaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // 接收RoutSetting的路由参数
-    StringArguments args = ModalRoute.of(context).settings.arguments;
+    RouteArguments args = ModalRoute.of(context).settings.arguments;
 
-    CounterBloc bloc = BlocProvider.of<CounterBloc>(context);
+    PaymentBloc bloc = BlocProvider.of<PaymentBloc>(context);
     
     return Scaffold(
       appBar: AppBar(

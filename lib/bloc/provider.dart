@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+// 必须被重写的抽象接口
 abstract class BlocBase {
   void dispose();
 }
 
+// Provider
 class BlocProvider<T extends BlocBase> extends StatefulWidget {
   final T bloc;
   final Widget child;

@@ -8,7 +8,7 @@ import 'package:zmz_app/service/api.dart';
 // 页面
 import 'package:zmz_app/page/product/product_details_page.dart';
 // 参数
-import 'package:zmz_app/domain/page_argument.dart';
+import 'package:zmz_app/domain/route_argument.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -165,7 +165,7 @@ Widget _activityAdWidget ({context, activityList}) {
 
   void _intoActivityDetail({id}) {
     print(id);
-    Navigator.pushNamed(context, "/login_page", arguments: StringArguments('name', '想从活动登陆'));
+    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从活动登陆'));
   }
 
   final List<Widget> items = [];
@@ -207,7 +207,7 @@ Widget _activityAdWidget ({context, activityList}) {
 Widget _subscribedWidget ({context}) {
 
   void _clickSubscribed () {
-    Navigator.pushNamed(context, "/login_page", arguments: StringArguments('name', '想从广告处登陆'));
+    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从广告处登陆'));
   }
 
   return GestureDetector(
