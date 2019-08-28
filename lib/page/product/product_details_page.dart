@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/bloc/provider.dart'; // provider
 import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 页面
@@ -91,8 +90,8 @@ class ProductDetailsPage extends StatelessWidget {
         },
         child: Container(
           alignment: Alignment.bottomCenter,
-          height: ScreenUtil().setWidth(47),
-          padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(10)),
+          height: ZFit().setWidth(47),
+          padding: EdgeInsets.symmetric(vertical: ZFit().setWidth(10)),
           child: Text('去支付', style: TextStyle(color: Colors.white, fontSize: 22),),
         ),
       ),

@@ -12,7 +12,7 @@
 
 
 ### 项目计划
-* [x] ScreenUtil 屏幕适配
+* [x] ZFit 屏幕适配
 * [x] RouteSetting + 路由数据回传
 * [x] 动画效果
 * [x] 自定义App桌面 图标 + 名称

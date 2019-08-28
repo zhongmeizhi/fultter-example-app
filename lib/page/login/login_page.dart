@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 // storage
 import 'package:zmz_app/utils/storage.dart';
 // 参数
@@ -53,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
       // 小角落里面打印进入的地方，方便以后使用
       bottomSheet: Container(
-        width: ScreenUtil().setWidth(375),
-        height: ScreenUtil().setWidth(15),
+        width: ZFit().setWidth(375),
+        height: ZFit().setWidth(15),
         alignment: Alignment.center,
         child: Text(args.message),
       )
@@ -66,12 +65,12 @@ Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
 
   return Center(
     child:  Padding(
-      padding: EdgeInsets.all(ScreenUtil().setWidth(19)),
+      padding: EdgeInsets.all(ZFit().setWidth(19)),
       child: Column(
         children: <Widget>[
-          Image.asset('assets/images/logo.jpg', width: ScreenUtil().setWidth(70), height: ScreenUtil().setWidth(90)),
+          Image.asset('assets/images/logo.jpg', width: ZFit().setWidth(70), height: ZFit().setWidth(90)),
           Padding(
-            padding: EdgeInsets.only(top: ScreenUtil().setWidth(15), bottom: ScreenUtil().setWidth(40)),
+            padding: EdgeInsets.only(top: ZFit().setWidth(15), bottom: ZFit().setWidth(40)),
             child: Text(
               '互联网金融平台',
               style: TextStyle(color: Color(0xFFb3b3b3)),
@@ -90,10 +89,10 @@ Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
               },
           ),
           Padding(
-            padding: EdgeInsets.only(top: ScreenUtil().setWidth(25)),
+            padding: EdgeInsets.only(top: ZFit().setWidth(25)),
             child: SizedBox(
-              width: ScreenUtil().setWidth(335),
-              height: ScreenUtil().setWidth(40),
+              width: ZFit().setWidth(335),
+              height: ZFit().setWidth(40),
               child: FlatButton(
                 child: Text("下一步"),
                 color: Color(0xFFed4e39),

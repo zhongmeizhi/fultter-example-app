@@ -11,8 +11,8 @@
 
 import 'package:flutter/material.dart';
 
-class ScreenUtil {
-  static ScreenUtil instance = new ScreenUtil();
+class ZFit {
+  static ZFit instance = new ZFit();
 
   //设计稿的设备尺寸修改
   int width;
@@ -29,13 +29,13 @@ class ScreenUtil {
 
   static double _textScaleFactor;
 
-  ScreenUtil({
-    this.width = 1080,
-    this.height = 1920,
+  ZFit({
+    this.width = 375,
+    this.height = 812,
     this.allowFontScaling = false,
   });
 
-  static ScreenUtil getInstance() {
+  static ZFit getInstance() {
     return instance;
   }
 

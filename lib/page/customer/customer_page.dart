@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 // import 'package:zmz_app/unit/event_bus.dart';
 import 'package:zmz_app/utils/storage.dart'; // storage
 import 'package:zmz_app/service/api.dart'; // 请求
@@ -131,7 +130,7 @@ class _CustomerPageState extends State<CustomerPage> {
                     isExpanded: _expandIndex[0],
                     headerBuilder: (BuildContext context, bool isExpanded){
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15), vertical: ScreenUtil().setWidth(15)),
+                        padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(15), vertical: ZFit().setWidth(15)),
                         child: Text(val['name']),
                       );
                     },
@@ -160,13 +159,13 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
     return GestureDetector(
       child: Stack(
         children: <Widget>[
-          // Image.asset('assets/images/red_envelope.jpg', width: ScreenUtil().setWidth(360), height: ScreenUtil().setWidth(160), fit: BoxFit.fill,),
+          // Image.asset('assets/images/red_envelope.jpg', width: ZFit().setWidth(360), height: ZFit().setWidth(160), fit: BoxFit.fill,),
           Container(
-            width: ScreenUtil().setWidth(360),
-            height: ScreenUtil().setWidth(160),
+            width: ZFit().setWidth(360),
+            height: ZFit().setWidth(160),
             decoration: BoxDecoration(
               color: Colors.blue,
-              borderRadius: BorderRadius.all(new Radius.circular(ScreenUtil().setWidth(5))),
+              borderRadius: BorderRadius.all(new Radius.circular(ZFit().setWidth(5))),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -182,23 +181,23 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(20)),
-                  child: Text('互联网金融平台', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(12)))
+                  padding: EdgeInsets.only(top: ZFit().setWidth(20)),
+                  child: Text('互联网金融平台', style: TextStyle(color: Colors.white, fontSize: ZFit().setSp(12)))
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(30)),
+                  padding: EdgeInsets.only(top: ZFit().setWidth(30)),
                   child: FlatButton(
                     disabledTextColor: Colors.blue,
                     disabledColor: Colors.blue,
-                    padding:EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(38), vertical: ScreenUtil().setWidth(5)),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ScreenUtil().setWidth(22))),
-                    child: Text("注册领红包", style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.bold, color: Colors.white)),
+                    padding:EdgeInsets.symmetric(horizontal: ZFit().setWidth(38), vertical: ZFit().setWidth(5)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ZFit().setWidth(22))),
+                    child: Text("注册领红包", style: TextStyle(fontSize: ZFit().setSp(18), fontWeight: FontWeight.bold, color: Colors.white)),
                     onPressed: null
                   )
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(6)),
-                  child: Text('立即登录 >', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(14)))
+                  padding: EdgeInsets.only(top: ZFit().setWidth(6)),
+                  child: Text('立即登录 >', style: TextStyle(color: Colors.white, fontSize: ZFit().setSp(14)))
                 )
               ],
             )
@@ -210,13 +209,13 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
   }
 
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(13)),
+    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(13)),
     child: Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(8)),
-          width: ScreenUtil().setWidth(375),
-          child: Text('欢迎来到金融理财', style: TextStyle(fontSize: ScreenUtil().setSp(16))),
+          padding: EdgeInsets.symmetric(vertical: ZFit().setWidth(8)),
+          width: ZFit().setWidth(375),
+          child: Text('欢迎来到金融理财', style: TextStyle(fontSize: ZFit().setSp(16))),
         ),
         _loginBannerWidget()
       ],
@@ -233,17 +232,17 @@ Widget _contactWidget () {
       child: Row(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: ScreenUtil().setWidth(3)),
-            child:Icon(icon, color: Color(0xFF8B8B8B), size: ScreenUtil().setSp(16)),
+            padding: EdgeInsets.only(right: ZFit().setWidth(3)),
+            child:Icon(icon, color: Color(0xFF8B8B8B), size: ZFit().setSp(16)),
           ),
-          Text(text, style: TextStyle(color: Color(0xFF8B8B8B), fontSize: ScreenUtil().setSp(14)),)
+          Text(text, style: TextStyle(color: Color(0xFF8B8B8B), fontSize: ZFit().setSp(14)),)
         ]
       ),
     );
   }
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(55)),
-    height: ScreenUtil().setWidth(45),
+    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(55)),
+    height: ZFit().setWidth(45),
     child: Row(
       children: <Widget>[
         _contactStyleWidget(icon: Icons.headset_mic, text: '在线客服'),
@@ -256,7 +255,7 @@ Widget _contactWidget () {
 // 灰色间隔
 Widget _brWidget ({height = 9}) {
   return Container(
-    height: ScreenUtil().setWidth(height),
+    height: ZFit().setWidth(height),
     color: Color(0xFFf6f6f6),
   );
 }

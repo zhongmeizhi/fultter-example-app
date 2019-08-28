@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 
 // 用户产品清单
 class ShopListWidget extends StatelessWidget {
@@ -10,7 +9,7 @@ class ShopListWidget extends StatelessWidget {
 
   Widget _shoppingUnitWidget ({@required title, @required subtitle}) {
     return Container(
-      width: ScreenUtil().setWidth(174),
+      width: ZFit().setWidth(174),
       child: ListTile(
         title: Text(title),
         subtitle: Text(subtitle),

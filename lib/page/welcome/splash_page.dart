@@ -1,6 +1,5 @@
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:zmz_app/page/main_page.dart';
 
@@ -65,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
 
     // 初始化页面 width=750; height=1334;
-    ScreenUtil.instance = ScreenUtil(width: 375, height: 812)..init(context);
+    ZFit.instance = ZFit(width: 375, height: 812)..init(context);
 
     return new Material(
       child: new Stack(
@@ -80,8 +79,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             ),
           ),
           Positioned(
-            top: ScreenUtil().setWidth(33),
-            right: ScreenUtil().setWidth(11),
+            top: ZFit().setWidth(33),
+            right: ZFit().setWidth(11),
             child: new Container(
               alignment: Alignment.bottomRight,
               child: InkWell(
@@ -90,12 +89,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 },
                 child: new Container(
                   padding: EdgeInsets.all(12),
-                  child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ScreenUtil().setSp(12), color: Colors.white),),
+                  child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ZFit().setSp(12), color: Colors.white),),
                   decoration: new BoxDecoration(
                     color: Color(0x66000000),
-                    borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(6))),
+                    borderRadius: BorderRadius.all(Radius.circular(ZFit().setWidth(6))),
                     border: new Border.all(
-                      width: ScreenUtil().setWidth(1),
+                      width: ZFit().setWidth(1),
                       color: Colors.blue[50],
                     ),
                   ),

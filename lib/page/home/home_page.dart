@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:zmz_app/compose/compose.dart';
 // 功能widget
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zmz_app/plugin/carousel.dart';
 // 请求
 import 'package:zmz_app/service/api.dart';
@@ -36,7 +35,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         print('开始刷新数据');
         getChoice();
-        // onrefresh要返回future； child：必须为scrollable
         return null;
       });
     });
@@ -109,17 +107,14 @@ class _HomePageState extends State<HomePage> {
 Widget _bannerWidget () {
   // 轮播
   return Carousel(
-    carouselList: <Widget>[
-      new Image.asset('assets/images/banner_1.jpg', fit: BoxFit.fill),
-      new Image.asset('assets/images/banner_2.jpg', fit: BoxFit.fill),
-      new Image.asset('assets/images/banner_3.jpg', fit: BoxFit.fill)
-    ],
-    tagWidth: ScreenUtil().setWidth(375),
-    height: ScreenUtil().setWidth(146),
-    tagBottom: ScreenUtil().setWidth(8),
-    tagColor: Color(0xffff33),
+    carouselList: List<Widget>.generate(3, (idx) => 
+      Image.asset('assets/images/banner_${idx + 1}.jpg', fit: BoxFit.fill)).toList(),
+    tagWidth: ZFit().setWidth(375),
+    height: ZFit().setWidth(146),
+    tagBottom: ZFit().setWidth(8),
+    tagColor: Colors.white12,
     activeTagColor: Colors.white,
-    tagSize: ScreenUtil().setWidth(8)
+    tagSize: ZFit().setWidth(10)
   );
 }
 
@@ -129,32 +124,32 @@ Widget _displayDataWidget () {
       ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: double.infinity,
-          minHeight: ScreenUtil().setWidth(36)
+          minHeight: ZFit().setWidth(36)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: ScreenUtil().setWidth(14), right: ScreenUtil().setWidth(5)),
-              child: Icon(Icons.pie_chart, color: Color(0xFF5ca0fd), size: ScreenUtil().setWidth(19),),
+              padding: ZEdge.horizontal_15,
+              child: Icon(Icons.pie_chart, color: ZColor.thinBlue, size: ZFit().setWidth(19),),
             ),
             Padding(
-              padding: EdgeInsets.only(right: ScreenUtil().setWidth(13)),
+              padding: EdgeInsets.only(right: ZFit().setWidth(13)),
               child: Text('理财成交单',
-                style: TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF333333), fontSize: ScreenUtil().setSp(14), height: 0.85),
+                style: TextStyle(fontWeight: FontWeight.w700, color: ZColor.black, fontSize: ZFit().setSp(14), height: 0.85),
               ), 
             ),
             Text('昨日成交163人，今日已成交57人',
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF5ca0fd), fontSize: ScreenUtil().setSp(11)),
+              style: TextStyle(color: ZColor.thinBlue, fontSize: ZFit().setSp(11)),
             ),
           ],
         )
       ),
       Positioned(
-        right: ScreenUtil().setWidth(10),
-        top: ScreenUtil().setWidth(7),
-        child: Icon(Icons.keyboard_arrow_right, color: Color(0xFFA1ADBB),)
+        right: ZFit().setWidth(10),
+        top: ZFit().setWidth(7),
+        child: Icon(Icons.keyboard_arrow_right, color: ZColor.grey,)
       )
     ],
   );
@@ -173,17 +168,17 @@ Widget _activityAdWidget ({context, activityList}) {
     items.add(Expanded(
       flex: 1,
       child: Padding(
-        padding: EdgeInsets.all(ScreenUtil().setWidth(18)),
+        padding: ZEdge.all_15,
         child: GestureDetector(
           child: Row(
             children: <Widget>[
               new Icon(item['iconSrc'], color: Colors.blue,),
               Padding(
-                padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
+                padding: EdgeInsets.only(left: ZFit().setWidth(10)),
                 child: Column(
                   children: <Widget>[
-                    Text(item['title'], style: TextStyle(color: Color(0xFF333333), fontSize: ScreenUtil().setSp(15))),
-                    Text(item['desc'], style: TextStyle(color: Color(0xFFB8B8B8), fontSize: ScreenUtil().setSp(11)))
+                    Text(item['title'], style: TextStyle(color: ZColor.black, fontSize: ZFit().setSp(15))),
+                    Text(item['desc'], style: TextStyle(color: ZColor.grey, fontSize: ZFit().setSp(11)))
                   ],
                 ),
               )
@@ -214,47 +209,47 @@ Widget _choicenessWidget ({context, List choiceList}) {
   }
 
   return Padding(
-    padding:EdgeInsets.only(left: ScreenUtil().setWidth(15), right: ScreenUtil().setWidth(15)),
+    padding: ZEdge.horizontal_15,
     child: Column(
       children: <Widget>[
         ConstrainedBox(
           constraints: BoxConstraints(
             minWidth: double.infinity, //宽度尽可能大
-            minHeight: ScreenUtil().setWidth(18)
+            minHeight: ZFit().setWidth(18)
           ),
           child: Text(
             '热门推荐',
             textAlign: TextAlign.start,
-            style: TextStyle(fontSize: ScreenUtil().setSp(18), fontWeight: FontWeight.w700, height: 1.5),
+            style: TextStyle(fontSize: ZFit().setSp(18), fontWeight: FontWeight.w700, height: 1.5),
           ),
         ),
         // 使用Wrap的方式展示产品
         Wrap(
           children: choiceList.map((item) {
             return Container(
-              width: ScreenUtil().setWidth(160),
-              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(6), vertical: ScreenUtil().setWidth(8)),
-              padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(8)),
+              width: ZFit().setWidth(160),
+              margin: ZEdge.all_5,
+              padding: ZEdge.vertical_10,
               decoration: BoxDecoration(
                 border: Border.all(style: BorderStyle.solid, color: Colors.blue),
-                borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(8)))
+                borderRadius: ZRadius.all_8
               ),
               child: Column(
                 children: <Widget>[
-                  Text(item['pro'], style: TextStyle(fontSize: ScreenUtil().setSp(16))),
-                  Text(item['rate'], style: TextStyle(fontSize: ScreenUtil().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)),
-                  Text(item['rateTime'], style: TextStyle(color: Colors.grey, fontSize: ScreenUtil().setSp(12)),),
+                  Text(item['pro'], style: TextStyle(fontSize: ZFit().setSp(16))),
+                  Text(item['rate'], style: TextStyle(fontSize: ZFit().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)),
+                  Text(item['rateTime'], style: TextStyle(color: Colors.grey, fontSize: ZFit().setSp(12)),),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(6)),
-                    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(3)),
+                    margin: EdgeInsets.symmetric(vertical: ZFit().setWidth(6)),
+                    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(3)),
                     decoration: BoxDecoration(
                       border: Border.all(style: BorderStyle.solid, color: Colors.blue)
                     ),
                     child: Text(item['desc']),
                   ),
                   Container(
-                    width: ScreenUtil().setWidth(110),
-                    height: ScreenUtil().setWidth(30),
+                    width: ZFit().setWidth(110),
+                    height: ZFit().setWidth(30),
                     child: FlatButton(
                       color: Colors.blue,
                       textColor: Colors.white,
@@ -276,7 +271,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
           }).toList(),
         ),
         SizedBox(
-          height: ScreenUtil().setWidth(36),
+          height: ZFit().setWidth(36),
           child: Text('已经到最底部啦...', style: TextStyle(color: Colors.grey),)
         )
       ],

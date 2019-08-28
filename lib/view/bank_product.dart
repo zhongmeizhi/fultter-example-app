@@ -1,6 +1,5 @@
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 
 class BankProductWidget extends StatelessWidget {
   
@@ -16,7 +15,7 @@ class BankProductWidget extends StatelessWidget {
     bool _containsProName = item.containsKey('pro');
 
     return Container(
-      padding: EdgeInsets.only(top: ScreenUtil().setWidth(12), bottom: ScreenUtil().setWidth(12)),
+      padding: EdgeInsets.only(top: ZFit().setWidth(12), bottom: ZFit().setWidth(12)),
       child: Column(
         children: <Widget>[
           // 如果有产品名称就展示
@@ -28,25 +27,25 @@ class BankProductWidget extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Container(
-                  width: ScreenUtil().setWidth(100),
+                  width: ZFit().setWidth(100),
                   alignment: Alignment.topLeft,
                   child: Column(
                     children: <Widget>[
                       Text(
                         item['rate'],
-                        style: TextStyle(fontSize: ScreenUtil().setSp(22), color: Colors.red)
+                        style: TextStyle(fontSize: ZFit().setSp(22), color: Colors.red)
                       ),
                       Text(
                         item['rateTime'],
-                        style: TextStyle(fontSize: ScreenUtil().setSp(11), color: Color(0xFFB8B8B8))
+                        style: TextStyle(fontSize: ZFit().setSp(11), color: Color(0xFFB8B8B8))
                       )
                     ],
                   ),
                 ),
                 Container(
-                  width:  ScreenUtil().setWidth(1),
-                  margin: EdgeInsets.only(right: ScreenUtil().setWidth(12)),
-                  height: ScreenUtil().setWidth(33),
+                  width:  ZFit().setWidth(1),
+                  margin: EdgeInsets.only(right: ZFit().setWidth(12)),
+                  height: ZFit().setWidth(33),
                   color: Color(0xFFc3c3c3),
                 ),
                 Expanded(
@@ -57,7 +56,7 @@ class BankProductWidget extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             item['desc'],
-                            style: TextStyle(fontSize: ScreenUtil().setSp(14))
+                            style: TextStyle(fontSize: ZFit().setSp(14))
                           ),
                         ],
                       ),
@@ -65,7 +64,7 @@ class BankProductWidget extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             item['limitDesc'],
-                            style: TextStyle(fontSize: ScreenUtil().setSp(12), color: Color(0xFFB8B8B8))
+                            style: TextStyle(fontSize: ZFit().setSp(12), color: Color(0xFFB8B8B8))
                           )
                         ],
                       )
@@ -73,7 +72,7 @@ class BankProductWidget extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width:  ScreenUtil().setWidth(63),
+                  width:  ZFit().setWidth(63),
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.error, color: Colors.blue,),
@@ -94,10 +93,10 @@ Widget _proNameWidget (productName) {
   return Row(
     children: <Widget>[
       Padding(
-        padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(1)),
+        padding: EdgeInsets.only(bottom: ZFit().setWidth(1)),
         child: Text(
           productName,
-          style: TextStyle(fontSize: ScreenUtil().setSp(12), color: Color(0xFF666666))
+          style: TextStyle(fontSize: ZFit().setSp(12), color: Color(0xFF666666))
         )
       )
     ]

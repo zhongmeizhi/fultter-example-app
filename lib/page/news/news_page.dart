@@ -55,7 +55,7 @@ class _NewsState extends State<NewsPage> {
           //   childAspectRatio: 2.3, // 纵横比
           //   children: products.map((product) {
           //     return Container(
-          //       margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(12)),
+          //       margin: EdgeInsets.symmetric(horizontal: ZFit().setWidth(12)),
           //       decoration: BoxDecoration( // 阴影修饰
           //         color: Colors.white,
           //         boxShadow: [

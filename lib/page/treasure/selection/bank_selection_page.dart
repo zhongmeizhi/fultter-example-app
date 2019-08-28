@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/view/bank_product.dart';
 // 请求
 import 'package:zmz_app/service/api.dart';
@@ -86,11 +85,11 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
     // 银行名称
     items.add(
       Padding(
-        padding: EdgeInsets.only(left: ScreenUtil().setWidth(20), top: ScreenUtil().setWidth(6)),
+        padding: EdgeInsets.only(left: ZFit().setWidth(20), top: ZFit().setWidth(6)),
         child: Text(
           bank['bankName'],
           textAlign: TextAlign.start,
-          style: TextStyle(fontSize: ScreenUtil().setSp(12), fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: ZFit().setSp(12), fontWeight: FontWeight.w500),
         )
       )
     );
@@ -101,7 +100,7 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
       items.add(
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setWidth(20)
+            horizontal: ZFit().setWidth(20)
           ),
           child: BankProductWidget(item: item, intoChoicenessDetail: intoChoicenessDetail)
         )
@@ -112,7 +111,7 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
     if ((i + 1) < _len) {
       items.add(
         Container(
-          height: ScreenUtil().setHeight(10),
+          height: ZFit().setHeight(10),
           color: Color(0xFFf6f6f6),
         )
       );
@@ -122,7 +121,7 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
   // 最底部提示
   items.add(
     SizedBox(
-      height: ScreenUtil().setWidth(36),
+      height: ZFit().setWidth(36),
       child: Text('已经到最底部啦...', textAlign: TextAlign.center, style: TextStyle(color: Colors.grey))
     )
   );

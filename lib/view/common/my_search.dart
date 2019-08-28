@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 
 class MySearch extends SearchDelegate {
 
@@ -38,7 +37,7 @@ class MySearch extends SearchDelegate {
       List _data = List.generate(10, (idx) => idx);
       // 搜索结果
       return Container(
-        margin: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(12), horizontal: ScreenUtil().setWidth(6)),
+        margin: EdgeInsets.symmetric(vertical: ZFit().setWidth(12), horizontal: ZFit().setWidth(6)),
         child: GridView.builder(
           itemCount: _data.length,
           //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
@@ -63,7 +62,7 @@ class MySearch extends SearchDelegate {
                   Container(
                     alignment: Alignment.center,
                     child: CircleAvatar(
-                      radius: ScreenUtil().setWidth(60),
+                      radius: ZFit().setWidth(60),
                       backgroundImage: AssetImage('assets/images/One-Piece/${index.toString()}.jpg'),
                       // child: Image.asset('assets/images/One-Piece/${index.toString()}.jpg'),
                     )
@@ -71,7 +70,7 @@ class MySearch extends SearchDelegate {
                   Positioned(
                     child: Container(
                       alignment: Alignment.topCenter,
-                      child: Text(this.query, style: TextStyle(fontSize: ScreenUtil().setSp(16)),),
+                      child: Text(this.query, style: TextStyle(fontSize: ZFit().setSp(16)),),
                     ),
                   )
                 ],

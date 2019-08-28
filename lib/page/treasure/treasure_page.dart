@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zmz_app/compose/compose.dart';
 // 页面
 import 'package:zmz_app/page/treasure/selection/bank_selection_page.dart';
 import 'package:zmz_app/page/treasure/selection/fund_selection_page.dart';
@@ -59,11 +58,11 @@ class _TreasurePageState extends State<TreasurePage>
         title: SearchBar(),
         bottom: TabBar(
           controller: _tabController,
-          labelPadding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(2), vertical: 0),
+          labelPadding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(2), vertical: 0),
           isScrollable: true,
           tabs: tabs.map((tab) {
             return Container(
-              width: ScreenUtil().setWidth(90),
+              width: ZFit().setWidth(90),
               child: Tab(text: tab['label']),
             );
           }).toList(),
