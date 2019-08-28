@@ -48,14 +48,12 @@
 
 lib目录：
 * config：配置文件
-* constant：常量，枚举
 * domain：实体类
 * bloc：逻辑模块
 * page：页面
 * plugin：独立组件/插件
 * routes：路由
 * service：接口封装 + API地址
-* storage：LocalStorage方法
 * utils：工具类
 * view：可复用Widget
 

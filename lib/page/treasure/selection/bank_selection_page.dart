@@ -4,7 +4,7 @@ import 'package:zmz_app/view/bank_product.dart';
 // 请求
 import 'package:zmz_app/service/api.dart';
 // storage
-import 'package:zmz_app/storage/storage.dart';
+import 'package:zmz_app/utils/storage.dart';
 // 参数
 import 'package:zmz_app/domain/route_argument.dart';
 

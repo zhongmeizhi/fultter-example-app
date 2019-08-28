@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type
         backgroundColor: Colors.white,
         items: <BottomNavigationBarItem>[
-          new BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
+          const BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
           const BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
           const BottomNavigationBarItem(icon: Icon(null), title: Text('')), // 空BottomNav
           const BottomNavigationBarItem(icon: Icon(Icons.book), title: Text('资讯')),
@@ -79,7 +79,7 @@ class _MainPageState extends State<MainPage> {
         index: _selectedIndex,
         children: <Widget>[
           new HomePage(),
-          _cachePage(1, TreasurePage()),
+          _selectedIndex == 1 ? TreasurePage() : Container(),
           Container(), // 空BottomNav对应页面
           _cachePage(3, NewsPage()),
           _cachePage(4, CustomerPage()),
@@ -88,8 +88,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: Container(
         padding: EdgeInsets.all(6),
         decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
+          border: Border.all(width: 1,
             color: Colors.transparent
           ),
           borderRadius: BorderRadius.all(Radius.circular(55)),

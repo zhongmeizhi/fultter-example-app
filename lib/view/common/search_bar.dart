@@ -10,14 +10,16 @@ class SearchBar extends StatelessWidget {
     var _searchValue = '';
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        InputChip(
+        ActionChip(
           backgroundColor: Colors.white,
+          avatar: Icon(Icons.search, color: Colors.grey),
           label: Container(
             alignment: Alignment.center,
-            width: ScreenUtil().setWidth(250),
+            width: ScreenUtil().setWidth(200),
             height: ScreenUtil().setWidth(22),
-            child: Text('搜索'),
+            child: Text('搜索')
           ),
           onPressed: () {
             showSearch(
@@ -30,8 +32,8 @@ class SearchBar extends StatelessWidget {
         Container(
           child: MaterialButton(
             padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
-            minWidth: ScreenUtil().setWidth(33),
-            child: Text('提问', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(16))),
+            minWidth: ScreenUtil().setWidth(25),
+            child: Text('提问', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(14))),
             onPressed: () {
               Scaffold.of(context).showSnackBar(const SnackBar(
                 content: Text("不给你提问."),

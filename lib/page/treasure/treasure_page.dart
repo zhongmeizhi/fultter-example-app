@@ -17,7 +17,7 @@ class _TreasurePageState extends State<TreasurePage>
   List tabs = [
     {
       'id': 't1',
-      'label': '学习'
+      'label': '小书房'
     }, {
       'id': 't2',
       'label': '银行精选'
@@ -27,13 +27,7 @@ class _TreasurePageState extends State<TreasurePage>
     }, {
       'id': 't4',
       'label': '转让'
-    }, {
-      'id': 't5',
-      'label': '预约投资'
-    }, {
-      'id': 't6',
-      'label': '普惠'
-    },
+    }
   ];
   TabController _tabController;
 
@@ -61,6 +55,7 @@ class _TreasurePageState extends State<TreasurePage>
     return Scaffold(
       backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
+        automaticallyImplyLeading: false, // 防止自动出现返回键
         title: SearchBar(),
         bottom: TabBar(
           controller: _tabController,

@@ -98,7 +98,6 @@ class _HomePageState extends State<HomePage> {
             _bannerWidget(),
             _displayDataWidget(), 
             _activityAdWidget(activityList: _activityList, context: context),
-            _subscribedWidget(context: context),
             _choicenessWidget(choiceList: _choiceList, context: context)
           ],
         )
@@ -201,26 +200,6 @@ Widget _activityAdWidget ({context, activityList}) {
   return Flex(
     direction: Axis.horizontal,
     children: items,
-  );
-}
-
-Widget _subscribedWidget ({context}) {
-
-  void _clickSubscribed () {
-    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从广告处登陆'));
-  }
-
-  return GestureDetector(
-    child: DecoratedBox(
-        decoration: BoxDecoration(
-            color: Color(0xFFF6F6F6)
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(top: ScreenUtil().setWidth(10), bottom: ScreenUtil().setWidth(10)),
-          child: Image.asset('assets/images/subscribed.jpg', width: ScreenUtil().setWidth(375)),
-        )
-    ),
-    onTap: _clickSubscribed,
   );
 }
 

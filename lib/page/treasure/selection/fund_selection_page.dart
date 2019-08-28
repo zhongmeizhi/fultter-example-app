@@ -35,26 +35,26 @@ class FundState extends State<FundSelectionPage> with AutomaticKeepAliveClientMi
       width: 300,
       height: 400,
       child: WebView(
-        initialUrl: 'https://zhongmeizhi.github.io/',
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
-        javascriptChannels: <JavascriptChannel>[
-          _toasterJavascriptChannel(context),
-        ].toSet(),
-        navigationDelegate: (NavigationRequest request) {
-          // URL拦截
-          if (request.url == 'https://www.baidu.com/') {
-            // 组织链接跳转
-            return NavigationDecision.prevent;
-          }
-          return NavigationDecision.navigate;
-        },
-        onPageFinished: (String url) {
-          print('Page finished loading: $url');
-        },
-      ),
+            initialUrl: 'https://zhongmeizhi.github.io/Interview-Knowledge-FED/',
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller.complete(webViewController);
+            },
+            javascriptChannels: <JavascriptChannel>[
+              _toasterJavascriptChannel(context),
+            ].toSet(),
+            navigationDelegate: (NavigationRequest request) {
+              // URL拦截
+              if (request.url == 'https://www.baidu.com/') {
+                // 组织链接跳转
+                return NavigationDecision.prevent;
+              }
+              return NavigationDecision.navigate;
+            },
+            onPageFinished: (String url) {
+              print('Page finished loading: $url');
+            },
+          )
     );
   }
 }

@@ -22,6 +22,6 @@ app.use(ctx => {
 
 app.listen(2333, function() {
     console.log('---------------------------');
-    console.log('运行');
+    console.log('运行 2333 端口');
     console.log('---------------------------');
 });

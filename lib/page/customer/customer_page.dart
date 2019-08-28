@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:zmz_app/unit/event_bus.dart';
-import 'package:zmz_app/storage/storage.dart'; // storage
+import 'package:zmz_app/utils/storage.dart'; // storage
 import 'package:zmz_app/service/api.dart'; // 请求
 import 'package:zmz_app/utils/route_animation.dart'; // 路由动画
 // 页面
@@ -83,9 +83,6 @@ class _CustomerPageState extends State<CustomerPage> {
       {
         'name': '一账通账户',
         'text': '未登录',
-      }, {
-        'name': '万里通账户',
-        'text': '未登录',
       }
     ];
 
@@ -133,7 +130,10 @@ class _CustomerPageState extends State<CustomerPage> {
                   return ExpansionPanel(
                     isExpanded: _expandIndex[0],
                     headerBuilder: (BuildContext context, bool isExpanded){
-                      return Text(val['name']);
+                      return Container(
+                        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15), vertical: ScreenUtil().setWidth(15)),
+                        child: Text(val['name']),
+                      );
                     },
                     body: Container(
                       child: Text(val['text']),
@@ -160,17 +160,33 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
     return GestureDetector(
       child: Stack(
         children: <Widget>[
-          Image.asset('assets/images/red_envelope.jpg', width: ScreenUtil().setWidth(360), height: ScreenUtil().setWidth(160), fit: BoxFit.fill,),
+          // Image.asset('assets/images/red_envelope.jpg', width: ScreenUtil().setWidth(360), height: ScreenUtil().setWidth(160), fit: BoxFit.fill,),
+          Container(
+            width: ScreenUtil().setWidth(360),
+            height: ScreenUtil().setWidth(160),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(new Radius.circular(ScreenUtil().setWidth(5))),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Colors.blue.withAlpha(222),
+                  Colors.blue.withAlpha(120)
+                ]
+              ),
+            ),
+          ),
           Align(
             alignment: Alignment.center,
             child: Column(
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: ScreenUtil().setWidth(20)),
-                  child: Text('互联网金融平台', style: TextStyle(color: Color(0xfef3ca80), fontSize: ScreenUtil().setSp(12)))
+                  child: Text('互联网金融平台', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(12)))
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(30)),
                   child: FlatButton(
                     disabledTextColor: Colors.blue,
                     disabledColor: Colors.blue,
@@ -182,7 +198,7 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: ScreenUtil().setWidth(6)),
-                  child: Text('立即登录 >', style: TextStyle(color: Color(0xFFFEF3CA), fontSize: ScreenUtil().setSp(13)))
+                  child: Text('立即登录 >', style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(14)))
                 )
               ],
             )
