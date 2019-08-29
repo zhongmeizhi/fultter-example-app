@@ -133,6 +133,10 @@ class _CustomerPageState extends State<CustomerPage> {
                       );
                     },
                     body: Container(
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      padding: ZEdge.all_15,
+                      color: ZColor.thinGrey,
                       child: Text(val['text']),
                     )
                   );
