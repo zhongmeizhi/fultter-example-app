@@ -54,6 +54,7 @@ lib目录：
 * plugin：独立组件/插件
 * routes：路由
 * service：接口封装 + API地址
+* styles: 常用样式类
 * utils：工具类
 * view：可复用Widget
 

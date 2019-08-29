@@ -92,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ZFit().setSp(12), color: Colors.white),),
                   decoration: new BoxDecoration(
                     color: Color(0x66000000),
-                    borderRadius: BorderRadius.all(Radius.circular(ZFit().setWidth(6))),
+                    borderRadius: ZRadius.all_5,
                     border: new Border.all(
                       width: ZFit().setWidth(1),
                       color: Colors.blue[50],

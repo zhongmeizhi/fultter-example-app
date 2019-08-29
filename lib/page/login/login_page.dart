@@ -65,7 +65,7 @@ Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
 
   return Center(
     child:  Padding(
-      padding: EdgeInsets.all(ZFit().setWidth(19)),
+      padding: ZEdge.all_15,
       child: Column(
         children: <Widget>[
           Image.asset('assets/images/logo.jpg', width: ZFit().setWidth(70), height: ZFit().setWidth(90)),
@@ -95,10 +95,10 @@ Widget _loginFormWidget (_checkPhoneNum, _submitLogin) {
               height: ZFit().setWidth(40),
               child: FlatButton(
                 child: Text("下一步"),
-                color: Color(0xFFed4e39),
+                color: ZColor.thinBlue,
                 textColor: Colors.white,
-                disabledColor: Color(0xFFDDDDDD),
-                disabledTextColor:Color(0xFF8c8c8c) ,
+                disabledColor: ZColor.grey,
+                disabledTextColor: ZColor.black ,
                 onPressed: _submitLogin()
               ),
             )

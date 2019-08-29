@@ -1,5 +1,6 @@
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:zmz_app/compose/compose.dart';
 // 页面
 import 'package:zmz_app/page/home/home_page.dart';
 import 'package:zmz_app/page/treasure/treasure_page.dart';
@@ -55,7 +56,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldKey,
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
@@ -74,7 +74,6 @@ class _MainPageState extends State<MainPage> {
       ),
       // IndexedStack 显示第index个child，其它child在页面上是不可见的
       // 但是 每个人page会在IndexedStack初始化的时候都会调用接口
-      // 所以需要添加触发
       body: new IndexedStack(
         index: _selectedIndex,
         children: <Widget>[
@@ -107,7 +106,27 @@ class _MainPageState extends State<MainPage> {
           child: Icon(Icons.add, color: Colors.white,),
           onPressed: (){
             // 黑底布耶
-            // _scaffoldKey.currentState.showBodyScrim(true, 0.5);
+            showCupertinoModalPopup(
+              context: context,
+              builder: (context) {
+                return Container(
+                  height: ZFit().setWidth(166),
+                  child: CupertinoPicker(
+                    backgroundColor: Colors.white70,
+                    itemExtent: ZFit().setWidth(33),
+                    onSelectedItemChanged: (idx) {
+                      print(idx);
+                    },
+                    children: <Widget>[
+                      Text('我想喝冰阔落。'),
+                      Text('冰阔落真好喝！'),
+                      Text('你也喜欢冰阔落吗？'),
+                      Text('喜欢请Star哦'),
+                    ],
+                  ),
+                );
+              }
+            );
           },
         ),
       ),

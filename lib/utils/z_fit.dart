@@ -2,11 +2,7 @@
  * Created by 李卓原 on 2018/9/29.
  * email: zhuoyuan93@gmail.com
  * 
- * 此代码 系 copy
- * 
- * 出处见 页头
- * 
- * 仅学习使用。mark
+ * 此代码 系 参考 flutter_screenutil
  */
 
 import 'package:flutter/material.dart';

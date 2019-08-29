@@ -16,13 +16,6 @@ class BankSelectionPage extends StatefulWidget {
   
 }
 
-// 子页面可以单独设置是否缓存
-
-// with AutomaticKeepAliveClientMixin 重写 wantKeepAlive
-
-// @override
-// bool get wantKeepAlive => true;
-
 class _BankSelectionState extends State<BankSelectionPage>
   with AutomaticKeepAliveClientMixin{
 
@@ -112,7 +105,7 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
       items.add(
         Container(
           height: ZFit().setHeight(10),
-          color: Color(0xFFf6f6f6),
+          color: ZColor.thinGrey,
         )
       );
     }

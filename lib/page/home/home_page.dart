@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:zmz_app/compose/compose.dart';
-// 功能widget
-import 'package:zmz_app/plugin/carousel.dart';
-// 请求
-import 'package:zmz_app/service/api.dart';
-// 页面
-import 'package:zmz_app/page/product/product_details_page.dart';
-// 参数
-import 'package:zmz_app/domain/route_argument.dart';
+import 'package:zmz_app/plugin/carousel.dart'; // 功能widget
+import 'package:zmz_app/service/api.dart'; // 请求
+import 'package:zmz_app/page/product/product_details_page.dart'; // 页面
+import 'package:zmz_app/domain/route_argument.dart'; // 参数
 
 class HomePage extends StatefulWidget {
   @override
@@ -31,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   // 下拉刷新方法
   Future<Null> _handleRefresh() async {
-    await Future.delayed(Duration(seconds: 1), () { //Future.delayed（）方法可以选择延迟处理任务
+    await Future.delayed(Duration(seconds: 1), () { // Future.delayed（）方法可以选择延迟处理任务
       setState(() {
         print('开始刷新数据');
         getChoice();
@@ -203,7 +199,6 @@ Widget _choicenessWidget ({context, List choiceList}) {
   void _intoChoicenessDetail({proInfo}) {
     // 调用IOS的右滑动回退功能
     Navigator.push(context, CupertinoPageRoute(builder: (context) {
-      // 让ProductDetailsPage具有右滑的功能
       return ProductDetailsPage(pro: proInfo);
     }));
   }

@@ -37,7 +37,6 @@ class _TreasurePageState extends State<TreasurePage>
   @override
   void initState() {
     super.initState();
-    // 创建Controller
     // 只有 with SingleTickerProviderStateMixin 后才有 TickerProvider，也就是 this
     _tabController = TabController(length: tabs.length, vsync: this);
   }
@@ -52,13 +51,12 @@ class _TreasurePageState extends State<TreasurePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         automaticallyImplyLeading: false, // 防止自动出现返回键
         title: SearchBar(),
         bottom: TabBar(
           controller: _tabController,
-          labelPadding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(2), vertical: 0),
+          labelPadding: ZEdge.horizontal_5,
           isScrollable: true,
           tabs: tabs.map((tab) {
             return Container(
@@ -75,8 +73,6 @@ class _TreasurePageState extends State<TreasurePage>
         key: new Key('treasure_page'),
         controller: _tabController,
         children: tabs.map((tab) {
-          // 利用 PageStorageKey 保持页面滚动状态
-          //     key: PageStorageKey(tab['id']),
           switch (tab['id']) {
             case 't1':
               return FundSelectionPage();

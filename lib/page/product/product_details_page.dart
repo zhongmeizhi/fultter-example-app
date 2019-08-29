@@ -60,7 +60,6 @@ class ProductDetailsPage extends StatelessWidget {
                       TextSpan(
                         children: [
                           TextSpan(text: '购买金额'),
-                          // TextSpan(text: '${snapshot.data}'),
                           TextSpan(text: '${bloc.money}'),
                           TextSpan(text: '元'),
                         ]

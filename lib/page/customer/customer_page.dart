@@ -16,8 +16,6 @@ class CustomerPage extends StatefulWidget {
 
 class _CustomerPageState extends State<CustomerPage> {
 
-  // final EventBus bus = new EventBus();
-
   bool _isLogin = false;
   Map _userInfo;
   List _expandIndex = [false, false];
@@ -118,7 +116,7 @@ class _CustomerPageState extends State<CustomerPage> {
               child: Image.asset('assets/images/logo.jpg'),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 22),
+              margin: ZEdge.horizontal_20,
               child: ExpansionPanelList(
                 expansionCallback: (int panelIndex, bool isExpanded) {
                   setState(() {
@@ -130,7 +128,7 @@ class _CustomerPageState extends State<CustomerPage> {
                     isExpanded: _expandIndex[0],
                     headerBuilder: (BuildContext context, bool isExpanded){
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(15), vertical: ZFit().setWidth(15)),
+                        padding: ZEdge.all_15,
                         child: Text(val['name']),
                       );
                     },
@@ -159,19 +157,18 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
     return GestureDetector(
       child: Stack(
         children: <Widget>[
-          // Image.asset('assets/images/red_envelope.jpg', width: ZFit().setWidth(360), height: ZFit().setWidth(160), fit: BoxFit.fill,),
           Container(
             width: ZFit().setWidth(360),
             height: ZFit().setWidth(160),
             decoration: BoxDecoration(
               color: Colors.blue,
-              borderRadius: BorderRadius.all(new Radius.circular(ZFit().setWidth(5))),
+              borderRadius: ZRadius.all_5,
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: <Color>[
-                  Colors.blue.withAlpha(222),
-                  Colors.blue.withAlpha(120)
+                  Colors.pink,
+                  ZColor.thinBlue
                 ]
               ),
             ),
@@ -189,8 +186,8 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
                   child: FlatButton(
                     disabledTextColor: Colors.blue,
                     disabledColor: Colors.blue,
-                    padding:EdgeInsets.symmetric(horizontal: ZFit().setWidth(38), vertical: ZFit().setWidth(5)),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(ZFit().setWidth(22))),
+                    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(38), vertical: ZFit().setWidth(5)),
+                    shape: RoundedRectangleBorder(borderRadius: ZRadius.all_15),
                     child: Text("注册领红包", style: TextStyle(fontSize: ZFit().setSp(18), fontWeight: FontWeight.bold, color: Colors.white)),
                     onPressed: null
                   )
@@ -209,11 +206,11 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
   }
 
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(13)),
+    padding: ZEdge.horizontal_15,
     child: Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.symmetric(vertical: ZFit().setWidth(8)),
+          padding: ZEdge.vertical_10,
           width: ZFit().setWidth(375),
           child: Text('欢迎来到金融理财', style: TextStyle(fontSize: ZFit().setSp(16))),
         ),
@@ -227,23 +224,22 @@ Widget _registeredWidget ({@required context, @required loginAccount}) {
 // 客服模块
 Widget _contactWidget () {
   Widget _contactStyleWidget ({@required icon, @required text}) {
-    return Expanded(
-      flex: 1,
+    return Container(
       child: Row(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: ZFit().setWidth(3)),
-            child:Icon(icon, color: Color(0xFF8B8B8B), size: ZFit().setSp(16)),
+            padding: ZEdge.horizontal_5,
+            child:Icon(icon, color: ZColor.grey, size: ZFit().setSp(16)),
           ),
-          Text(text, style: TextStyle(color: Color(0xFF8B8B8B), fontSize: ZFit().setSp(14)),)
+          Text(text, style: TextStyle(color: ZColor.grey, fontSize: ZFit().setSp(14)),)
         ]
       ),
     );
   }
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(55)),
     height: ZFit().setWidth(45),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         _contactStyleWidget(icon: Icons.headset_mic, text: '在线客服'),
         _contactStyleWidget(icon: Icons.phone_iphone, text: '电话客服'),
@@ -256,6 +252,6 @@ Widget _contactWidget () {
 Widget _brWidget ({height = 9}) {
   return Container(
     height: ZFit().setWidth(height),
-    color: Color(0xFFf6f6f6),
+    color: ZColor.thinGrey,
   );
 }

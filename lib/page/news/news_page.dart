@@ -46,6 +46,21 @@ class _NewsState extends State<NewsPage> {
             snap: true, // 必须要 floating: true 才能使用，snap时在下拉手势松开后直接展示图片
             pinned: true, // 图片消失时 title 是否可见
           ),
+          SliverFixedExtentList(
+            itemExtent: 66.0, // 高度
+            delegate: SliverChildListDelegate(
+              products.map((product) {
+                return ListTile(
+                  leading: Icon(Icons.equalizer),
+                  title: Text('...' + product.toString()),
+                  subtitle: Text('啦啦啦'),
+                  onTap: () {
+                    Toast.show(context, '点击：' + product.toString());
+                  },
+                );
+              }).toList(),
+            ),
+          ),
           // SliverGrid 的使用方法
           // xxx
           // SliverGrid.count( // SliverGrid和Grid有什么区别？？？
@@ -79,21 +94,6 @@ class _NewsState extends State<NewsPage> {
           //     );
           //   }).toList(),
           // ),
-          SliverFixedExtentList(
-            itemExtent: 66.0, // 高度
-            delegate: SliverChildListDelegate(
-              products.map((product) {
-                return ListTile(
-                  leading: Icon(Icons.equalizer),
-                  title: Text('...' + product.toString()),
-                  subtitle: Text('啦啦啦'),
-                  onTap: () {
-                    Toast.show(context, '点击：' + product.toString());
-                  },
-                );
-              }).toList(),
-            ),
-          ),
         ],
       ),
     );

@@ -39,7 +39,7 @@ class _DealerSelectionPageState extends State<DealerSelectionPage> {
 Widget _buildCard(String name) {
   return Container(
     key: ObjectKey(name),
-    height: 100,
+    height: 78,
     width: 200,
     child: Card(
       color: Colors.cyan.withAlpha(111),
