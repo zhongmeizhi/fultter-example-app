@@ -1,5 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zmz_app/bloc/theme_bloc.dart';
 import 'package:zmz_app/compose/compose.dart';
 // 页面
 import 'package:zmz_app/page/home/home_page.dart';
@@ -56,11 +58,13 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final ThemeBloc themeBloc = BlocProvider.of<ThemeBloc>(context);
+
     return Scaffold(
       key: _scaffoldKey,
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
         type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type
-        backgroundColor: Colors.white,
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
           const BottomNavigationBarItem(icon: Icon(Icons.payment), title: Text('财富')),
@@ -103,30 +107,9 @@ class _MainPageState extends State<MainPage> {
         ),
         child: FloatingActionButton(
           backgroundColor: Colors.blue,
-          child: Icon(Icons.add, color: Colors.white,),
+          child: Icon(Icons.autorenew, color: Colors.white,),
           onPressed: (){
-            // 黑底布耶
-            showCupertinoModalPopup(
-              context: context,
-              builder: (context) {
-                return Container(
-                  height: ZFit().setWidth(166),
-                  child: CupertinoPicker(
-                    backgroundColor: Colors.white70,
-                    itemExtent: ZFit().setWidth(33),
-                    onSelectedItemChanged: (idx) {
-                      print(idx);
-                    },
-                    children: <Widget>[
-                      Text('我想喝冰阔落。'),
-                      Text('冰阔落真好喝！'),
-                      Text('你也喜欢冰阔落吗？'),
-                      Text('喜欢请Star哦'),
-                    ],
-                  ),
-                );
-              }
-            );
+            themeBloc.dispatch(ThemeEvent.toggle);
           },
         ),
       ),

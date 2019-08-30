@@ -11,12 +11,12 @@ class Api {
   }
 
   // 获取用户信息
-  get getUserInfo => (phone) => service.$get('/user-info?phone=$phone');
+  Function get getUserInfo => (phone) => service.$get('/user-info?phone=$phone');
 
   // 获取 热门推荐
-  get getChoiceList => () => service.$get('/choice-list');
+  Function get getChoiceList => () => service.$get('/choice-list');
 
   // 获取 银行精选
-  get getBankProductList => () => service.$get('/bank_product_list');
+  Function get getBankProductList => () => service.$get('/bank_product_list');
 
 }

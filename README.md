@@ -14,15 +14,14 @@
 ### 项目计划
 * [x] ZFit 屏幕适配
 * [x] RouteSetting + 路由数据回传
-* [x] 动画效果
 * [x] 自定义App桌面 图标 + 名称
 * [x] 无限轮播图
 * [x] EventBus
 * [x] koa2 + node 后台服务器
-* [x] httpClient请求
+* [x] 封装请求
 * [x] Storage 保持登录状态
 * [x] 解决页面切换重绘问题
-* [x] 实现 webview
+* [x] webview
 * [x] 下拉刷新 + 上拉加载
 * [x] keepa-live && 缓存Widget
 * [x] 搜索功能
@@ -32,6 +31,7 @@
 * [x] 拖动式排序
 * [x] 页面侧滑回退
 * [x] BLoC模式 实现状态管理
+* [x] 一键换肤
 * [x] RxDart
 * [x] 重写Flutter部分类
 * [ ] Bloc模式完善

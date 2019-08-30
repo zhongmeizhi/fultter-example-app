@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   Future<Null> _handleRefresh() async {
     await Future.delayed(Duration(seconds: 1), () { // Future.delayed（）方法可以选择延迟处理任务
       setState(() {
-        print('开始刷新数据');
         getChoice();
         return null;
       });
@@ -83,7 +82,6 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: RefreshIndicator( // 下拉刷新
         onRefresh: _handleRefresh,
         child: ListView(

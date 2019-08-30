@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:zmz_app/bloc/main_bloc.dart';
+import 'package:zmz_app/bloc/payment/payment_bloc.dart';
+import 'package:zmz_app/bloc/theme_bloc.dart';
 import 'package:zmz_app/compose/compose.dart';
-import 'package:zmz_app/bloc/provider.dart'; // provider
-import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
+// import 'package:zmz_app/bloc/provider.dart'; // provider
+// import 'package:zmz_app/bloc/count_bloc.dart'; // Bloc注入
 // 页面
-import 'package:zmz_app/page/payment/payment_page.dart';
+// import 'package:zmz_app/page/payment/payment_page.dart';
 // 参数
-import 'package:zmz_app/domain/route_argument.dart';
+// import 'package:zmz_app/domain/route_argument.dart';
 
 class ProductDetailsPage extends StatelessWidget {
 
@@ -15,89 +19,43 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    PaymentBloc bloc = BlocProvider.of<PaymentBloc>(context);
+    return BlocProvider<CounterBloc>(
+      builder: (context) => CounterBloc(),
+      child: BlocBuilder<CounterBloc, int>(
+        builder: (context, count) {
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('产品详情'),
-        centerTitle: true,
-      ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text('${pro['pro']}', style: TextStyle(fontSize: 26))
-              ],
-            ),
-            Text('$pro'),
-            StreamBuilder(
-              stream: bloc.countStream,
-              initialData: bloc.money,
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: Text('支付方式'),
-                      title: DropdownButton(
-                        value: bloc.cardtype,
-                        items: <DropdownMenuItem>[
-                          DropdownMenuItem(
-                            value: '1',
-                            child: Text('招商银行'),
-                          ),
-                          DropdownMenuItem(
-                            value: '2',
-                            child: Text('农业银行'),
-                          )
-                        ],
-                        onChanged: (val) {
-                          bloc.changeCardtype(val.toString());
-                        },
-                      ),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: '购买金额'),
-                          TextSpan(text: '${bloc.money}'),
-                          TextSpan(text: '元'),
-                        ]
-                      ),
-                      style: TextStyle(fontSize: 26),
-                    ),
-                  ],
-                );
-              },
-            ),
-            
-          ],
-        ),
-      ),
-      bottomSheet: RawMaterialButton(
-        fillColor: Colors.blue,
-        onPressed: () {
-          Navigator.of(context).push(
-            // IOS的可侧滑回退路由
-            CupertinoPageRoute(
-              builder: (context) => PaymentPage(),
-              settings: RouteSettings(
-                arguments: RouteArguments('name', '蘑菇碳')
+          // 一定要在 BlocProvider后面
+          final counterBloc = BlocProvider.of<CounterBloc>(context);
+
+          return Scaffold(
+            appBar: AppBar(title: Text('Z.产品详情')),
+            body: Center(
+              child: Text(
+                '$count',
+                style: TextStyle(fontSize: 24.0),
               ),
+            ),
+            floatingActionButton:  Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                FloatingActionButton(
+                  child: Icon(Icons.add),
+                  onPressed: () {
+                    counterBloc.dispatch(CounterEvent.increment);
+                  },
+                ),
+                FloatingActionButton(
+                  child: Icon(Icons.brush),
+                  onPressed: () {
+                    counterBloc.dispatch(CounterEvent.decrement);
+                  },
+                ),
+              ]
             )
           );
         },
-        child: Container(
-          alignment: Alignment.bottomCenter,
-          height: ZFit().setWidth(47),
-          padding: EdgeInsets.symmetric(vertical: ZFit().setWidth(10)),
-          child: Text('去支付', style: TextStyle(color: Colors.white, fontSize: 22),),
-        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => bloc.addMoney(),
-      )
     );
   }
 }
