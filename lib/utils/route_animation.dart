@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // 统一路由动画效果
-class MyRoute {
+class ZRoute {
   
   // 缩放路由动画
   static Future scaleRoute (BuildContext context, Widget widget) {

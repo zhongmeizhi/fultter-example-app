@@ -47,7 +47,7 @@ class _CustomerPageState extends State<CustomerPage> {
 
   // 进入登录页
   void _loginAccount() {
-    MyRoute.scaleRoute(context, LoginPage()).then((res) {
+    ZRoute.scaleRoute(context, LoginPage()).then((res) {
       _checkoutLogin();
     });
   }

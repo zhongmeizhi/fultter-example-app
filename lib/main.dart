@@ -1,7 +1,8 @@
+import 'package:zmz_app/routes/router.dart';
+
 import 'compose/compose.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:zmz_app/bloc/main_bloc.dart';
 import 'package:zmz_app/bloc/theme_bloc.dart';
 import 'package:zmz_app/page/welcome/splash_page.dart';
 
@@ -42,10 +43,7 @@ class MyApp extends StatelessWidget {
             title: 'Z.金融理财',
             theme: theme,
             home: SplashScreen(),
-            // home: BlocProvider(
-            //   builder: (context) => CounterBloc(),
-            //   child: SplashScreen(),
-            // ),
+            routes: Router.routes , //注册路由表
           );
         },
       ),

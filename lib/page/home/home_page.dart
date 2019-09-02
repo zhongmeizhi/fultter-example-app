@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:zmz_app/compose/compose.dart';
+import 'package:zmz_app/domain/product_domain.dart';
 import 'package:zmz_app/plugin/carousel.dart'; // 功能widget
 import 'package:zmz_app/service/api.dart'; // 请求
 import 'package:zmz_app/page/product/product_details_page.dart'; // 页面
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             return {
                 "id": "c",
                 "rate": "3.45%",
-                "pro": "下拉加载",
+                "name": "下拉加载",
                 "rateTime": "业绩基准(年化)",
                 "desc": "中低风险",
                 "limitDesc": "锁定期"
@@ -194,7 +195,7 @@ Widget _activityAdWidget ({context, activityList}) {
 
 Widget _choicenessWidget ({context, List choiceList}) {
 
-  void _intoChoicenessDetail({proInfo}) {
+  void _intoChoicenessDetail({Product proInfo}) {
     // 调用IOS的右滑动回退功能
     Navigator.push(context, CupertinoPageRoute(builder: (context) {
       return ProductDetailsPage(pro: proInfo);
@@ -219,6 +220,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
         // 使用Wrap的方式展示产品
         Wrap(
           children: choiceList.map((item) {
+            Product _pro = Product.fromJson(item);
             return Container(
               width: ZFit().setWidth(160),
               margin: ZEdge.all_5,
@@ -229,16 +231,16 @@ Widget _choicenessWidget ({context, List choiceList}) {
               ),
               child: Column(
                 children: <Widget>[
-                  Text(item['pro'], style: TextStyle(fontSize: ZFit().setSp(16))),
-                  Text(item['rate'], style: TextStyle(fontSize: ZFit().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)),
-                  Text(item['rateTime'], style: TextStyle(color: Colors.grey, fontSize: ZFit().setSp(12)),),
+                  Text(_pro.name, style: TextStyle(fontSize: ZFit().setSp(16))),
+                  Text(_pro.rate, style: TextStyle(fontSize: ZFit().setSp(26), fontWeight: FontWeight.w700, color: Colors.red)),
+                  Text(_pro.rateTime, style: TextStyle(color: Colors.grey, fontSize: ZFit().setSp(12)),),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: ZFit().setWidth(6)),
                     padding: EdgeInsets.symmetric(horizontal: ZFit().setWidth(3)),
                     decoration: BoxDecoration(
                       border: Border.all(style: BorderStyle.solid, color: Colors.blue)
                     ),
-                    child: Text(item['desc']),
+                    child: Text(_pro.desc),
                   ),
                   Container(
                     width: ZFit().setWidth(110),
@@ -254,7 +256,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
                         side: BorderSide(style: BorderStyle.solid, color: Colors.blue)
                       ),
                       onPressed: () => {
-                        _intoChoicenessDetail(proInfo: item)
+                        _intoChoicenessDetail(proInfo: _pro)
                       }
                     )
                   )
