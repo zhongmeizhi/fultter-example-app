@@ -16,10 +16,12 @@ class ProductDetailsPage extends StatelessWidget {
     return BlocProvider<PaymentNumBloc>(
       builder: (context) => PaymentNumBloc(),
       child: BlocBuilder<PaymentNumBloc, int>(
-        builder: (context, count) {
+        // bloc: PaymentNumBloc(), // 这样注入将限定为单个窗口小部件并且无法通过父窗口和BlocProvider当前窗口小部件访问的块
+        builder: (context2, count) {
 
+          // 灰常重要
           // 一定要在 BlocProvider后面
-          final PaymentNumBloc _paymentNumBloc = BlocProvider.of<PaymentNumBloc>(context);
+          PaymentNumBloc _paymentNumBloc = BlocProvider.of<PaymentNumBloc>(context2);
 
           return Scaffold(
             appBar: AppBar(
@@ -66,11 +68,13 @@ class ProductDetailsPage extends StatelessWidget {
                   child: RaisedButton(
                     color: ZColor.thinBlue,
                     onPressed: (){
-                      Navigator.push(context, CupertinoPageRoute(
-                        builder: (BuildContext context) {
-                          return PaymentPage();
+                      // 让push的 子Widget 同步Bloc
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (_) {
+                          return PaymentPage(curNum: count);
                         }
-                      ));
+                      );
                     },
                     child: Container(
                       padding: ZEdge.vertical_10,

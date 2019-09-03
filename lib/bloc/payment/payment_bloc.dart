@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 
 // decrement
-enum PaymentNumEvent { increment, reset }
+enum PaymentNumEvent { increment, reset, setVal }
 
 
 class PaymentNumBloc extends Bloc<PaymentNumEvent, int> {
@@ -12,13 +12,16 @@ class PaymentNumBloc extends Bloc<PaymentNumEvent, int> {
   int get initialState => _initNum;
 
   @override
-  Stream<int> mapEventToState(PaymentNumEvent event) async* {
+  Stream<int> mapEventToState(PaymentNumEvent event, [args]) async* {
     switch (event) {
       case PaymentNumEvent.reset:
         yield _initNum;
         break;
       case PaymentNumEvent.increment:
         yield currentState + 1;
+        break;
+      case PaymentNumEvent.setVal:
+        yield args;
         break;
     }
   }
