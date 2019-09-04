@@ -1,7 +1,6 @@
 
-class RouteArguments {
-  final String title;
-  final String message;
+class RouteArguments<T> {
+  final T args;
 
-  RouteArguments(this.title, this.message);
+  RouteArguments(this.args);
 }

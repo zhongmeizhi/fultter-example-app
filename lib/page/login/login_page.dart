@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
 
     // 接收RoutSetting的路由参数
-    RouteArguments args = ModalRoute.of(context).settings.arguments ?? RouteArguments('title', 'message');
+    RouteArguments<String> _args = ModalRoute.of(context).settings.arguments ?? RouteArguments<String>('亲，没内容呢');
     
     return Scaffold(
       appBar: AppBar(
@@ -53,9 +53,10 @@ class _LoginPageState extends State<LoginPage> {
       // 小角落里面打印进入的地方，方便以后使用
       bottomSheet: Container(
         width: ZFit().setWidth(375),
-        height: ZFit().setWidth(15),
+        height: ZFit().setWidth(30),
+        padding: ZEdge.vertical_5,
         alignment: Alignment.center,
-        child: Text(args.message),
+        child: Text('${_args.args}'),
       )
     );
   }

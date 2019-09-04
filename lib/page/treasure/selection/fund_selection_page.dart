@@ -30,7 +30,7 @@ class FundState extends State<FundSelectionPage> with AutomaticKeepAliveClientMi
 
   @override
   Widget build(BuildContext context) {
-
+    super.build(context);
     return Container(
       width: 300,
       height: 400,

@@ -72,7 +72,11 @@ class ProductDetailsPage extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         builder: (_) {
-                          return PaymentPage(curNum: count);
+                          // 使用已经存在的 bloc value
+                          return BlocProvider.value(
+                            value: _paymentNumBloc,
+                            child: PaymentPage()
+                          );
                         }
                       );
                     },

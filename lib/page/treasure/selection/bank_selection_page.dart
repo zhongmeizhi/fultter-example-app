@@ -44,7 +44,7 @@ class _BankSelectionState extends State<BankSelectionPage>
       print('已登陆');
     } else {
       // 利用pushNamed的arguments传递参数
-      Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从银行精选登陆'));
+      Navigator.pushNamed(context, "/login_page", arguments: RouteArguments<String>('想从银行精选登陆'));
     }
   }
 
@@ -57,6 +57,7 @@ class _BankSelectionState extends State<BankSelectionPage>
   // 会提示 被 @mustCallSuper 重写后半年在调用这个重写方法
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       children: _itemsWidget(bankProductList: _bankProductList, intoChoicenessDetail: _intoChoicenessDetail),
     );

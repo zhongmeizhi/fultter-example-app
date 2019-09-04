@@ -154,7 +154,7 @@ Widget _activityAdWidget ({context, activityList}) {
 
   void _intoActivityDetail({id}) {
     print(id);
-    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments('name', '想从活动登陆'));
+    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments<String>('想从活动登陆'));
   }
 
   final List<Widget> items = [];
