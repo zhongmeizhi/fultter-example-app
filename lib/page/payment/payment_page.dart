@@ -20,26 +20,24 @@ class _PaymentPageState extends State<PaymentPage> {
 
     return BlocBuilder<PaymentNumBloc, int>(
       builder: (context2, count) {
-        return Material(
-          child: Container(
-            padding: ZEdge.all_15,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('购买份数：${count.toString()}', style: TextStyle(fontSize: ZFit().setWidth(28),)),
-                // Text('选择支付方式'),
-                Container(
-                  alignment: Alignment.center,
-                  child: RaisedButton(
-                    onPressed: () {
-                      _paymentNumBloc.dispatch(PaymentNumEvent.increment);
-                    },
-                    child: Text('再多买一份'),
-                  )
+        return Container(
+          padding: ZEdge.all_15,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('购买份数：${count.toString()}', style: TextStyle(fontSize: ZFit().setWidth(28),)),
+              // Text('选择支付方式'),
+              Container(
+                alignment: Alignment.center,
+                child: RaisedButton(
+                  onPressed: () {
+                    _paymentNumBloc.dispatch(PaymentNumEvent.increment);
+                  },
+                  child: Text('再多买一份'),
                 )
-              ],
-            ),
-          )
+              )
+            ],
+          ),
         );
       }
     );

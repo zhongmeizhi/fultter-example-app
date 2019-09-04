@@ -104,7 +104,6 @@ class _CustomerPageState extends State<CustomerPage> {
     }
 
     return Scaffold(
-      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
         title: Text('Z.我的'),
         centerTitle: true, // appBar文字居中

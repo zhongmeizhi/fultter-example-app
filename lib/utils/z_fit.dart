@@ -20,7 +20,6 @@ class ZFit {
   static double _screenHeight;
   static double _pixelRatio;
   static double _statusBarHeight;
-
   static double _bottomBarHeight;
 
   static double _textScaleFactor;
@@ -56,36 +55,32 @@ class ZFit {
 
   ///当前设备宽度 dp
   static double get screenWidthDp => _screenWidth;
-
   ///当前设备高度 dp
   static double get screenHeightDp => _screenHeight;
 
   ///当前设备宽度 px
   static double get screenWidth => _screenWidth * _pixelRatio;
-
   ///当前设备高度 px
   static double get screenHeight => _screenHeight * _pixelRatio;
 
-  ///状态栏高度 刘海屏会更高
+  // ///状态栏高度 刘海屏会更高
   static double get statusBarHeight => _statusBarHeight * _pixelRatio;
-
-  ///底部安全区距离
+  // ///底部安全区距离
   static double get bottomBarHeight => _bottomBarHeight * _pixelRatio;
 
   ///实际的dp与设计稿px的比例
-  get scaleWidth => _screenWidth / instance.width;
-
-  get scaleHeight => _screenHeight / instance.height;
+  double get _scaleWidth => _screenWidth / instance.width;
+  double get _scaleHeight => _screenHeight / instance.height;
 
   ///根据设计稿的设备宽度适配
   ///高度也根据这个来做适配可以保证不变形
-  setWidth(int width) => width * scaleWidth;
+  setWidth(int width) => width * _scaleWidth;
 
   /// 根据设计稿的设备高度适配
   /// 当发现设计稿中的一屏显示的与当前样式效果不符合时,
   /// 或者形状有差异时,高度适配建议使用此方法
   /// 高度适配主要针对想根据设计稿的一屏展示一样的效果
-  setHeight(int height) => height * scaleHeight;
+  setHeight(int height) => height * _scaleHeight;
 
   ///字体大小适配方法
   ///@param fontSize 传入设计稿上字体的px ,

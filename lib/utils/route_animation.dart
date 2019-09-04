@@ -20,6 +20,4 @@ class ZRoute {
     );
   }
 
-  // 其他路由操作见 https://github.com/zhongmeizhi/flutter-router
-  
 }

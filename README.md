@@ -1,7 +1,8 @@
 # 蘑菇碳的Flutter金融理财App
 
-> 项目大部分都使用Flutter原生API来完成。喜欢请Star，尽量别 Fork。
+> 一个功能完整齐全的Bloc模式Flutter App项目。
 
+>> 项目大部分都使用Flutter原生API来完成。使用少量原生插件。喜欢请Star，尽量别 Fork。
 
 ### 项目预览
 |![1](/preview/1.png)|![2](/preview/2.png)|![3](/preview/3.png)|![4](/preview/4.png)|

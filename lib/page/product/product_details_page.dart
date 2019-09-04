@@ -98,6 +98,9 @@ class ProductDetailsPage extends StatelessWidget {
 }
 
 Column _buyControl (count, _paymentNumBloc) {
+
+  // TextEditingController _controller = TextEditingController();
+
   return Column(
     children: <Widget>[
       Container(
@@ -112,6 +115,15 @@ Column _buyControl (count, _paymentNumBloc) {
           ],
         ),
       ),
+      // Container(
+      //   padding: ZEdge.all_15,
+      //   child: CupertinoTextField(
+      //     controller: _controller,
+      //     placeholder: '请输入购买金额',
+      //     clearButtonMode: OverlayVisibilityMode.editing,
+      //     keyboardType: TextInputType.number,
+      //   ),
+      // ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[

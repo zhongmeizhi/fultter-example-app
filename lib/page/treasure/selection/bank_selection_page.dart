@@ -105,7 +105,7 @@ List<Widget> _itemsWidget({@required bankProductList, @required intoChoicenessDe
     if ((i + 1) < _len) {
       items.add(
         Container(
-          height: ZFit().setHeight(10),
+          height: ZFit().setWidth(10),
           color: ZColor.thinGrey,
         )
       );
