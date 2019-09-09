@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     
 
   void getChoice() async {
-    List data = await Api().getChoiceList();
+    List data = await Api.getChoiceList();
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {

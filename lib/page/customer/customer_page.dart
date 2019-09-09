@@ -22,7 +22,7 @@ class _CustomerPageState extends State<CustomerPage> {
 
   // 获取用户数据
   Future _getUserInfo (phone) async {
-    var data = await Api().getUserInfo(phone);
+    var data = await Api.getUserInfo(phone);
     return data;
   }
 

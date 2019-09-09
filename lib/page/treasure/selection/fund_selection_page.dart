@@ -35,7 +35,7 @@ class FundState extends State<FundSelectionPage> with AutomaticKeepAliveClientMi
       width: 300,
       height: 400,
       child: WebView(
-            initialUrl: 'https://zhongmeizhi.github.io/Interview-Knowledge-FED/',
+            initialUrl: 'https://zhongmeizhi.github.io/FED-note/',
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (WebViewController webViewController) {
               _controller.complete(webViewController);

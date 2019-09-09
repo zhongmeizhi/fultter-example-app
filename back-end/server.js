@@ -8,10 +8,7 @@ app.use(ctx => {
     let _data = router[_path];
     if (_data) {
         console.log('获取:' + _path);
-        ctx.response.body = {
-            data: _data,
-            status: 'success'
-        };
+        ctx.response.body = _data;
     } else {
         ctx.response.body = {
             data: {},

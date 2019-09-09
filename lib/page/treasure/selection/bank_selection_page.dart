@@ -25,7 +25,7 @@ class _BankSelectionState extends State<BankSelectionPage>
   List _bankProductList = [];
 
   void getBankProduct() async {
-    List data = await Api().getBankProductList();
+    List data = await Api.getBankProductList();
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {

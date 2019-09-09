@@ -28,7 +28,8 @@ dependencies:
   flutter_downloader: ^1.0.5
   bloc: ^0.15.0
   flutter_bloc: ^0.21.0
-  rxdart: ^0.22.0
+  dio: ^2.1.16
+  # rxdart: ^0.22.0
 
 dev_dependencies:
   flutter_test:
