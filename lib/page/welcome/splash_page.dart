@@ -11,33 +11,15 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin{
 
-  AnimationController _controller;
-  Animation _animation;
   int _count = 5;
   TimerUtil _timerUtil;
 
   @override
   void initState() {
-    _doCountDown();
     super.initState();
-    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
-    _animation = Tween(begin: 0.8, end: 1.0).animate(_controller);
-
-    _animation.addStatusListener((status) {
-      if (status ==AnimationStatus.completed) {
-        // Navigator.of(context).pushAndRemoveUntil(
-        //   MaterialPageRoute(builder: (context) => MainPage()), (route) => route == null);
-        ZRouter.pushAndRemoveUntil(context, page: MainPage());
-      }
-    });
-    _controller.forward();
+    _doCountDown();
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   // 开屏广告结束，跳转到首页
   void _goMain() {
@@ -69,14 +51,11 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     return new Material(
       child: new Stack(
         children: <Widget>[
-          new FadeTransition(
-            opacity: _animation,
-            child: new Image.asset(
-              'assets/images/projector.png',
-              width: double.infinity,
-              fit: BoxFit.fill,
-              height: double.infinity,
-            ),
+          new Image.asset(
+            'assets/images/projector.png',
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.fill,
           ),
           Positioned(
             top: ZFit().setWidth(33),
@@ -84,9 +63,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             child: new Container(
               alignment: Alignment.bottomRight,
               child: InkWell(
-                onTap: () {
-                  _goMain();
-                },
+                onTap: _goMain,
                 child: new Container(
                   padding: EdgeInsets.all(12),
                   child: new Text('跳过 $_count s', style: new TextStyle(fontSize: ZFit().setSp(12), color: Colors.white),),

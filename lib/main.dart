@@ -1,4 +1,5 @@
 import 'package:zmz_app/page/main_page.dart';
+import 'package:zmz_app/page/welcome/splash_page.dart';
 import 'package:zmz_app/plugin/loading.dart';
 import 'package:zmz_app/plugin/toast.dart';
 import 'package:zmz_app/routes/z_router.dart';
@@ -45,8 +46,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Z.金融理财',
             theme: theme,
-            home: PageManager(
-              child: MainPage()
+            home: _PageManager(
+              child: SplashPage()
             ),
             localizationsDelegates:  [ // 国际化代理
               GlobalMaterialLocalizations.delegate,
@@ -64,10 +65,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class PageManager extends StatelessWidget {
+class _PageManager extends StatelessWidget {
 
   final Widget child;
-  PageManager({@required this.child});
+  _PageManager({@required this.child});
 
   @override
   Widget build(BuildContext context) {
