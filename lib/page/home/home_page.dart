@@ -219,7 +219,6 @@ Widget _choicenessWidget ({context, List choiceList}) {
         // 使用Wrap的方式展示产品
         Wrap(
           children: choiceList.map((item) {
-            print(item);
             Product _pro = Product.fromJson(item);
             return Container(
               width: ZFit().setWidth(160),

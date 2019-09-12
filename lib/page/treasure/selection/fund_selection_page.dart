@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
+
+import 'package:zmz_app/utils/event_bus.dart';
 // import 'package:zmz_app/view/my_search.dart';
 
 class FundSelectionPage extends StatefulWidget {
@@ -31,6 +33,9 @@ class FundState extends State<FundSelectionPage> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
+    eventBus.emit('showLoading', '加载中...');
+
     return Container(
       width: 300,
       height: 400,
@@ -52,7 +57,7 @@ class FundState extends State<FundSelectionPage> with AutomaticKeepAliveClientMi
               return NavigationDecision.navigate;
             },
             onPageFinished: (String url) {
-              // print('Page finished loading: $url');
+              eventBus.emit('closeLoading');
             },
           )
     );
