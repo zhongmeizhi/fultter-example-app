@@ -29,6 +29,7 @@
 import 'dart:collection';
 import 'package:dio/dio.dart';
 import 'package:zmz_app/config/base_info.dart';
+// import 'package:zmz_app/utils/event_bus.dart';
 
 class _Service {
 
@@ -46,6 +47,8 @@ class _Service {
         },
         onResponse:(Response response) {
           // 在返回响应数据之前做一些预处理
+          // TODO
+          // eventBus.emit('fetchFailed');
           return response;
         },
         onError: (DioError error) {
@@ -71,6 +74,7 @@ class _Service {
 
     try {
       Response _response = await _dio.request('${Config.baseUrl}$url', data: params, options: option);
+      print(_response.data['result']);
       return _response.data['result'];
     } catch (error) {
       // ???
