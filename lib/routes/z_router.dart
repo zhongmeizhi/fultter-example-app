@@ -11,6 +11,7 @@ class RouterStore {
 
 }
 
+// 使用Iphone侧滑式路由
 class ZRouter {
 
     static push(context, {@required Widget page}) {

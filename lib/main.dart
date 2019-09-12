@@ -1,8 +1,6 @@
-import 'package:zmz_app/page/main_page.dart';
 import 'package:zmz_app/page/welcome/splash_page.dart';
 import 'package:zmz_app/plugin/loading.dart';
 import 'package:zmz_app/plugin/toast.dart';
-import 'package:zmz_app/routes/z_router.dart';
 import 'package:zmz_app/utils/event_bus.dart';
 import 'compose/compose.dart';
 import 'package:bloc/bloc.dart';

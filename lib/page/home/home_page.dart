@@ -43,16 +43,16 @@ class _HomePageState extends State<HomePage> {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         setState(() {
           // 加载数据
-          _choiceList.addAll(List.generate(2, (idx) {
+          _choiceList.addAll(List.generate(4, (idx) {
             return {
                 "id": "c",
                 "rate": "3.45%",
-                "name": "下拉加载",
+                "pro": "下拉理财",
                 "rateTime": "业绩基准(年化)",
                 "desc": "中低风险",
                 "limitDesc": "锁定期"
             };
-          }).toList());
+          }));
         });
       }
     });
@@ -219,6 +219,7 @@ Widget _choicenessWidget ({context, List choiceList}) {
         // 使用Wrap的方式展示产品
         Wrap(
           children: choiceList.map((item) {
+            print(item);
             Product _pro = Product.fromJson(item);
             return Container(
               width: ZFit().setWidth(160),
