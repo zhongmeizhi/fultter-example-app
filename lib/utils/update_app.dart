@@ -9,7 +9,7 @@ class UpdateApp {
     // 检查版本是否低于某版本
   bool _checkVersionLowerOf (String version) {
     // List _versionUtilList = version.split('.');
-    return true;
+    return false;
   }
 
   // 获取安装地址

@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
 
   void getChoice() async {
     List data = await Api.getChoiceList();
-    print(data);
     //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {
@@ -154,7 +153,6 @@ Widget _displayDataWidget () {
 Widget _activityAdWidget ({context, activityList}) {
 
   void _intoActivityDetail({id}) {
-    print(id);
     Navigator.pushNamed(context, "/login_page", arguments: RouteArguments<String>('想从活动登陆'));
   }
 

@@ -27,14 +27,13 @@
 * [x] keepa-live && 缓存Widget
 * [x] 搜索功能
 * [x] App强制更新
-* [x] Overlay 实现Toast提示
 * [x] 局部路由
 * [x] 拖动式排序
 * [x] 页面侧滑回退
 * [x] BLoC模式 实现状态管理
 * [x] 一键换肤
-* [x] RxDart
 * [x] 重写Flutter部分类
+* [x] 全局Toast + 全局 Dialog
 * [ ] Bloc模式完善
 * [ ] node架构完善
 

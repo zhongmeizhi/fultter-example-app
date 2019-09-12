@@ -29,7 +29,7 @@
 import 'dart:collection';
 import 'package:dio/dio.dart';
 import 'package:zmz_app/config/base_info.dart';
-// import 'package:zmz_app/utils/event_bus.dart';
+import 'package:zmz_app/utils/event_bus.dart';
 
 class _Service {
 
@@ -41,24 +41,31 @@ class _Service {
 
   void _initDio () {
     _dio.interceptors.add(InterceptorsWrapper(
-        onRequest:(RequestOptions options){
+        onRequest: (RequestOptions options){
           // 在请求被发送之前做一些事情
           return options;
         },
-        onResponse:(Response response) {
+        onResponse: (Response response) {
           // 在返回响应数据之前做一些预处理
-          // TODO
-          // eventBus.emit('fetchFailed');
+          if (response.data['code'] != '000') {
+            eventBus.emit('showToast', '系统繁忙请稍后再试...');
+          }
           return response;
         },
         onError: (DioError error) {
           // 当请求失败时做一些预处理
+          eventBus.emit('showToast', '程序员GG正在想问题...');
           return error;
         }
     ));
   }
 
-  Future fetch(url, {dynamic params, Map<String, dynamic> header, Options option, bool noTip = false}) async{
+  Future fetch(url, {
+      dynamic params,
+      Map<String, dynamic> header,
+      Options option,
+      bool isShowLoading = false
+    }) async{
 
     Map<String, dynamic> headers = new HashMap();
     if (header != null) {
@@ -73,7 +80,20 @@ class _Service {
     }
 
     try {
+      // 进入loading
+      if (isShowLoading) {
+        eventBus.emit('showLoading', '加载中...');
+      }
+
+      // 发送请求获取结果
       Response _response = await _dio.request('${Config.baseUrl}$url', data: params, options: option);
+      
+      // 结束Loading
+      if (isShowLoading) {
+        eventBus.emit('closeLoading');
+      }
+
+      // 返回真正结果
       print(_response.data['result']);
       return _response.data['result'];
     } catch (error) {

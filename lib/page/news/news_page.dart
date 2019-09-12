@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zmz_app/plugin/toast.dart';
+import 'package:zmz_app/utils/event_bus.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsPage extends StatefulWidget {
@@ -55,7 +55,7 @@ class _NewsState extends State<NewsPage> {
                   title: Text('...' + product.toString()),
                   subtitle: Text('啦啦啦'),
                   onTap: () {
-                    Toast.show(context, '点击：' + product.toString());
+                    eventBus.emit('showToast', '点击：' + product.toString());
                   },
                 );
               }).toList(),

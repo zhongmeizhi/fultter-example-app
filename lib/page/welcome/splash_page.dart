@@ -2,13 +2,14 @@
 import 'package:zmz_app/compose/compose.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:zmz_app/page/main_page.dart';
+import 'package:zmz_app/routes/z_router.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
+class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin{
 
   AnimationController _controller;
   Animation _animation;
@@ -24,8 +25,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _animation.addStatusListener((status) {
       if (status ==AnimationStatus.completed) {
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => MainPage()), (route) => route == null);
+        // Navigator.of(context).pushAndRemoveUntil(
+        //   MaterialPageRoute(builder: (context) => MainPage()), (route) => route == null);
+        ZRouter.pushAndRemoveUntil(context, page: MainPage());
       }
     });
     _controller.forward();
@@ -39,7 +41,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   // 开屏广告结束，跳转到首页
   void _goMain() {
-    Navigator.pushReplacementNamed(context, '/main_page');
+    // Navigator.pushReplacementNamed(context, '/main_page');
+    ZRouter.push(context, page: MainPage());
   }
 
   void _doCountDown() {
@@ -62,9 +65,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-
-    // 初始化页面 width=750; height=1334;
-    ZFit.instance = ZFit(width: 375, height: 812)..init(context);
 
     return new Material(
       child: new Stack(

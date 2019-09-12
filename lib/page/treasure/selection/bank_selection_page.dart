@@ -38,7 +38,6 @@ class _BankSelectionState extends State<BankSelectionPage>
   }
 
   void _intoChoicenessDetail({id}) {
-    print(id);
     bool isLogin = LocalStorage.getString('phone') == null;
     if (isLogin) {
       print('已登陆');

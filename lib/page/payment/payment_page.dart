@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zmz_app/bloc/payment/payment_bloc.dart';
 import 'package:zmz_app/styles/edge_style.dart';
+import 'package:zmz_app/utils/event_bus.dart';
 import 'package:zmz_app/utils/z_fit.dart';
 // 参数
 
@@ -27,14 +28,22 @@ class _PaymentPageState extends State<PaymentPage> {
             children: <Widget>[
               Text('购买份数：${count.toString()}', style: TextStyle(fontSize: ZFit().setWidth(28),)),
               // Text('选择支付方式'),
-              Container(
-                alignment: Alignment.center,
-                child: RaisedButton(
-                  onPressed: () {
-                    _paymentNumBloc.dispatch(PaymentNumEvent.increment);
-                  },
-                  child: Text('再多买一份'),
-                )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () {
+                      _paymentNumBloc.dispatch(PaymentNumEvent.increment);
+                    },
+                    child: Text('再多买一份'),
+                  ),
+                  RaisedButton(
+                    onPressed: () {
+                      eventBus.emit('showToast', '放学别跑...');
+                    },
+                    child: Text('不想买了'),
+                  ),
+                ],
               )
             ],
           ),

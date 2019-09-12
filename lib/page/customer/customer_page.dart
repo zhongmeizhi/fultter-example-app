@@ -2,9 +2,9 @@ import 'package:zmz_app/compose/compose.dart';
 // import 'package:zmz_app/unit/event_bus.dart';
 import 'package:zmz_app/utils/storage.dart'; // storage
 import 'package:zmz_app/service/api.dart'; // 请求
-import 'package:zmz_app/utils/route_animation.dart'; // 路由动画
 // 页面
 import 'package:zmz_app/page/login/login_page.dart';
+import 'package:zmz_app/view/common/route_animation.dart';
 // View
 import 'package:zmz_app/view/user-info/shop_list.dart';
 import 'package:zmz_app/view/user-info/user_assert.dart';

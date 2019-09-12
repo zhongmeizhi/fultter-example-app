@@ -33,10 +33,10 @@ class Toast {
             opacity: _showing ? 1.0 : 0.0, //目标透明度
             duration: _showing ? Duration(milliseconds: 100) : Duration(milliseconds: 400),
             child: Card(
-              color: Colors.black26,
+              color: Colors.black54,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                child: Text(_msg, style: TextStyle(fontSize: 14.0, color: Colors.white ),
+                child: Text(_msg, style: TextStyle(fontSize: 16.0, color: Colors.white ),
                 ),
               ),
             ),
@@ -48,25 +48,21 @@ class Toast {
       overlayState.insert(_overlayEntry);
 
     } else {
-
       // 重新绘制UI，类似setState
       _overlayEntry.markNeedsBuild();
-
     }
 
     await Future.delayed(Duration(milliseconds: 2000)); //等待两秒
-    // new Future.delayed(Duration(seconds: 2)).then((value) {
-    //   _overlayEntry.remove();
-    // });
     
     // 2秒后 到底消失不消失
     if (DateTime.now().difference(_startedTime).inMilliseconds >= 2000) {
-
-      _showing = false;
-      // 移除Overlay
-      _overlayEntry.remove();
-      _overlayEntry = null;
-
+      try {
+        _showing = false;
+        // 移除Overlay
+        _overlayEntry.remove();
+        _overlayEntry = null;
+      } catch (e) {
+      }
     }
 
   }
