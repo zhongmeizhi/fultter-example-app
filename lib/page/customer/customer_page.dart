@@ -1,5 +1,4 @@
 import 'package:zmz_app/compose/compose.dart';
-// import 'package:zmz_app/unit/event_bus.dart';
 import 'package:zmz_app/utils/storage.dart'; // storage
 import 'package:zmz_app/service/api.dart'; // 请求
 import 'package:zmz_app/view/user-info/shop_list.dart';
@@ -28,10 +27,7 @@ class _CustomerPageState extends State<CustomerPage> {
       if (phone != null) {
         // 获取后台数据
         _getUserInfo(phone).then((userInfo) {
-          // Unhandled exception: setState() called after dispose()
-          if (!mounted) {
-            return;
-          }
+          if (!mounted) return;
           setState(() {
             _isLogin = true;
             _userInfo = userInfo;
@@ -51,10 +47,7 @@ class _CustomerPageState extends State<CustomerPage> {
   // 退出登录
   void _logout() {
     LocalStorage.remove('phone').then((res) {
-      // Unhandled exception: setState() called after dispose()
-      if (!mounted) {
-        return;
-      }
+      if (!mounted) return;
       setState(() {
         _isLogin = false;
         _userInfo = null;

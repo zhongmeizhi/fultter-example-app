@@ -24,7 +24,7 @@ class Loading {
       // 没有Overlay 那么造一个
       _overlayEntry = OverlayEntry(
         builder: (BuildContext context) => Material(
-          color: ZColor.grey.withAlpha(123),
+          color: ZColor.grey.withAlpha(66),
           child: Center(
             child: Container(
               width: ZFit().setWidth(133),

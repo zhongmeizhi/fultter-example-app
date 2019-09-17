@@ -26,7 +26,6 @@ class _BankSelectionState extends State<BankSelectionPage>
 
   void getBankProduct() async {
     List data = await Api.getBankProductList();
-    //如果当前控件已经被注销掉，则当前控件内置状态为mounted。
     if (!mounted) return;
     setState(() {
       // Unhandled exception: setState() called after dispose()
@@ -42,7 +41,6 @@ class _BankSelectionState extends State<BankSelectionPage>
     if (isLogin) {
       print('已登陆');
     } else {
-      // 利用pushNamed的arguments传递参数
       Navigator.pushNamed(context, "/login", arguments: RouteArguments<String>('想从银行精选登陆'));
     }
   }

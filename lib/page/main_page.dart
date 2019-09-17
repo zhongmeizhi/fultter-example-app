@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
   void _tapBottomBar (index) {
     // 解决销毁后setSatte问题
     if (!mounted) return;
-    setState(() {
+    setState(() { // 页面展示切换使用setState
       _selectedIndex = index;
       if (_indexedStackCache.indexOf(index) == -1) {
         _indexedStackCache.add(index);
@@ -75,8 +75,7 @@ class _MainPageState extends State<MainPage> {
         fixedColor: Colors.blue,
         onTap: _tapBottomBar,
       ),
-      // IndexedStack 显示第index个child，其它child在页面上是不可见的
-      // 但是 每个人page会在IndexedStack初始化的时候都会调用接口
+      // IndexedStack 显示第index个child，其它child在页面上是不可见的（但会执行）
       body: new IndexedStack(
         index: _selectedIndex,
         children: <Widget>[
@@ -90,9 +89,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: Container(
         padding: ZEdge.all_5,
         decoration: BoxDecoration(
-          border: Border.all(width: 1,
-            color: ZColor.grey
-          ),
+          border: Border.all(width: 1, color: ZColor.grey),
           borderRadius: BorderRadius.all(Radius.circular(ZFit().setWidth(55))),
           color: ZColor.defaultBackground
         ),

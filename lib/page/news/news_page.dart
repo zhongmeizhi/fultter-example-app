@@ -28,8 +28,9 @@ class _NewsState extends State<NewsPage> {
             // centerTitle: true, // 让center居中，android表示变化不大
             // iconTheme: IconThemeData(), // Icon的样式
             actions: <Widget>[ //导航栏右侧菜单
-              IconButton(icon: Icon(Icons.search), onPressed: () {
-                
+              IconButton(icon: Icon(Icons.search),
+                onPressed: () {
+                  // x
                 }
               ),
             ],

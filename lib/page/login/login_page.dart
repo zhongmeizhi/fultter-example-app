@@ -2,8 +2,6 @@ import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/routes/z_router.dart';
 // storage
 import 'package:zmz_app/utils/storage.dart';
-// 参数
-import 'package:zmz_app/domain/route_argument.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -56,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
         height: ZFit().setWidth(30),
         padding: ZEdge.vertical_5,
         alignment: Alignment.center,
-        child: Text('${_formTip}'),
+        child: Text(_formTip),
       )
     );
   }
