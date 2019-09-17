@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   // 并不是 GlobalKey 类型
-  final _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
   List _indexedStackCache = <int>[0];
@@ -33,7 +33,6 @@ class _MainPageState extends State<MainPage> {
   // bottomNavigationBar 点击事件
   void _tapBottomBar (index) {
     // 解决销毁后setSatte问题
-    // Unhandled exception: setState() called after dispose()
     if (!mounted) return;
     setState(() {
       _selectedIndex = index;
@@ -89,23 +88,16 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
       floatingActionButton: Container(
-        padding: EdgeInsets.all(6),
+        padding: ZEdge.all_5,
         decoration: BoxDecoration(
           border: Border.all(width: 1,
-            color: Colors.transparent
+            color: ZColor.grey
           ),
-          borderRadius: BorderRadius.all(Radius.circular(55)),
-          color: Colors.white,
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.grey,
-              offset: Offset(0, -1),
-              blurRadius: 0.1,
-              spreadRadius: 0
-            )
-          ]
+          borderRadius: BorderRadius.all(Radius.circular(ZFit().setWidth(55))),
+          color: ZColor.defaultBackground
         ),
         child: FloatingActionButton(
+          elevation: 0,
           backgroundColor: Colors.blue,
           child: Icon(Icons.autorenew, color: Colors.white,),
           onPressed: (){
@@ -121,4 +113,5 @@ class _MainPageState extends State<MainPage> {
   Widget _cachePage(int idx, Widget component) {
     return (_indexedStackCache.indexOf(idx) != -1) ? component : Container();
   }
+  
 }

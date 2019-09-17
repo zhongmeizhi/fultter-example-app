@@ -43,7 +43,7 @@ class _BankSelectionState extends State<BankSelectionPage>
       print('已登陆');
     } else {
       // 利用pushNamed的arguments传递参数
-      Navigator.pushNamed(context, "/login_page", arguments: RouteArguments<String>('想从银行精选登陆'));
+      Navigator.pushNamed(context, "/login", arguments: RouteArguments<String>('想从银行精选登陆'));
     }
   }
 

@@ -1,8 +1,6 @@
 
 import 'package:zmz_app/compose/compose.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:zmz_app/page/main_page.dart';
-import 'package:zmz_app/routes/z_router.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -20,11 +18,9 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     _doCountDown();
   }
 
-
   // 开屏广告结束，跳转到首页
   void _goMain() {
-    // Navigator.pushReplacementNamed(context, '/main_page');
-    ZRouter.push(context, page: MainPage());
+    Navigator.of(context).pushReplacementNamed('/main_page');
   }
 
   void _doCountDown() {

@@ -1,4 +1,5 @@
 import 'package:zmz_app/compose/compose.dart';
+import 'package:zmz_app/routes/z_router.dart';
 // storage
 import 'package:zmz_app/utils/storage.dart';
 // 参数
@@ -37,8 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
 
-    // 接收RoutSetting的路由参数
-    RouteArguments<String> _args = ModalRoute.of(context).settings.arguments ?? RouteArguments<String>('亲，没内容呢');
+    String _formTip = ZRouter.getPageArguments<String>(context, '亲，没内容呢');
     
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
         height: ZFit().setWidth(30),
         padding: ZEdge.vertical_5,
         alignment: Alignment.center,
-        child: Text('${_args.args}'),
+        child: Text('${_formTip}'),
       )
     );
   }

@@ -31,7 +31,7 @@ class _TreasurePageState extends State<TreasurePage>
   TabController _tabController;
 
   _pickTab (val) {
-    print(val);
+    // x
   }
 
   @override

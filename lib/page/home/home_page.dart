@@ -3,7 +3,6 @@ import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/domain/product_domain.dart';
 import 'package:zmz_app/plugin/carousel.dart'; // 功能widget
 import 'package:zmz_app/service/api.dart'; // 请求
-import 'package:zmz_app/page/product/product_details_page.dart'; // 页面
 import 'package:zmz_app/domain/route_argument.dart'; // 参数
 
 class HomePage extends StatefulWidget {
@@ -153,7 +152,7 @@ Widget _displayDataWidget () {
 Widget _activityAdWidget ({context, activityList}) {
 
   void _intoActivityDetail({id}) {
-    Navigator.pushNamed(context, "/login_page", arguments: RouteArguments<String>('想从活动登陆'));
+    Navigator.pushNamed(context, "/login", arguments: RouteArguments<String>('想从活动登陆'));
   }
 
   final List<Widget> items = [];
@@ -195,10 +194,7 @@ Widget _activityAdWidget ({context, activityList}) {
 Widget _choicenessWidget ({context, List choiceList}) {
 
   void _intoChoicenessDetail({Product proInfo}) {
-    // 调用IOS的右滑动回退功能
-    Navigator.push(context, CupertinoPageRoute(builder: (context) {
-      return ProductDetailsPage(pro: proInfo);
-    }));
+    Navigator.pushNamed(context, '/product_detail', arguments: RouteArguments<Product>(proInfo));
   }
 
   return Padding(

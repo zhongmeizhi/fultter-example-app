@@ -1,6 +1,6 @@
-import 'package:zmz_app/page/welcome/splash_page.dart';
 import 'package:zmz_app/plugin/loading.dart';
 import 'package:zmz_app/plugin/toast.dart';
+import 'package:zmz_app/routes/z_router.dart';
 import 'package:zmz_app/utils/event_bus.dart';
 import 'compose/compose.dart';
 import 'package:bloc/bloc.dart';
@@ -45,7 +45,24 @@ class MyApp extends StatelessWidget {
             title: 'Z.金融理财',
             theme: theme,
             home: _PageManager(
-              child: SplashPage()
+              child: Navigator( // 实现SPA
+                initialRoute: '/',
+                onGenerateRoute: (RouteSettings settings) {
+
+                  // 路由表对应单页
+                  Widget _page = ZRouter.routerStore[settings.name];
+
+                  // 参数
+                  // settings.arguments
+                  return PageRouteBuilder(
+                    settings: settings, // 传递页面参数
+                    pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
+                      scale: animation,
+                      child: _page
+                    ),
+                  );
+                }
+              )
             ),
             localizationsDelegates:  [ // 国际化代理
               GlobalMaterialLocalizations.delegate,
@@ -55,7 +72,7 @@ class MyApp extends StatelessWidget {
               const Locale('zh', 'CN'), // 中文简体
               // const Locale('en', 'US'), // 美国英语
             ],
-            // routes: Router.routes , //注册路由表
+            // routes: ZRouter.routerStore, //注册路由表
           );
         },
       ),

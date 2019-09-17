@@ -3,15 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zmz_app/bloc/payment/payment_bloc.dart';
 import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/domain/product_domain.dart';
-import 'package:zmz_app/page/payment/payment_page.dart'; // 页面
+import 'package:zmz_app/page/payment/payment_page.dart';
+import 'package:zmz_app/routes/z_router.dart'; // 页面
 
 class ProductDetailsPage extends StatelessWidget {
 
-  final Product pro;
-  ProductDetailsPage({@required this.pro});
-
+  // final Product pro;
+  // ProductDetailsPage({@required _pro});
   @override
   Widget build(BuildContext context) {
+
+    Product _pro = ZRouter.getPageArguments(context, new Product());
+
+    print(_pro.id);
 
     return BlocProvider<PaymentNumBloc>(
       builder: (context) => PaymentNumBloc(),
@@ -47,12 +51,12 @@ class ProductDetailsPage extends StatelessWidget {
                         ),
                         child: Column(
                           children: <Widget>[
-                            Text(this.pro.name, style: TextStyle(fontSize: ZFit().setWidth(14)),),
+                            Text(_pro.name, style: TextStyle(fontSize: ZFit().setWidth(14)),),
                             Container(
                               padding: ZEdge.vertical_5,
-                              child: Text(this.pro.rate, style: TextStyle(fontSize: ZFit().setWidth(42), color: Colors.white),),
+                              child: Text(_pro.rate, style: TextStyle(fontSize: ZFit().setWidth(42), color: Colors.white),),
                             ),
-                            Text(this.pro.rateTime, style: TextStyle(fontSize: ZFit().setWidth(16)),),
+                            Text(_pro.rateTime, style: TextStyle(fontSize: ZFit().setWidth(16)),),
                           ],
                         ),
                       ),

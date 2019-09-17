@@ -94,7 +94,7 @@ class _Service {
       }
 
       // 返回真正结果
-      print(_response.data['result']);
+      // print(_response.data['result']);
       return _response.data['result'];
     } catch (error) {
       eventBus.emit('showToast', '程序员GG正在想问题...');
