@@ -12,15 +12,15 @@ import 'package:zmz_app/page/news/news_page.dart';
 import 'package:zmz_app/utils/update_app.dart'; // 更新App操作
 import 'package:zmz_app/utils/center_nav.dart'; // BottomNav加号位置
 
-class MainPage extends StatefulWidget {
+class NavPage extends StatefulWidget {
   final String title;
-  MainPage({Key key, this.title}) : super(key: key);
+  NavPage({Key key, this.title}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _NavPageState createState() => _NavPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _NavPageState extends State<NavPage> {
 
   int _selectedIndex = 0;
 
@@ -32,7 +32,6 @@ class _MainPageState extends State<MainPage> {
 
   // bottomNavigationBar 点击事件
   void _tapBottomBar (index) {
-    // 解决销毁后setSatte问题
     if (!mounted) return;
     setState(() { // 页面展示切换使用setState
       _selectedIndex = index;

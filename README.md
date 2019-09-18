@@ -1,8 +1,11 @@
 # 蘑菇碳的Flutter金融理财App
 
-> 一个功能完整齐全的Bloc模式 SPA型 Flutter App项目。
+> 一个功能完整齐全的Bloc模式Flutter App项目。更关注架构的SPA应用。
 
->> 项目大部分都使用Flutter原生API来完成。使用少量原生插件。喜欢请Star，尽量别 Fork。
+### 项目介绍
+
+项目更关注整体架构，以`SPA`方式完成全局`Loading`,全局`Toast`,全局`命名路由动画`,参数传递等功能。以`Bloc`方式实现状态管理,一键换肤等功能。实现了屏幕适配，可自定义全局Loading的请求封装，分离开发、测试、生产环境，WebView自然也一定要有咯。项目大部分都使用Flutter原生API来完成。使用少量原生插件。喜欢请Star，尽量别 Fork。
+
 
 ### 项目预览
 |![1](/preview/1.png)|![2](/preview/2.png)|![3](/preview/3.png)|![4](/preview/4.png)|
@@ -27,16 +30,17 @@
 * [x] keepa-live && 缓存Widget
 * [x] 搜索功能
 * [x] App强制更新
-* [x] 局部路由
 * [x] 拖动式排序
-* [x] 页面侧滑回退
 * [x] BLoC模式 实现状态管理
 * [x] 一键换肤
 * [x] 重写Flutter部分类
 * [x] 全局Toast + 全局 Dialog
+* [x] 全局 命名路由动画
 * [x] 实现 SPA (单页面应用)
+* [x] 环境分离
 * [ ] Bloc模式完善
 * [ ] node架构完善
+* [ ] 元数据式封装
 
 
 
