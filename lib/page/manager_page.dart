@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/plugin/loading.dart';
 import 'package:zmz_app/plugin/toast.dart';
@@ -9,7 +10,7 @@ class ManagerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // 初始化页面 width=750; height=1334;
+    // 初始化页面 width=375; height=812;
     ZFit.instance = ZFit(width: 375, height: 812)..init(context);
 
     eventBus.on('showToast', (message) {
@@ -42,13 +43,21 @@ class ManagerPage extends StatelessWidget {
 
         // 参数
         // settings.arguments
-        return PageRouteBuilder(
-          settings: settings, // 传递页面参数
-          pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
-            scale: animation,
-            child: _page
-          ),
+
+        // Cupertino路由动画
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (context) => _page
         );
+        
+        // 自定义路由动画
+        // PageRouteBuilder(
+        //   settings: settings, // 传递页面参数
+        //   pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
+        //     scale: animation,
+        //     child: _page
+        //   ),
+        // );
       }
     );
   }
