@@ -1,8 +1,16 @@
-# 蘑菇碳的Flutter金融理财App
+# Flutter-App
 
-> 一个功能完整齐全的Bloc模式Flutter App项目。更关注架构的SPA应用。
+<div align=center>
+
+![meihong](preview/meihong.jpg)
+  
+[![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/Example-@zmz-blue.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/App-Flutter-pink.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/fork-31-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)   [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/star-100-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)
+
+</div>
 
 ### 项目介绍
+
+> 一个功能完整齐全的Bloc模式Flutter App项目。更关注架构的SPA应用。
 
 项目更关注整体架构，以`SPA`方式完成全局`Loading`,全局`Toast`,全局`命名路由动画`,参数传递等功能。以`Bloc`方式实现状态管理,一键换肤等功能。实现了屏幕适配，可自定义全局Loading的请求封装，分离开发、测试、生产环境，WebView自然也一定要有咯。项目大部分都使用Flutter原生API来完成。使用少量原生插件。喜欢请Star，尽量别 Fork。
 
