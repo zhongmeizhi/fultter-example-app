@@ -26,6 +26,7 @@ class SimpleBlocDelegate extends BlocDelegate {
   }
 }
 
+@ZMeta('这是一个入口')
 class MyApp extends StatelessWidget {
 
   MyApp(Env env) {
@@ -35,9 +36,9 @@ class MyApp extends StatelessWidget {
     Config.setEnv = env;
   }
 
-
   @override
   Widget build(BuildContext context) {
+
 
     return BlocProvider<ThemeBloc>(
       builder: (context) => ThemeBloc(),
@@ -62,3 +63,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

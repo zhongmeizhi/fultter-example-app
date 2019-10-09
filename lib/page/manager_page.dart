@@ -5,6 +5,7 @@ import 'package:zmz_app/plugin/toast.dart';
 import 'package:zmz_app/routes/z_router.dart';
 import 'package:zmz_app/utils/event_bus.dart';
 
+@ZMeta('管理页面')
 class ManagerPage extends StatelessWidget {
 
   @override
