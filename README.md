@@ -2,7 +2,7 @@
 
 <div align=center>
 
-![meihong](preview/meihong.jpg)
+![meihong](preview/logo.png)
   
 [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/Example-@zmz-blue.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/App-Flutter-pink.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/fork-31-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)   [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/star-100-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)
 
@@ -20,7 +20,7 @@
 |:--:|:--:|:--:|:--:|
 ![5](/preview/5.png)|![6](/preview/6.png)|![7](/preview/7.png)|![8](/preview/8.png)|
 |![9](/preview/9.png)|![update](/preview/update.gif)|![search](/preview/search.gif)|![reorder](/preview/reorder.gif)|
-![0](/preview/0.png)|
+
 
 
 ### 项目计划

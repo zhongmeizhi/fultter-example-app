@@ -1,6 +1,3 @@
-// import 'package:zmz_app/service/service.dart';
-// import 'package:zmz_app/config/base_info.dart';
-
 import 'package:zmz_app/service/service.dart';
 
 class Api {

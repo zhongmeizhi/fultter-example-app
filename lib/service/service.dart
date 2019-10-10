@@ -42,6 +42,8 @@ class _Service {
   void _initDio () {
     _dio.interceptors.add(InterceptorsWrapper(
         onRequest: (RequestOptions options){
+          // 超时时间
+          options.connectTimeout = 3000;
           // 在请求被发送之前做一些事情
           return options;
         },
@@ -56,7 +58,7 @@ class _Service {
           // 当请求失败时做一些预处理
           eventBus.emit('showToast', '程序员GG正在想问题...');
           return error;
-        }
+        },
     ));
   }
 
@@ -79,26 +81,25 @@ class _Service {
       option.headers = headers;
     }
 
+    // 进入loading
+    if (isShowLoading) {
+      eventBus.emit('showLoading', '加载中...');
+    }
     try {
-      // 进入loading
-      if (isShowLoading) {
-        eventBus.emit('showLoading', '加载中...');
-      }
-
       // 发送请求获取结果
       Response _response = await _dio.request('${Config.baseUrl}$url', data: params, options: option);
-      
-      // 结束Loading
-      if (isShowLoading) {
-        eventBus.emit('closeLoading');
-      }
-
       // 返回真正结果
       // print(_response.data['result']);
       return _response.data['result'];
     } catch (error) {
       eventBus.emit('showToast', '程序员GG正在想问题...');
+    } finally {
+      // 不管结果怎么样 都需要结束Loading
+      if (isShowLoading) {
+        eventBus.emit('closeLoading');
+      }
     }
+
   }
 
 }
