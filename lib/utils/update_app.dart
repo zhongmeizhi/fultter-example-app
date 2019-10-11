@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 // App升级
 import 'package:flutter_downloader/flutter_downloader.dart';
-// 使用 MethodChannel
-import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:zmz_app/config/base_info.dart';
+import 'package:zmz_app/utils/event_bus.dart';
 
 class _AppVersionInfo {
   String version;
@@ -31,20 +34,45 @@ class UpdateApp {
     };
     return new _AppVersionInfo.formResponse(directory);
   }
+
+  Future<String> get _getDownloadPath async {
+    final directory = await getExternalStorageDirectory();
+    return directory.path;
+  }
+
+  Future checkPath(path) async{
+    final savedDir = Directory(path);
+    // 判断下载路径是否存在
+    bool hasExisted = await savedDir.exists();
+    // 不存在就新建路径
+    if (!hasExisted) {
+      savedDir.create();
+    }
+  }
   
   //下载
-  Future<void> _executeDownload(_appPath) async {
-    final taskId = await FlutterDownloader.enqueue(
-        url: _appPath + '/app-release.apk',
-        savedDir: _appPath,
-        showNotification: true,
-        openFileFromNotification: true);
-    FlutterDownloader.registerCallback((id, status, progress) {
-      // 当下载完成时，调用安装
-      if (taskId == id && status == DownloadTaskStatus.complete) {
-        FlutterDownloader.open(taskId: taskId);
-      }
-    });
+  Future<void> _executeDownload(url) async {
+    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+    if (permissions[PermissionGroup.storage] == PermissionStatus.granted) {
+
+      final path = (await _getDownloadPath) + '/Download';
+
+      await checkPath(path);
+
+      final taskId = await FlutterDownloader.enqueue(
+          url: url,
+          savedDir: path,
+          showNotification: true,
+          openFileFromNotification: true);
+      FlutterDownloader.registerCallback((id, status, progress) {
+        // 当下载完成时，调用安装
+        if (taskId == id && status == DownloadTaskStatus.complete) {
+          FlutterDownloader.open(taskId: taskId);
+        }
+      });
+    } else {
+      eventBus.emit('showToast', '您拒绝了存储授权，无法完成版本升级');
+    }
   }
 
   // 暴露方法
