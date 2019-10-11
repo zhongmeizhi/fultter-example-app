@@ -24,10 +24,10 @@ class UpdateApp {
 
   // 获取安装地址
   Future<_AppVersionInfo> _getApkLocalInfo() async {
-    // 不发请求了。直接硬编码
+    // 不发请求了，下载个QQ试试
     final directory = {
       'version': '1.0.1',
-      'url': '${Config.baseUrl}/app-release.apk'
+      'url': 'https://qd.myapp.com/myapp/qqteam/AndroidQQi/qq_6.0.1.6600_android_r25029_GuanWang_537057608_release.apk'
     };
     return new _AppVersionInfo.formResponse(directory);
   }
@@ -42,22 +42,9 @@ class UpdateApp {
     FlutterDownloader.registerCallback((id, status, progress) {
       // 当下载完成时，调用安装
       if (taskId == id && status == DownloadTaskStatus.complete) {
-        _installApk(_appPath);
+        FlutterDownloader.open(taskId: taskId);
       }
     });
-  }
-
-  // 安装
-  Future<Null> _installApk(_appPath) async {
-    // 本地资源访问
-    // zmz_app为项目名
-    const platform = const MethodChannel('zmz_app');
-    try {
-      // 调用app地址
-      await platform.invokeMethod('install', {'path': _appPath + '/app-release.apk'});
-    } on PlatformException catch (_) {
-      // xxx
-    }
   }
 
   // 暴露方法

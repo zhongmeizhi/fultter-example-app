@@ -2,7 +2,7 @@
 
 <div align=center>
 
-![meihong](preview/logo.png)
+![meihong](preview/meihong.jpg)
   
 [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/Example-@zmz-blue.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/App-Flutter-pink.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/fork-31-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)   [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/star-100-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)
 
