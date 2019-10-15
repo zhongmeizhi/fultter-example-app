@@ -12,7 +12,6 @@ class Toast {
     String msg,
   ) async {
 
-    assert(msg != null);
     _msg = msg;
 
     if(_msg == null || _msg.length < 1){

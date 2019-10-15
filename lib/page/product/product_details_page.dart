@@ -4,7 +4,8 @@ import 'package:zmz_app/bloc/payment/payment_bloc.dart';
 import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/domain/product_domain.dart';
 import 'package:zmz_app/page/payment/payment_page.dart';
-import 'package:zmz_app/routes/z_router.dart'; // 页面
+import 'package:zmz_app/routes/z_router.dart';
+import 'package:zmz_app/utils/event_bus.dart'; // 页面
 
 class ProductDetailsPage extends StatelessWidget {
 
@@ -145,6 +146,10 @@ Column _buyControl (count, _paymentNumBloc) {
             color: ZColor.thinBlue,
               child: Text('添加', style: TextStyle(color: Colors.white),),
               onPressed: () {
+                eventBus.emit('showLoading');
+                Future.delayed(Duration(milliseconds: 500)).then((val) {
+                  eventBus.emit('closeLoading');
+                });
                 _paymentNumBloc.dispatch(PaymentNumEvent.increment);
               },
             ),

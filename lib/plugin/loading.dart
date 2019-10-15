@@ -12,10 +12,9 @@ class Loading {
     String msg,
   ) async {
 
-    assert(msg != null);
     _msg = msg;
     if(_msg == null || _msg.length < 1){
-      _msg = '处理中';
+      _msg = '处理中...';
     }
 
     //获取OverlayState
@@ -24,20 +23,29 @@ class Loading {
       // 没有Overlay 那么造一个
       _overlayEntry = OverlayEntry(
         builder: (BuildContext context) => Material(
-          color: ZColor.grey.withAlpha(66),
+          color: ZColor.grey.withAlpha(23),
           child: Center(
             child: Container(
-              width: ZFit().setWidth(133),
-              height: ZFit().setWidth(133),
+              width: ZFit().setWidth(123),
+              height: ZFit().setWidth(123),
+              padding: ZEdge.all_10,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: ZRadius.all_5
+                boxShadow: <BoxShadow>[
+                  BoxShadow(color: ZColor.grey, blurRadius: ZFit().setWidth(2))
+                ],
+                borderRadius: ZRadius.all_8
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  CircularProgressIndicator(),
-                  Text(_msg)
+                  Container(
+                    padding: ZEdge.all_10,
+                    width: ZFit().setWidth(66),
+                    height: ZFit().setWidth(66),
+                    child: CircularProgressIndicator(),
+                  ),
+                  Text(_msg, style: TextStyle(color: Colors.blue, fontSize: ZFit().setSp(16))),
                 ],
               ),
             ),
