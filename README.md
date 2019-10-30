@@ -4,7 +4,7 @@
 
 ![meihong](preview/meihong1.jpg)
   
-[![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/Example-@zmz-blue.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/App-Flutter-pink.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/fork-31-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)   [![https://github.com/zhongmeizhi/fultter-example-app/](https://img.shields.io/badge/star-100-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)
+[![zmz-logo](https://img.shields.io/badge/Example-@zmz-blue.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![zmz-logo](https://img.shields.io/badge/App-Flutter-pink.svg?style=flat)](https://github.com/zhongmeizhi/fultter-example-app)  [![zmz-logo](https://img.shields.io/badge/fork-35-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)   [![zmz-logo](https://img.shields.io/badge/star-110-blue.svg?style=social&logo=github)](https://github.com/zhongmeizhi/fultter-example-app)
 
 </div>
 
@@ -19,10 +19,10 @@ APP强更提示：
 
 
 ### 项目预览
-|![1](/preview/11.png)|![2](/preview/22.png)|![3](/preview/33.png)|![4](/preview/44.png)|
+|![1](https://zhongmeizhi.github.io/fultter-example-app/preview/11.png)|![2](https://zhongmeizhi.github.io/fultter-example-app/preview/22.png)|![3](https://zhongmeizhi.github.io/fultter-example-app/preview/33.png)|![4](https://zhongmeizhi.github.io/fultter-example-app/preview/44.png)|
 |:--:|:--:|:--:|:--:|
-![5](/preview/55.png)|![6](/preview/66.png)|![7](/preview/77.png)|![8](/preview/88.png)|
-|![9](/preview/99.png)|![update](/preview/update1.gif)|![search](/preview/search1.gif)|![reorder](/preview/reorder1.gif)|
+![5](https://zhongmeizhi.github.io/fultter-example-app/preview/55.png)|![6](https://zhongmeizhi.github.io/fultter-example-app/preview/66.png)|![7](https://zhongmeizhi.github.io/fultter-example-app/preview/77.png)|![8](https://zhongmeizhi.github.io/fultter-example-app/preview/88.png)|
+|![9](https://zhongmeizhi.github.io/fultter-example-app/preview/99.png)|![update](https://zhongmeizhi.github.io/fultter-example-app/preview/update1.gif)|![search](https://zhongmeizhi.github.io/fultter-example-app/preview/search1.gif)|![reorder](https://zhongmeizhi.github.io/fultter-example-app/preview/reorder1.gif)|
 
 
 
