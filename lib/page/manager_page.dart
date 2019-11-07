@@ -35,32 +35,51 @@ class ManagerPage extends StatelessWidget {
       });
     });
 
-    return Navigator( // 实现SPA
-      initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {
+    DateTime _lastPressedAt; //上次点击时间
 
-        // 路由表对应单页
-        Widget _page = ZRouter.routerStore[settings.name];
+    return WillPopScope( // 导航返回拦截
+      onWillPop: () async {
+        if (_lastPressedAt == null ||
+            DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
+          //两次点击间隔超过1秒则重新计时
+          _lastPressedAt = DateTime.now();
 
-        // 参数
-        // settings.arguments
+          Navigator.maybePop(ZRouter.context);
+          return false;
+        }
+        return true;
+      },
+      child: Navigator( // 实现SPA
+        initialRoute: '/',
+        onGenerateRoute: (RouteSettings settings) {
 
-        // Cupertino路由动画
-        return CupertinoPageRoute(
-          settings: settings,
-          builder: (context) => _page
-        );
-        
-        // 自定义路由动画
-        // PageRouteBuilder(
-        //   settings: settings, // 传递页面参数
-        //   pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
-        //     scale: animation,
-        //     child: _page
-        //   ),
-        // );
-      }
+          // 路由表对应单页
+          Widget _page = ZRouter.routerStore[settings.name];
+
+          // 参数
+          // settings.arguments
+
+          // Cupertino路由动画
+          return CupertinoPageRoute(
+            settings: settings,
+            builder: (context) {
+              ZRouter.context = context;
+              return _page;
+            }
+          );
+          
+          // 自定义路由动画
+          // PageRouteBuilder(
+          //   settings: settings, // 传递页面参数
+          //   pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
+          //     scale: animation,
+          //     child: _page
+          //   ),
+          // );
+        }
+      )
     );
   }
   
 }
+

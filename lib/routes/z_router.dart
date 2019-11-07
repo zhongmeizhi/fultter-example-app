@@ -8,6 +8,8 @@ import 'package:zmz_app/page/welcome/splash_page.dart';
 
 class ZRouter {
 
+  static BuildContext context;
+
   // SPA 路由表
   static Map<String, Widget> get routerStore => {
     '/': SplashPage(),

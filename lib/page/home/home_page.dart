@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:zmz_app/compose/compose.dart';
 import 'package:zmz_app/domain/product_domain.dart';
 import 'package:zmz_app/plugin/carousel.dart'; // 功能widget
+import 'package:zmz_app/routes/z_router.dart';
 import 'package:zmz_app/service/api.dart'; // 请求
 import 'package:zmz_app/domain/route_argument.dart'; // 参数
 
@@ -194,6 +195,7 @@ Widget _activityAdWidget ({context, activityList}) {
 Widget _choicenessWidget ({context, List choiceList}) {
 
   void _intoChoicenessDetail({Product proInfo}) {
+    // ZRouter.pushNamed('/product_detail', arguments: RouteArguments<Product>(proInfo));
     Navigator.pushNamed(context, '/product_detail', arguments: RouteArguments<Product>(proInfo));
   }
 
