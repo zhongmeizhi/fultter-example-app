@@ -16,8 +16,8 @@ class Config {
   /* 
    * 环境
    */
-  static Env _env;
-  static Env get env => _env;
-  static set setEnv(Env env) => _env = env;
+  static Env _env; // 私有
+  static Env get env => _env; // 暴露get
+  static set setEnv(Env env) => _env = env; // 暴露set
 
 }

@@ -51,7 +51,7 @@ class _BankSelectionState extends State<BankSelectionPage>
     super.initState();
   }
 
-  // 会提示 被 @mustCallSuper 重写后半年在调用这个重写方法
+  // 会提示 被 @mustCallSuper 重写后面在调用这个重写方法
   @override
   Widget build(BuildContext context) {
     super.build(context);

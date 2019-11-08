@@ -62,6 +62,7 @@ class _Service {
     ));
   }
 
+  // 真正发请求的地方
   Future fetch(url, {
       dynamic params,
       Map<String, dynamic> header,
@@ -81,7 +82,7 @@ class _Service {
       option.headers = headers;
     }
 
-    // 进入loading
+    // 是否需要 loading
     if (isShowLoading) {
       eventBus.emit('showLoading', '加载中...');
     }
@@ -92,6 +93,7 @@ class _Service {
       // print(_response.data['result']);
       return _response.data['result'];
     } catch (error) {
+      // 异常提示
       eventBus.emit('showToast', '程序员GG正在想问题...');
     } finally {
       // 不管结果怎么样 都需要结束Loading

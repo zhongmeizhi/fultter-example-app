@@ -44,6 +44,7 @@ class ManagerPage extends StatelessWidget {
           //两次点击间隔超过1秒则重新计时
           _lastPressedAt = DateTime.now();
 
+          // 点击手机的下发回退键盘，触发pop
           Navigator.maybePop(ZRouter.context);
           return false;
         }
@@ -63,6 +64,7 @@ class ManagerPage extends StatelessWidget {
           return CupertinoPageRoute(
             settings: settings,
             builder: (context) {
+              // 每一个子页面的context
               ZRouter.context = context;
               return _page;
             }

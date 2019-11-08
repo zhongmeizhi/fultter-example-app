@@ -74,6 +74,9 @@ lib目录：
 * utils：工具类
 * view：可复用Widget
 
+主要管理文件
+* `service.dart` ：请求管理
+* `manager_page.dart` ：单页管理
 
 ### Node 后台：
 1. 安装`node.js`
