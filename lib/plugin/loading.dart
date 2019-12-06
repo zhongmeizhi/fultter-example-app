@@ -30,7 +30,7 @@ class Loading {
               height: ZFit().setWidth(123),
               padding: ZEdge.all_10,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xff565656),
                 boxShadow: <BoxShadow>[
                   BoxShadow(color: ZColor.grey, blurRadius: ZFit().setWidth(2))
                 ],
@@ -40,12 +40,14 @@ class Loading {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Container(
-                    padding: ZEdge.all_10,
+                    padding: ZEdge.all_15,
                     width: ZFit().setWidth(66),
                     height: ZFit().setWidth(66),
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 3.0
+                    ),
                   ),
-                  Text(_msg, style: TextStyle(color: Colors.blue, fontSize: ZFit().setSp(16))),
+                  Text(_msg, style: TextStyle(color: Colors.white, fontSize: ZFit().setSp(16))),
                 ],
               ),
             ),

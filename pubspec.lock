@@ -89,7 +89,7 @@ packages:
       name: flutter_downloader
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.7"
+    version: "1.1.9"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -238,6 +238,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.6"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.2.7"
+  url_launcher_platform_interface:
+    dependency: transitive
+    description:
+      name: url_launcher_platform_interface
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   vector_math:
     dependency: transitive
     description:
@@ -254,4 +268,4 @@ packages:
     version: "0.3.10+3"
 sdks:
   dart: ">=2.2.2 <3.0.0"
-  flutter: ">=1.5.0 <2.0.0"
+  flutter: ">=1.9.1+hotfix.4 <2.0.0"

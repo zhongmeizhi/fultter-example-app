@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'compose/compose.dart';
 import 'package:zmz_app/config/base_info.dart';
 import 'package:zmz_app/page/manager_page.dart';
@@ -34,6 +36,12 @@ class MyApp extends StatelessWidget {
     BlocSupervisor.delegate = SimpleBlocDelegate();
     // 设置环境变量
     Config.setEnv = env;
+
+    if (Platform.isIOS) {
+      Config.setPlatform = ZPlatform.ios;
+    } else if (Platform.isAndroid) {
+      Config.setPlatform = ZPlatform.android;
+    }
   }
 
   @override

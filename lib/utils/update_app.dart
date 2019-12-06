@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zmz_app/config/base_info.dart';
 import 'package:zmz_app/utils/event_bus.dart';
 
@@ -47,6 +48,18 @@ class UpdateApp {
     // 不存在就新建路径
     if (!hasExisted) {
       savedDir.create();
+    }
+  }
+
+  void _updateVersion(String url) async {
+    if (Config.platform == ZPlatform.android) {
+      _executeDownload(url);
+    } else {
+      if (await canLaunch(url)) {
+        launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
   }
   
@@ -100,7 +113,7 @@ class UpdateApp {
                   child: Text('确定'),
                   onPressed: () {
                     // 下载 并 安装新版本
-                    _executeDownload(directory.url);
+                    _updateVersion(directory.url);
                     Navigator.maybePop(context);
                   },
                 )

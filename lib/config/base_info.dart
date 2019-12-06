@@ -4,6 +4,11 @@ enum Env {
   prod
 }
 
+enum ZPlatform {
+  ios,
+  android
+}
+
 class Config {
 
   // 模拟器的浏览器中输入127.0.0.1所代表的是Android模拟器
@@ -19,5 +24,12 @@ class Config {
   static Env _env; // 私有
   static Env get env => _env; // 暴露get
   static set setEnv(Env env) => _env = env; // 暴露set
+
+  /* 
+    平台
+   */
+  static ZPlatform _platform;
+  static ZPlatform get platform => _platform;
+  static set setPlatform(ZPlatform p) => _platform = p;
 
 }
