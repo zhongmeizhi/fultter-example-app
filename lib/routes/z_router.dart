@@ -8,7 +8,10 @@ import 'package:zmz_app/page/welcome/splash_page.dart';
 
 class ZRouter {
 
-  static BuildContext context;
+  static BuildContext _context;
+  static BuildContext get context => _context;
+  static set setContext(_c) => _context = _c;
+
 
   // SPA 路由表
   static Map<String, Widget> get routerStore => {

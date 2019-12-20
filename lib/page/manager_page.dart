@@ -52,7 +52,7 @@ class ManagerPage extends StatelessWidget {
             settings: settings, // 参数
             builder: (context) {
               // 每一个子页面的context
-              ZRouter.context = context;
+              ZRouter.setContext = context;
               return _page;
             }
           );
