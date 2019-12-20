@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zmz_app/bloc/theme_bloc.dart';
 import 'package:zmz_app/compose/compose.dart';
@@ -25,19 +26,15 @@ class _NavPageState extends State<NavPage> {
   int _selectedIndex = 0;
 
   // 并不是 GlobalKey 类型
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  // 暂时先利用 cache 处理 IndexedStack 页面全部初始化问题
-  List _indexedStackCache = <int>[0];
+  // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  PageController _pageController = new PageController();
 
   // bottomNavigationBar 点击事件
   void _tapBottomBar (index) {
     if (!mounted) return;
     setState(() { // 页面展示切换使用setState
       _selectedIndex = index;
-      if (_indexedStackCache.indexOf(index) == -1) {
-        _indexedStackCache.add(index);
-      }
+      _pageController.jumpToPage(index);
     });
   }
   
@@ -60,7 +57,7 @@ class _NavPageState extends State<NavPage> {
     final ThemeBloc themeBloc = BlocProvider.of<ThemeBloc>(context);
 
     return Scaffold(
-      key: _scaffoldKey,
+      // key: _scaffoldKey,
       bottomNavigationBar: new BottomNavigationBar( // 底部导航
         type: BottomNavigationBarType.fixed, // 如果有4个bar那么必须要设置type
         items: <BottomNavigationBarItem>[
@@ -74,15 +71,15 @@ class _NavPageState extends State<NavPage> {
         fixedColor: Colors.blue,
         onTap: _tapBottomBar,
       ),
-      // IndexedStack 显示第index个child，其它child在页面上是不可见的（但会执行）
-      body: new IndexedStack(
-        index: _selectedIndex,
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(), // 禁止页面滑动
+        controller: _pageController,
         children: <Widget>[
           new HomePage(),
-          _selectedIndex == 1 ? TreasurePage() : Container(),
+          TreasurePage(),
           Container(), // 空BottomNav对应页面
-          _cachePage(3, NewsPage()),
-          _cachePage(4, CustomerPage()),
+          NewsPage(),
+          CustomerPage()
         ],
       ),
       floatingActionButton: Container(
@@ -104,10 +101,6 @@ class _NavPageState extends State<NavPage> {
       // const 很重要，不然每次点击BottomNav就会被重写一次
       floatingActionButtonLocation: const CenterNav()
     );
-  }
-
-  Widget _cachePage(int idx, Widget component) {
-    return (_indexedStackCache.indexOf(idx) != -1) ? component : Container();
   }
   
 }

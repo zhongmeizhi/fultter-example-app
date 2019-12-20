@@ -15,24 +15,15 @@ class ManagerPage extends StatelessWidget {
     ZFit.instance = ZFit(width: 375, height: 812)..init(context);
 
     eventBus.on('showToast', (message) {
-      // 推入微任务
-      Future.delayed(Duration(microseconds: 1)).then((val) {
-        Toast.show(context, message);
-      });
+      Future.microtask(() => Toast.show(context, message));
     });
 
     eventBus.on('showLoading', (message) {
-      // 推入微任务
-      Future.delayed(Duration(microseconds: 1)).then((val) {
-        Loading.show(context, message);
-      });
+      Future.microtask(() => Loading.show(context, message));
     });
 
     eventBus.on('closeLoading', (message) {
-      // 推入微任务
-      Future.delayed(Duration(microseconds: 1)).then((val) {
-        Loading.close();
-      });
+      Future.microtask(() => Loading.close());
     });
 
     DateTime _lastPressedAt; //上次点击时间
@@ -40,7 +31,7 @@ class ManagerPage extends StatelessWidget {
     return WillPopScope( // 导航返回拦截
       onWillPop: () async {
         if (_lastPressedAt == null ||
-            DateTime.now().difference(_lastPressedAt) > Duration(seconds: 1)) {
+            DateTime.now().difference(_lastPressedAt) > Duration(milliseconds: 500)) {
           //两次点击间隔超过1秒则重新计时
           _lastPressedAt = DateTime.now();
 
@@ -53,31 +44,18 @@ class ManagerPage extends StatelessWidget {
       child: Navigator( // 实现SPA
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
-
           // 路由表对应单页
           Widget _page = ZRouter.routerStore[settings.name];
 
-          // 参数
-          // settings.arguments
-
           // Cupertino路由动画
           return CupertinoPageRoute(
-            settings: settings,
+            settings: settings, // 参数
             builder: (context) {
               // 每一个子页面的context
               ZRouter.context = context;
               return _page;
             }
           );
-          
-          // 自定义路由动画
-          // PageRouteBuilder(
-          //   settings: settings, // 传递页面参数
-          //   pageBuilder:  (BuildContext nContext,Animation<double> animation, Animation<double> secondaryAnimation) => ScaleTransition(
-          //     scale: animation,
-          //     child: _page
-          //   ),
-          // );
         }
       )
     );

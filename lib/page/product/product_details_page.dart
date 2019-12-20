@@ -89,7 +89,7 @@ class ProductDetailsPage extends StatelessWidget {
                       padding: ZEdge.vertical_10,
                       alignment: Alignment.center,
                       width: ZFit().setWidth(375),
-                      child: Text('确认购买', style: TextStyle(color: Colors.white, fontSize: ZFit().setWidth(16)),),
+                      child: Text('购买', style: TextStyle(color: Colors.white, fontSize: ZFit().setWidth(16)),),
                     ),
                   ),
                 )

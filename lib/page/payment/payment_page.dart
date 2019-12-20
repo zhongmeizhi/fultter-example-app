@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zmz_app/bloc/payment/payment_bloc.dart';
+import 'package:zmz_app/domain/route_argument.dart';
+import 'package:zmz_app/routes/z_router.dart';
 import 'package:zmz_app/styles/edge_style.dart';
 import 'package:zmz_app/utils/event_bus.dart';
 import 'package:zmz_app/utils/z_fit.dart';
@@ -39,9 +41,9 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      eventBus.emit('showToast', '放学别跑...');
+                      Navigator.pushNamed(context, '/login', arguments: RouteArguments('从购买页进入'));
                     },
-                    child: Text('不想买了'),
+                    child: Text('确认'),
                   ),
                 ],
               )
