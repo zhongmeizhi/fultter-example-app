@@ -75,7 +75,7 @@ class ProductDetailsPage extends StatelessWidget {
                     onPressed: (){
                       // 让push的 子Widget 同步Bloc
                       showModalBottomSheet(
-                        context: context,
+                        context: ZRouter.context,
                         builder: (_) {
                           // 使用已经存在的 bloc value
                           return BlocProvider.value(
