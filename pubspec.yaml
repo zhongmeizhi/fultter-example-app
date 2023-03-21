@@ -33,7 +33,7 @@ dependencies:
   url_launcher: 5.2.7
   flutter_bloc: ^0.21.0 
   bloc: ^0.15.0
-  dio: ^2.1.16
+  dio: ">=2.1.16 <6.0.0"
 
 dev_dependencies:
   flutter_test:
